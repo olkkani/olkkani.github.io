@@ -1,7 +1,7 @@
 ---
 emoji: 👻
 title: '[Gradle] Gradle project 시작하기'
-date: '2022-01-028 20:42:00'
+date: "2022-01-28 20:42:00"
 author: olkk
 tags: 
 categories: Java
