@@ -46,7 +46,7 @@ Dependencies는 우측 __Add Dependencies__ 버튼을 클릭하여 추가할 수
   - Stpring Web
   - Spring Boot DevTools
 
-!\[Dependencies 설정 화면](./springboot_start-initializr.png, "Dependencies 설정 화면")
+![Dependencies 설정 화면](./springboot_start-initializr.png)
 
 3. 프로젝트 생성
 
