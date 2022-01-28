@@ -46,7 +46,7 @@ Dependencies는 우측 __Add Dependencies__ 버튼을 클릭하여 추가할 수
   - Stpring Web
   - Spring Boot DevTools
 
-![Alt text](./springboot_start-initializr.png, "ㅇㅇㅇㅇ")
+!\[Alt text](./springboot_start-initializr.png, "ㅇㅇㅇㅇ")
 
 3. 프로젝트 생성
 
