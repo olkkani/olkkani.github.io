@@ -2,7 +2,7 @@
 emoji: 👻
 title: '[Mybatis] String NumberformatException Error가 나는 경우'
 date: '2022-01-08 20:42:00'
-author: olkk
+author: chajin_ahn
 tags: 
 categories: Spring Mybatis
 ---

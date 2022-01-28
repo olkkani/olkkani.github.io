@@ -2,7 +2,7 @@
 emoji: 👻
 title: '[springboot] Spring Boot project 시작하기 1/?'
 date: '2022-01-09 20:42:00'
-author: olkk
+author: chajin_ahn
 tags: 
 categories: Spring
 ---
@@ -46,9 +46,14 @@ Dependencies는 우측 __Add Dependencies__ 버튼을 클릭하여 추가할 수
   - Stpring Web
   - Spring Boot DevTools
 
-![Alt text](/springboot_start-initalizr.png "dddd")
+![Alt text](./springboot_start-initializr.png, "ㅇㅇㅇㅇ")
 
 3. 프로젝트 생성
 
 모든 준비가 끝났으면 __GENERATE__ 버튼을 눌러 새로운 프로젝트를 로컬 저장소에 저장합니다.
 
+## Intellij Project Import
+
+저장된 프로젝트는 .zip으로 압축되어 있으므로 원하는 위치에 압축을 풀어줍니다. 다음은 Intellij에서 해당 프로젝트를 열람하는 방법입니다.
+
+1. 
