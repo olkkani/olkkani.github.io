@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-templates-category-template-js",
     "path": "/posts/Sourcetree",
-    "result": {"pageContext":{"currentCategory":"Sourcetree","categories":["All","Java","Spring","Mybatis","Sourcetree"],"edges":[{"node":{"id":"1186602e-904b-5c14-8c00-67c0dbe608a1","excerpt":"M 해결 방법 터미널 실행 해당 명령어 입력 git 명령어 재시도 password 입력 창이 뜨면 github Personal access tokens 입력","fields":{"slug":"/Git/sourcetree-mac_keychain_error/"},"frontmatter":{"categories":"Sourcetree","title":"[Sourcetree] Mac KeyChain Error","date":"January 07, 2022"}},"next":{"fields":{"slug":"/Java/string_reverse/"}},"previous":{"fields":{"slug":"/Mybatis/error-NumberformatException/"}}}]}},
+    "result": {"pageContext":{"currentCategory":"Sourcetree","categories":["All","Java","Spring","Mybatis","Sourcetree"],"edges":[{"node":{"id":"1186602e-904b-5c14-8c00-67c0dbe608a1","excerpt":"해결 방법 터미널 실행 해당 명령어 입력 git 명령어 재시도 password 입력 창이 뜨면 github Personal access tokens 입력","fields":{"slug":"/Git/sourcetree-mac_keychain_error/"},"frontmatter":{"categories":"Sourcetree","title":"[Sourcetree] Mac KeyChain Error","date":"January 07, 2022"}},"next":{"fields":{"slug":"/Java/string_reverse/"}},"previous":{"fields":{"slug":"/Mybatis/error-NumberformatException/"}}}]}},
     "staticQueryHashes": ["1073350324","1956554647","2938748437"]}
