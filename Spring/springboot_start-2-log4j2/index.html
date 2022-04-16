@@ -64,338 +64,383 @@
         }
       }
     })
-  </script><title data-react-helmet="true">[springboot] Spring Boot project 시작하기 1/?</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="[springboot] Spring Boot project 시작하기 1/?"/><meta data-react-helmet="true" property="og:site_title" content="[springboot] Spring Boot project 시작하기 1/?"/><meta data-react-helmet="true" name="description" content="Spring Boot를 이용하여 새로운 프로젝트를 만들어보도록 하겠습니다. 환경 OS: MacOS 12.1(Monterey) IDE: Intellij(2021.2) language: java 17 project: Gradle project 프로젝트 생성 spring initializr을 이용한 프로젝트 생성 새로운 springboot project를 시작하는 방법은 여러가지가 있지만 이번에는 spring inializr에 접속하여 간단하게 생성해보도록 하겠습니다. Spring initializr 사이트에 접속합니다. Project 환경 선택 Projrect: Gradle Proejct Language: Java Spring Boot: 2.6.2 Packaging: Jar Java: 17 Project Metadata는 각 프로젝트 성격에 맞춰서 작성하면 됩니다. Dependencies는 우측 Add Dependencies 버튼을 클릭하여 추가할 수 있습니다. Dependencies…"/><meta data-react-helmet="true" property="og:description" content="Spring Boot를 이용하여 새로운 프로젝트를 만들어보도록 하겠습니다. 환경 OS: MacOS 12.1(Monterey) IDE: Intellij(2021.2) language: java 17 project: Gradle project 프로젝트 생성 spring initializr을 이용한 프로젝트 생성 새로운 springboot project를 시작하는 방법은 여러가지가 있지만 이번에는 spring inializr에 접속하여 간단하게 생성해보도록 하겠습니다. Spring initializr 사이트에 접속합니다. Project 환경 선택 Projrect: Gradle Proejct Language: Java Spring Boot: 2.6.2 Packaging: Jar Java: 17 Project Metadata는 각 프로젝트 성격에 맞춰서 작성하면 됩니다. Dependencies는 우측 Add Dependencies 버튼을 클릭하여 추가할 수 있습니다. Dependencies…"/><meta data-react-helmet="true" property="og:author" content="안찬진"/><meta data-react-helmet="true" property="og:image" content="/og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-e82a0f1e2cd289355a4a.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-012390d198ce3e5c25b0.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-3528d048b96f92ca0d99.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/Spring/springboot_start-1/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">chanjin_ahn.github</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">👻</div><div class="info"><div class="categories"><a class="category" href="/posts/Spring">Spring</a></div></div><h1 class="title">[springboot] Spring Boot project 시작하기 1/?</h1><div class="info"><div class="author">posted by <strong>chajin_ahn</strong>,</div> <!-- -->January 09, 2022</div></header><div class="post-content"><div class="markdown"><p>Spring Boot를 이용하여 새로운 프로젝트를 만들어보도록 하겠습니다.</p>
-<h2 id="환경" style="position:relative;"><a href="#%ED%99%98%EA%B2%BD" aria-label="환경 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>환경</h2>
+  </script><title data-react-helmet="true">[springboot] Spring Boot project 시작하기, log4j2 + yml 1/?</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="[springboot] Spring Boot project 시작하기, log4j2 + yml 1/?"/><meta data-react-helmet="true" property="og:site_title" content="[springboot] Spring Boot project 시작하기, log4j2 + yml 1/?"/><meta data-react-helmet="true" name="description" content="이번 시간에는 springboot 에서 log4j2를 설정해보겠습니다. 라이브러리 가져오기 기존 logging 라이브러리 제외하기 스프링에서 제공하는 기본 라이브러리는 사용하지 않을 예정이므로 제외시킵니다.  log4j2 라이브러리 가져오기 다음으로는 log4j2와 slf4j를 위한 라이브러리를 가져오겠습니다. slf4j는 slf4j-impl에 포함되어있으므로 따로 가져오진 않겠습니다. 버전은 작성일 기준 2.17.1 이상을 가져오시길 바랍니다. log4j 취약점 논란이 있었기 때문에 maven repository에서 가져오실 땐 꼭 취약점이 발견되지 않은 버전을 가져오시길 바랍니다.  를 통해 가져오지 않는 이유는 maven repository 사이트의 표기와 달리 2.17.0 버전을 가져오기 때문입니다. yml 설정을 위한 jackson-dataformat-yaml 라이브러리 가져오기 log4j2 설정을 .xml로 관리해왔지만 이번 프로젝트는 .yml로 관리해보도록 하겠습니다.…"/><meta data-react-helmet="true" property="og:description" content="이번 시간에는 springboot 에서 log4j2를 설정해보겠습니다. 라이브러리 가져오기 기존 logging 라이브러리 제외하기 스프링에서 제공하는 기본 라이브러리는 사용하지 않을 예정이므로 제외시킵니다.  log4j2 라이브러리 가져오기 다음으로는 log4j2와 slf4j를 위한 라이브러리를 가져오겠습니다. slf4j는 slf4j-impl에 포함되어있으므로 따로 가져오진 않겠습니다. 버전은 작성일 기준 2.17.1 이상을 가져오시길 바랍니다. log4j 취약점 논란이 있었기 때문에 maven repository에서 가져오실 땐 꼭 취약점이 발견되지 않은 버전을 가져오시길 바랍니다.  를 통해 가져오지 않는 이유는 maven repository 사이트의 표기와 달리 2.17.0 버전을 가져오기 때문입니다. yml 설정을 위한 jackson-dataformat-yaml 라이브러리 가져오기 log4j2 설정을 .xml로 관리해왔지만 이번 프로젝트는 .yml로 관리해보도록 하겠습니다.…"/><meta data-react-helmet="true" property="og:author" content="안찬진"/><meta data-react-helmet="true" property="og:image" content="/og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-e82a0f1e2cd289355a4a.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-012390d198ce3e5c25b0.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-3528d048b96f92ca0d99.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/Spring/springboot_start-2-log4j2/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">chanjin_ahn.github</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">👻</div><div class="info"><div class="categories"><a class="category" href="/posts/Spring">Spring</a></div></div><h1 class="title">[springboot] Spring Boot project 시작하기, log4j2 + yml 1/?</h1><div class="info"><div class="author">posted by <strong>chajin_ahn</strong>,</div> <!-- -->January 09, 2022</div></header><div class="post-content"><div class="markdown"><p>이번 시간에는 springboot 에서 log4j2를 설정해보겠습니다.</p>
+<h2 id="라이브러리-가져오기" style="position:relative;"><a href="#%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0" aria-label="라이브러리 가져오기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>라이브러리 가져오기</h2>
 <hr>
-<ul>
-<li>OS: MacOS 12.1(Monterey)</li>
-<li>IDE: Intellij(2021.2)</li>
-<li>language: java 17</li>
-<li>project: Gradle project</li>
-</ul>
-<h2 id="프로젝트-생성" style="position:relative;"><a href="#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%83%9D%EC%84%B1" aria-label="프로젝트 생성 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>프로젝트 생성</h2>
+<h3 id="기존-logging-라이브러리-제외하기" style="position:relative;"><a href="#%EA%B8%B0%EC%A1%B4-logging-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%A0%9C%EC%99%B8%ED%95%98%EA%B8%B0" aria-label="기존 logging 라이브러리 제외하기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>기존 logging 라이브러리 제외하기</h3>
+<p>스프링에서 제공하는 기본 라이브러리는 사용하지 않을 예정이므로 제외시킵니다.</p>
+<div class="gatsby-highlight" data-language="gradle"><pre class="language-gradle"><code class="language-gradle">    configurations {
+        all{
+            exclude module: &#39;spring-boot-starter-logging&#39;
+        }
+}
+</code></pre></div>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 21.666666666666668%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAmUlEQVQY04WP0Q7CIAxF+RsdUKAwxsZGFo3P7v+/5pqBLnEP+tC0t8k5aUWnB3BaEO8bwvoE+RnkMgxnEGd0Oh51Vf1XPu8kJQjiCakkkE/QfgVxAYcC60sV78BF9gd4ln6ypAjtRogwLXhsN9i4wIUZJozQnFp3A+g9S/PjQtWEJmQIGzKmNUNVOFeBsk20V5X6VIG/L5sRL2y7fZ6JUnYRAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="기존 logging 라이브러리 제거"
+        title="기존 logging 라이브러리 제거"
+        src="/static/d4430f6e377b644102d317263c9ca56b/37523/21-exclude_starter_logging.png"
+        srcset="/static/d4430f6e377b644102d317263c9ca56b/e9ff0/21-exclude_starter_logging.png 180w,
+/static/d4430f6e377b644102d317263c9ca56b/f21e7/21-exclude_starter_logging.png 360w,
+/static/d4430f6e377b644102d317263c9ca56b/37523/21-exclude_starter_logging.png 720w,
+/static/d4430f6e377b644102d317263c9ca56b/e0885/21-exclude_starter_logging.png 918w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<h3 id="log4j2-라이브러리-가져오기" style="position:relative;"><a href="#log4j2-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0" aria-label="log4j2 라이브러리 가져오기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>log4j2 라이브러리 가져오기</h3>
+<p>다음으로는 log4j2와 slf4j를 위한 라이브러리를 가져오겠습니다. slf4j는 slf4j-impl에 포함되어있으므로 따로 가져오진 않겠습니다. 버전은 작성일 기준 2.17.1 이상을 가져오시길 바랍니다. log4j 취약점 논란이 있었기 때문에 maven repository에서 가져오실 땐 꼭 취약점이 발견되지 않은 버전을 가져오시길 바랍니다.</p>
+<p><code class="language-text">spring-boot-starter-log4j2</code> 를 통해 가져오지 않는 이유는 maven repository 사이트의 표기와 달리 2.17.0 버전을 가져오기 때문입니다.</p>
+<div class="gatsby-highlight" data-language="gradle"><pre class="language-gradle"><code class="language-gradle">    dependencies { 
+        implementation group: &#39;org.apache.logging.log4j&#39;, name: &#39;log4j-core&#39;, version: &#39;2.17.1&#39;
+        implementation group: &#39;org.apache.logging.log4j&#39;, name: &#39;log4j-api&#39;, version: &#39;2.17.1&#39;
+        implementation group: &#39;org.apache.logging.log4j&#39;, name: &#39;log4j-slf4j-impl&#39;, version: &#39;2.17.1&#39;
+    }</code></pre></div>
+<h3 id="yml-설정을-위한-jackson-dataformat-yaml-라이브러리-가져오기" style="position:relative;"><a href="#yml-%EC%84%A4%EC%A0%95%EC%9D%84-%EC%9C%84%ED%95%9C-jackson-dataformat-yaml-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0" aria-label="yml 설정을 위한 jackson dataformat yaml 라이브러리 가져오기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>yml 설정을 위한 jackson-dataformat-yaml 라이브러리 가져오기</h3>
+<p>log4j2 설정을 .xml로 관리해왔지만 이번 프로젝트는 .yml로 관리해보도록 하겠습니다. .yml으로 log4j2 설정을 관리하기 위해선 관련 라이브러리를 가져올 필요가 있습니다. 아래 라이브러리를 <strong>dependencies</strong> 에 포함하도록 합니다.</p>
+<div class="gatsby-highlight" data-language="gradle"><pre class="language-gradle"><code class="language-gradle">    implementation group: &#39;com.fasterxml.jackson.dataformat&#39;, name: &#39;jackson-dataformat-yaml&#39;, version: &#39;2.13.1&#39;</code></pre></div>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 31.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA9ElEQVQY032QyW7DMAxE8zmtN0nWRi1OrCZGkDaHHHrt/3/GFKJdN5f2MJBIgI+cObTSwUwL7NsnJJ2hPMEdM0yMGCliDJsoQvmAZrB4aQ3rtbOs5/+h6QxsOsFfv2DmB9JlRrkXzO8FoUywOUGHCB0jWuH24T+BvfLQIUPQFYJuGMwRJgbYKcOkBOkCBk0YtEc/+hXQ/HMhnTLyUjDQB1S4QDlie9VyBbJVF9YIfOCal2zwZ2B9GRjPBYKBCw8zMKUdKO3a+8mxAoUmdMLt0P1CExNszmjVjF5PqBFUVZvVorAEaQmdXPtcbxdyFCOhU7/ZfgO3AMFMyuDwNQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="bulid.gradle"
+        title="bulid.gradle"
+        src="/static/95ddeaba7bf41ac2ddacce9667210706/37523/22-implementation_log4j2.png"
+        srcset="/static/95ddeaba7bf41ac2ddacce9667210706/e9ff0/22-implementation_log4j2.png 180w,
+/static/95ddeaba7bf41ac2ddacce9667210706/f21e7/22-implementation_log4j2.png 360w,
+/static/95ddeaba7bf41ac2ddacce9667210706/37523/22-implementation_log4j2.png 720w,
+/static/95ddeaba7bf41ac2ddacce9667210706/22475/22-implementation_log4j2.png 1039w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<h2 id="applicationyml-설정" style="position:relative;"><a href="#applicationyml-%EC%84%A4%EC%A0%95" aria-label="applicationyml 설정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>application.yml 설정</h2>
 <hr>
-<h3 id="spring-initializr을-이용한-프로젝트-생성" style="position:relative;"><a href="#spring-initializr%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%83%9D%EC%84%B1" aria-label="spring initializr을 이용한 프로젝트 생성 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>spring initializr을 이용한 프로젝트 생성</h3>
-<p>새로운 springboot project를 시작하는 방법은 여러가지가 있지만 이번에는 spring inializr에 접속하여 간단하게 생성해보도록 하겠습니다.</p>
+<h3 id="예시-코드" style="position:relative;"><a href="#%EC%98%88%EC%8B%9C-%EC%BD%94%EB%93%9C" aria-label="예시 코드 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>예시 코드</h3>
+<div class="gatsby-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml">  <span class="token key atrule">logging</span><span class="token punctuation">:</span>
+    <span class="token key atrule">config</span><span class="token punctuation">:</span> classpath<span class="token punctuation">:</span>log4j2.yml</code></pre></div>
+<h2 id="lgo4j2yml-설정" style="position:relative;"><a href="#lgo4j2yml-%EC%84%A4%EC%A0%95" aria-label="lgo4j2yml 설정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>lgo4j2.yml 설정</h2>
+<hr>
+<p>log 출력 방식을 설정할 수 있는 log4j2.yml 파일을 생성하고 설정해보겠습니다.</p>
+<h3 id="log4j2-설정-구조" style="position:relative;"><a href="#log4j2-%EC%84%A4%EC%A0%95-%EA%B5%AC%EC%A1%B0" aria-label="log4j2 설정 구조 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>log4j2 설정 구조</h3>
 <ol>
 <li>
-<p><a href="https://start.spring.io/">Spring initializr</a> 사이트에 접속합니다.</p>
+<p>Appenders</p>
+<p>로그의 출력 위치를 지정합니다. Appender로 출력할 수 있는 범위는 Console, file 등이 있습니다.</p>
+<ul>
+<li>ConsoleAppender: 콘솔에 출력합니다.</li>
+<li>Fileappender: 파일에 로그 메세지를 출력합니다.</li>
+<li>RollingFileAppender: 특정 조건에 따라 콘솔 파일을 저장합니다.
+<ul>
+<li>Policy
+<ul>
+<li>OnStartupTriggeringPolicy: jvm start</li>
+<li>TimeBasedTriggeringPolicy: time</li>
+<li>SizeBasedTriggeringPlicy: file size</li>
+<li>CronTriggeringPolicy: Cron Exception</li>
+</ul>
+</li>
+<li>DefaultRolloverStrategy
+<ul>
+<li>fileindex: min = 작은 index가 최신 파일 | max: 높은 index가 최신 파일</li>
+<li>min: counter의 최소값입니다. 기본값은 1</li>
+<li>max: counter의 최대값입니다. 기본값은 7, 설정 값을 초과할 경우 오래된 파일을 삭제합니다.</li>
+<li>compressionLevel: 0~9까지의 정수값, 0은 압축하지않고, 1은 최고 속도, 9는 최고 압축</li>
+<li>tempCompressedFilePattern: 압축하는 동안의 파일 이름 패턴</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>로그의 크기가 지정한 용량 이상이 되면 다른 이름의 파일로 출력합니다.</li>
+<li>DailyRollingFileAppender: 하루를 단위로 로그 메세지를 파일로 출력합니다.</li>
+</ul>
 </li>
 <li>
-<p>Project 환경 선택</p>
-</li>
-</ol>
-<ul>
-<li>Projrect: Gradle Proejct</li>
-<li>Language: Java</li>
-<li>Spring Boot: 2.6.2</li>
-<li>Packaging: Jar</li>
-<li>Java: 17</li>
-</ul>
-<p>Project Metadata는 각 프로젝트 성격에 맞춰서 작성하면 됩니다.</p>
-<p>Dependencies는 우측 <strong>Add Dependencies</strong> 버튼을 클릭하여 추가할 수 있습니다. Dependencies는 프로젝트 생성 후에도 추가할 수 있으므로 기본적인 것들을 먼저 추가해보겠습니다.</p>
-<ul>
-<li>Dependencies:
-<ul>
-<li>thymeleaf</li>
-<li>Stpring Web</li>
-<li>Spring Boot DevTools</li>
-</ul>
-</li>
-</ul>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 82.22222222222221%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAAAsTAAALEwEAmpwYAAACjklEQVQ4y31T2W7VMBTMZ7R3y2LHzuLEcdabe3vbUhaBiiqKoAIJIb6AB/5fGnROSFqhwsNJ4sieMzNn7H3/9YBvPz9DtD6qG4NXb9/h9u4e958eoLICZ5sAaz/Cevef8h/fnrYZVJFhG0UIlEQgNQKhEMYJdmHMmza+4OKDT9bLvyegnh9p7EKF8224dIzijIHPtxO7TSC4tqHk4vUfMGrqC8VF355tOjTDiEglWO8EAh1juDrANj2iOOVNq12ISKVouwt0/QlCGqw2IYOqtEDTjyjrDnFq4MVWQ5UpYpPyBl9K6NJM0qVmRitirRNc351w+f6Iq7sj6rHD2cpfbGD2gYRnygbD4RKpqbBaZE8SidlsQ6gUXnwZcfN1xJsfB9SnGrE20HnJzKbGITxdZUjKAsY2yG3N76JqYGyN0nXclQADoeHqEWlWQwQlVGyRJA65aSB0xgR4yqktYSoHW3cck3mK8zBmliS/anrkzsFcK9jXCZd0EmfrYBmUR8ZnhUO3PyItKqTGIooTZkYy5uhQjNr+gHrYY7xtcfGhx+XHAe11C52WE0OKzfkmgB8ppp2VjllQg6youKgJgc8MXTvAVQeUxQBrB1g3oGoH7KIpDR49aEHjJ4OFytivUE5FCqg75Yy8LaoWeVsg0OIx0HNWSTIB0pTy0vEgCteybGJLTOMk542kYDxdoe2PuLhv0b50EHEOlRpInT9KJp8SY/knyav7kSWQNAp3kk/+kOS626N0Lap64JjNthARso0lC5XCVA1kkjMzAnTtHklumZ3OiiW01JQsoVszM3pWMskjb2QVYyckyyBf51DPh+luU/j5AvjRs+XxAV8gTgxEGSOQCqFMlmEsgP8A+BvwNzip04NbGL8VAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="Dependencies 설정 화면"
-        title="Dependencies 설정 화면"
-        src="/static/4fcc43c07c4d98628de9403693fcd7a0/37523/11-start-initializr.png"
-        srcset="/static/4fcc43c07c4d98628de9403693fcd7a0/e9ff0/11-start-initializr.png 180w,
-/static/4fcc43c07c4d98628de9403693fcd7a0/f21e7/11-start-initializr.png 360w,
-/static/4fcc43c07c4d98628de9403693fcd7a0/37523/11-start-initializr.png 720w,
-/static/4fcc43c07c4d98628de9403693fcd7a0/7de01/11-start-initializr.png 794w"
-        sizes="(max-width: 720px) 100vw, 720px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-<ol start="3">
-<li>프로젝트 생성</li>
-</ol>
-<p>모든 준비가 끝났으면 <strong>GENERATE</strong> 버튼을 눌러 새로운 프로젝트를 로컬 저장소에 저장합니다.</p>
-<h2 id="intellij-project-import" style="position:relative;"><a href="#intellij-project-import" aria-label="intellij project import permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Intellij Project Import</h2>
-<hr>
-<p>저장된 프로젝트는 .zip으로 압축되어 있으므로 원하는 위치에 압축을 풀어줍니다. 다음은 Intellij에서 해당 프로젝트를 열람하는 방법입니다.</p>
-<h3 id="1-intellij-의-workspace에-먼저-접속합니다" style="position:relative;"><a href="#1-intellij-%EC%9D%98-workspace%EC%97%90-%EB%A8%BC%EC%A0%80-%EC%A0%91%EC%86%8D%ED%95%A9%EB%8B%88%EB%8B%A4" aria-label="1 intellij 의 workspace에 먼저 접속합니다 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>1. intellij 의 workspace에 먼저 접속합니다</h3>
-<p>intellij를 처음 실행하거나 다른 workspace에서 가져오고 싶다면 아래 화면에서 새로운 workspace를 선택합니다.</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 59.44444444444444%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABYlAAAWJQFJUiTwAAABi0lEQVQoz52SS0/bQBSF/VtaqZVKmsx7YnvssWf8CqkgC0SLqCqWLNnwL7rs4+eeyhccHCALujiaxz365txrJ+fbGnlbwZUV8tLDZjn0OoNJH9ayCqibDqHtUVRhX5s0nudKfLNDON2hiD3WZYTQFisuwYQiLZnAYslIn1eczsuVoP3cNyk5+f4Hi+vfeHf5Cx++/cUy24BzBi4NGZRZU8rC18hcicJXtPdVgE1z8nCp90p8f4Zh9xV+OEMcLqGsAxOSiqNZKIO66dH2G9SxRewGNG2PptscAYaI2HVInUNelpDaPpnGNqSGYQsYraG1gZKCUsuxCyGpzmfQJHQD2s0WPnYoQgtl0z2QzJzj/fk9PrktpGshuyuanTq9ATOOoAcJc1/DVYGUlRV9lEMgw8cfP3ESLmDrL0h3t1TLLu7A1x6Mi0PgCJlr3jKtyiA1EkppCKkgpaS5WmsgtXk5wzHhpOfACboS+vG30I8a79Thw3PgCHoN+Pz11/Qi4QQ7lvCtSoo6Hk34P8B/ZTONiazcm+sAAAAASUVORK5CYII='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="open_workspace"
-        title="open_workspace"
-        src="/static/f319f40e7d5f5b4932ad7913b15964a3/37523/12-open_workspace.png"
-        srcset="/static/f319f40e7d5f5b4932ad7913b15964a3/e9ff0/12-open_workspace.png 180w,
-/static/f319f40e7d5f5b4932ad7913b15964a3/f21e7/12-open_workspace.png 360w,
-/static/f319f40e7d5f5b4932ad7913b15964a3/37523/12-open_workspace.png 720w,
-/static/f319f40e7d5f5b4932ad7913b15964a3/302a4/12-open_workspace.png 1080w,
-/static/f319f40e7d5f5b4932ad7913b15964a3/07a9c/12-open_workspace.png 1440w,
-/static/f319f40e7d5f5b4932ad7913b15964a3/26162/12-open_workspace.png 2020w"
-        sizes="(max-width: 720px) 100vw, 720px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-<p><strong>open</strong> 을 눌러 workspace로 지정할 폴더를 선택합니다.</p>
-<p>다운로드 받은 프로젝트로 지정해도 되지만 workspace는 실제 소스가 저장되는 공간이 아니며 여러 module을 관리하는 공간이기 때문에 새롭게 폴더를 생성하고 선택하는 것을 추천드립니다.</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 56.111111111111114%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAABYlAAAWJQFJUiTwAAABVUlEQVQoz41Ty27CMBD0ZxE/1m87GFJCQe21vSJVvffnp7Ih4dEg9TBaee2ZnV2tWb8/wgzv4HFsEGkPmQ+gtIN1EWQDbMwwIUEZD64MpHFQLkD7CKndGcaDYgYzbyeUzx/Yt2904wlif4J8/YLcfUAPBcr6JtBErJ9BLrSc0AZCW3AyMDGBaWsglYQiCSE5uOQQgmNFEt1uQOq3cCkj9gVxvUHoC3LZwqd+FpqidgGMkwXXE2pFN8dSthjGEalsGmElCeQi8uYFPq9hY2pu611z6COYuIg9VqsxDgeE4dicTURV59qPUD5DtZav3DoGditwvbQQNRcKOlfQ0X2x1hXp2dmtxh/Be6KGqND3JPFg4N+Cz0jzmBZ4rPa9RBaXdm5xdf6Qr/HCY3U5O6WXH2o77+Az13cOyYDVX1BdkvVtjyrIuJbT/nyuRZV1i0UnSFd/j8cvxq6BeMsIuuIAAAAASUVORK5CYII='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="workspace"
-        title="workspace"
-        src="/static/40a5955144a77521cb370aea3ea3ec57/37523/13-workspace.png"
-        srcset="/static/40a5955144a77521cb370aea3ea3ec57/e9ff0/13-workspace.png 180w,
-/static/40a5955144a77521cb370aea3ea3ec57/f21e7/13-workspace.png 360w,
-/static/40a5955144a77521cb370aea3ea3ec57/37523/13-workspace.png 720w,
-/static/40a5955144a77521cb370aea3ea3ec57/302a4/13-workspace.png 1080w,
-/static/40a5955144a77521cb370aea3ea3ec57/07a9c/13-workspace.png 1440w,
-/static/40a5955144a77521cb370aea3ea3ec57/d9ed5/13-workspace.png 2880w"
-        sizes="(max-width: 720px) 100vw, 720px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-<h3 id="2-module-imoort" style="position:relative;"><a href="#2-module-imoort" aria-label="2 module imoort permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>2. Module Imoort</h3>
-<p>새로운 module을 등록하기 위해선 <strong>preperence</strong> (⌘;)로 이동합니다.</p>
-<h3 id="project-설정" style="position:relative;"><a href="#project-%EC%84%A4%EC%A0%95" aria-label="project 설정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>project 설정</h3>
-<p>module을 등록하기에 앞서 SDK와 language level을 설정해야합니다.
-SDK는 자동으로 불러오지만 불러오지 않는다면 직접 경로를 지정하여 가져올 수 있습니다.
-language level은 선택한 sdk와 동일하게 맞춰주시면 됩니다.</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 78.88888888888889%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAABTklEQVQ4y92U3UrDQBCF80Jeijbd/99skk1KQaTWB+gD+A6CL31kNqU2Ea1Fr7z4mISZPTNnFraK0YAbCSkkmDJYS41aqAkuwZVBaHu4pgU75taE1J8RCtX6+RX3+zfc5BfElKB9hDAOygUo68s31wZcWwhjyz8xa3xsUAuJymwPkJsDbv0O2vkypQ0N+jwidn1pYALRQNopf+5kGat+fEDbb8FVKAcoIaRGVPZ0mCDrZTpti7X6zPZMsBke0W6eIF0uk9G+bExIw4iWyEeGEU031Ujnv55Qxw1s2kKFsXSnKchmSB18ameRbNNuKS73eBIUbgDBbTdb8iXO7c4EmenBTAbT7azwEkuhkyA3PbjNYOY6wW8nXApeK/xPBK+96Y9LsflvBdkvbnnF5SReXhqBmnFUwnisuMZKTAU/hZ622GVoH8Clwl3a4Tbt8Q4CDzB/tL7EdwAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="preperence"
-        title="preperence"
-        src="/static/435848161c69aa45424f6959f40a4e84/37523/14-preperence.png"
-        srcset="/static/435848161c69aa45424f6959f40a4e84/e9ff0/14-preperence.png 180w,
-/static/435848161c69aa45424f6959f40a4e84/f21e7/14-preperence.png 360w,
-/static/435848161c69aa45424f6959f40a4e84/37523/14-preperence.png 720w,
-/static/435848161c69aa45424f6959f40a4e84/302a4/14-preperence.png 1080w,
-/static/435848161c69aa45424f6959f40a4e84/07a9c/14-preperence.png 1440w,
-/static/435848161c69aa45424f6959f40a4e84/defc9/14-preperence.png 2046w"
-        sizes="(max-width: 720px) 100vw, 720px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-<h3 id="modules-등록" style="position:relative;"><a href="#modules-%EB%93%B1%EB%A1%9D" aria-label="modules 등록 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>modules 등록</h3>
-<p>workspace를 새로 만들어서 가져왔다면 workspace와 동일한 임시 module이 생성되어 있습니다.
-해당 모듈을 선택 후 <strong>-</strong> 를 눌러 제거합니다. 제거한 뒤에는 + 버튼을 눌러 gradle project를 가져옵니다.</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 77.22222222222223%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAABYlAAAWJQFJUiTwAAABqElEQVQ4y6WUS3PTMBSF9YNY0JZmGtl6PyM7tpPCBLbMhO66ZOivP4zk2BC3GWi7OHNtS/ru0b2SSQgB0lpwHVAPR7DhiE/pO6jdQhoDn1qkboDdJAjrIMxlcW1BxNcn8MMTrtpH0P4ItnvAbfuAyg+IqYEJG7hNA+VCUV5USw2mTFF+53p8zt8JP/wEO/zCx/gDVXUHWq1L1NbCxAbKR/iUoQnaBVgfYHyEsQ7G+TlBJRQolyBdf4+220NIByrywDh4LTxu4w43vseViVj5LW5Mg5Vr8UFErIRF13WlJMLYESwUiE2fEbtvEL4H5aLAstZMIA17xGYLZQMqqXHHBNZczpEpDaFtAUrjUEsFovwAHfeoVSqWJ+s5pn4HG1N5rk+JZnFZ5k1aszESZrbIqvVzYLv/UoDZ7QSip/FpzlKk1u0z4ASdCr5M9DdwCX4RSLk6285y4auBLwHe5bD6R53esOXLsEuu/8OhKN2li+OxrO1Z9zNwPDYdat2cZc0dltaPF3/5U7Bu7v4MP4lkZ0Uqnk1gUhdoub9xA+3jnCBHdrq/fxzqot+ySxARDF09AAAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="modules_import"
-        title="modules_import"
-        src="/static/d3883565ac39404e1c686896d772144b/37523/15-module.png"
-        srcset="/static/d3883565ac39404e1c686896d772144b/e9ff0/15-module.png 180w,
-/static/d3883565ac39404e1c686896d772144b/f21e7/15-module.png 360w,
-/static/d3883565ac39404e1c686896d772144b/37523/15-module.png 720w,
-/static/d3883565ac39404e1c686896d772144b/302a4/15-module.png 1080w,
-/static/d3883565ac39404e1c686896d772144b/07a9c/15-module.png 1440w,
-/static/d3883565ac39404e1c686896d772144b/3dfa7/15-module.png 2028w"
-        sizes="(max-width: 720px) 100vw, 720px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-<p>+버튼을 누르면 모듈의 폴더를 가져올 수 있습니다. 폴더를 선택한 뒤 Gradle을 선택하여 <strong>Finish</strong> 버튼을 누릅니다.</p>
-<p><span
-      class="gatsby-resp-image-wrapper"
-      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
-    >
-      <span
-    class="gatsby-resp-image-background-image"
-    style="padding-bottom: 77.77777777777777%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAABLElEQVQ4y+2QT0/CQBTE9+MYOECMkbJv/3UpSLvdbQnhQKKJF0yPxqAHDyZ+8jFFkKKI4MmDh1/mJe/tZGZZFAYgbUFmrdqCr6nnNJTIyymGmUdfxR+7fdT3LOQ5vM8QQobgMxTBoSwcYiMhRASiHjjvgSiClH1I8T2kFNjV/AFqdo9zV23JK3TTO3TGi5Vu6KSLvXTHtVa4tAWYuX2BuXnFmVui7Z/QWlPP7dDQQ/hHtIpnXCQzMFICSnJIEX2qEJ3A+z1JCcZ/+OiTUHFtaEA6xkZ/Q9Pj3/AvGpI2X5bHQI0AvPGW9aXePTwh1dZcg0sFrjSYtgmEsVA2gYwHRyesEStzAx6PQIkD1wMwP5kiGWdwxQSpL7Z1DlTdNDHJCMZa9Nw1+HyJaBjwBp9UMPvlqepNAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
-  ></span>
-  <img
-        class="gatsby-resp-image-image"
-        alt="module_import"
-        title="module_import"
-        src="/static/2c207bf5a318824b0575e03da95149e1/37523/16-import_module.png"
-        srcset="/static/2c207bf5a318824b0575e03da95149e1/e9ff0/16-import_module.png 180w,
-/static/2c207bf5a318824b0575e03da95149e1/f21e7/16-import_module.png 360w,
-/static/2c207bf5a318824b0575e03da95149e1/37523/16-import_module.png 720w,
-/static/2c207bf5a318824b0575e03da95149e1/302a4/16-import_module.png 1080w,
-/static/2c207bf5a318824b0575e03da95149e1/07a9c/16-import_module.png 1440w,
-/static/2c207bf5a318824b0575e03da95149e1/c211c/16-import_module.png 1502w"
-        sizes="(max-width: 720px) 100vw, 720px"
-        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
-        loading="lazy"
-        decoding="async"
-      />
-    </span></p>
-<p>module을 정상적으로 가져왔는지 확인 합니다. 만약 보이지 않는다면 <strong>OK</strong> 버튼을 누른 후 다시 해당 화면으로 이동합니다.</p>
-<p>가져온 모듈을 정상적으로 인식하는지 확인합니다.</p>
-<ol>
-<li>language level이 앞서 project에서 설정한 버전과 동일한다.</li>
-<li>mark as가 정상적으로 잡혀있는가 입니다. 각 mask as에 대한 설명은 다음과 같습니다.</li>
-</ol>
+<p>PatternLayout:</p>
+<p>로그의 출력 포맷을 지정합니다.</p>
 <table>
 <thead>
 <tr>
-<th>이름</th>
-<th>경로</th>
-<th>설명</th>
+<th align="center">Format</th>
+<th align="center">descprtion</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>souce</td>
-<td>src/main/java</td>
-<td>컴파일하게될 폴더의 경로입니다. .java로 끝나는 파일이 그 예시입니다.</td>
+<td align="center">%c, %logger</td>
+<td align="center">해당 로그를 쓰는 로거의 이름</td>
 </tr>
 <tr>
-<td>resouce</td>
-<td>src/main/resource</td>
-<td>project를 운용하는데 필요한 파일입니다. applicaiton.properties가 그 예시입니다.</td>
+<td align="center">%C, %Class</td>
+<td align="center">해당 로그를 요청한 클래스 이름</td>
 </tr>
 <tr>
-<td>excluded</td>
-<td>target</td>
-<td>컴파일에 필요없는 폴더입니다. 이미 컴파일된 파일이 있는 target이 그 예시입니다.</td>
+<td align="center">%d, %date</td>
+<td align="center">해당 로그가 발생한 시간</td>
+</tr>
+<tr>
+<td align="center">%enc, %encoding</td>
+<td align="center">특정 언어에서의 출력을 위한 문자 인코딩</td>
+</tr>
+<tr>
+<td align="center">%ex, %exception, %throwable</td>
+<td align="center">예외로그, 길이 설정이 가능</td>
+</tr>
+<tr>
+<td align="center">%F, %file</td>
+<td align="center">해당 로그가 발생한 클래스 파일명</td>
+</tr>
+<tr>
+<td align="center">%l, %location</td>
+<td align="center">해당 로그가 발생한 클래스명, 메소드명</td>
+</tr>
+<tr>
+<td align="center">%L, %line</td>
+<td align="center">해당 로그가 발생한 라인 번호</td>
+</tr>
+<tr>
+<td align="center">%m, %msg, %message</td>
+<td align="center">로그문에 전달된 메세지</td>
+</tr>
+<tr>
+<td align="center">%n</td>
+<td align="center">줄바꿈</td>
+</tr>
+<tr>
+<td align="center">%p, %locel</td>
+<td align="center">로그 레벨</td>
+</tr>
+<tr>
+<td align="center">%r, %relative</td>
+<td align="center">로그 처리시간</td>
+</tr>
+<tr>
+<td align="center">%t, %thread</td>
+<td align="center">해당 로그가 발생한 스레드 명</td>
+</tr>
+<tr>
+<td align="center">%style{pattern}{ANSI style}</td>
+<td align="center">ANSI를 사용하여 특정 패턴을 스타일링</td>
+</tr>
+<tr>
+<td align="center">%highlight{pattern}{style}</td>
+<td align="center">로그 레벨명을 ANSI 색으로 하이라이트</td>
 </tr>
 </tbody>
 </table>
-<p>test와 test resource는 test에 필요한 폴더입니다. 각각 source와 resource에 해당합니다.</p>
-<p>모든 것이 끝났다면 <strong>OK</strong> 버튼을 눌러 창을 닫고 구조를 확인합니다.</p>
-<span class="gatsby-resp-image-wrapper" style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 678px; ">
-      <span class="gatsby-resp-image-background-image" style="padding-bottom: 221.11111111111111%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAsCAYAAABloJjNAAAACXBIWXMAABYlAAAWJQFJUiTwAAAE60lEQVRIx62W2VLjRhSG9TC5zIANGK+ybO27ZEmWjXdjBgjJQGYqd6lMZSoP/qW6DWYJgUnFF3+dVrf06/TZlUk/4dfYZLjq8cPU5rDm8GPd5kPDodr2OWy6Uorng4ZDpe1zcL8nzsSekHK/4aI0zRwrWdD3pxj+BCdd4GcrrHjGaS9BtQtqWowVTTGCCfVeQs8bSam5JXpwRtcpqfdT+v4Ypa5FuOkcO55iJ3OcZEFcbrDjGY3+gJ43llKcGeGUlpFjhBOa+kASix8LooY+kOTKadviVIsxszucdEk0vMCK5zT1nJZZcKIl1PsDalpKy8xQ7QwnWWFFc/RgSscuiYeXqM5IvqeYbrZ90VthpBuC0UfMeEHPn2BEc6xkKaXqjDnuJrTNnLY1lD9T7XIrnREta0hTz1BMr6CrewTxkNH4hsvZhtlyw3pzxXyx4eLjNeebKwb5iL7p4YepRBA9IowGhFGK7sQoPWuA57gUecC573PnRazXC64vzhnlMZFnkgQWg8ilSHyy2HsVReLhOB7KqRbKEDhWQ1pWgT1YEQ43JOOP0svVdsBRJ6TaCeT6PShhcU7TyKh2fHR/QpxfYIZjKq1tnB1JIv+7yCShmy6o9xMqLY+aFknSoPyFMJ9jRbMd6fvwpVRE3J1qyU6LRi+mHd6g558JiyWnvZTDpic1Fj/d4unak98+ECsiC6rywJWothwqnYiavSHMlvTcIfVeTFNPafQTCfEspNgTOFYDDkVatjwUMxLBOaJhljQtIUc0rZK+uHpxQzC9pVjeMVp9Jp/fUsxvyeef5Hq8/sJwcYeZrOg4ZzSMAkXkrVv8hFXcYg8/YQ9vcco7nOEdenaLMf/G7OYr44vfWdz8yeTyD1Y/f2N69ZXZ9Ve5J+T601+4+bXw8lrmZeXeDiJ8eu6YpJjipDOCbIWIBJHTwsbiXECE0tFu/egcxc9XsnI8Gndr8I6ZEOYbgnyFiARh553HxXv3qL6A4mdrTrrRM08JQlEc0uISN1/jFefo8YymVXDQ8jloP6L6InwUzSk57oQ7woosnA7VboganzEIx2TxhDyZErhDtG6A0Yu20EKO7wN/R3j0bMOX1++YQ2rWgHY8Ju2FBFqArwV4Wkigx6RGTKhHRHpM7SWhyI6H+wsjd70R3vALxeQK0xtzKGzXCThoB7trfrjHwcN3T0gVaT+RNk2PAxHE2Zxc88n0kEyPWNopDfW5Fi/xTMOtQwKZJaL6inQTRBM7xe/HfGj59xXnbdJnhEftQIaEao8IyzW5HnJmJQyMWNqprn4f2SNhZ0somk05Oac0IgZGQmbEmL2Iw7a/C/z3iJWHGKw0XRpOgZ0vKPohsR6R6BGqGshQearlW6Q7DUUKVf0zTtOZ1K5wMnJ7QOlkjJ2MTjeUmj51xGvEkrDWDWm4I/RkTZytcESjTxeY8YxguJHZciLK3BMN/5VQ1MNK06FhTlAHv+FnC4J8LYuCmBZELjvJHC9bEpcXspmL1HzXhlWRft1MtgGx9xpqQqrh+zZ8qDJHbe8f1eM1vGlDMYYc3bfI72tG73hZDEGNfvqmXf4LZAtoGoP9Ej705b0QimZeexJj/5twn2TbySFd0ND36BSRFS0j27OX9T16uZjeyIF7b4R974wTNdqfl8UQftIN90cYlZv9elnML2KWrrT3Q/g3gHonEPBwG2oAAAAASUVORK5CYII='); background-size: cover; display: block;"></span>
-  <img class="gatsby-resp-image-image" alt="17 structure" title="17 structure" src="/static/e9404fd01458c08c5098daad6043a35e/38cea/17-structure.png" srcset="/static/e9404fd01458c08c5098daad6043a35e/e9ff0/17-structure.png 180w,
-/static/e9404fd01458c08c5098daad6043a35e/f21e7/17-structure.png 360w,
-/static/e9404fd01458c08c5098daad6043a35e/38cea/17-structure.png 678w" sizes="(max-width: 678px) 100vw, 678px" style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;" loading="lazy" decoding="async">
-    </span>
-<h2 id="작동-테스트" style="position:relative;"><a href="#%EC%9E%91%EB%8F%99-%ED%85%8C%EC%8A%A4%ED%8A%B8" aria-label="작동 테스트 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>작동 테스트</h2>
+</li>
+<li>
+<p>logging level</p>
+<p>지정한 로깅 레벨 이상의 로그만 출력 됩니다.</p>
+<ul>
+<li>FATAL</li>
+<li>ERROR</li>
+<li>WARN</li>
+<li>INFO</li>
+<li>DEBUG</li>
+<li>TRACE</li>
+</ul>
+</li>
+</ol>
+<h3 id="log4j2yml-예시" style="position:relative;"><a href="#log4j2yml-%EC%98%88%EC%8B%9C" aria-label="log4j2yml 예시 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>log4j2.yml 예시</h3>
+<p>log4j2.yml 파일을 생성합니다. 위치는 아래와 같습니다.
+<strong>src/main/resources/log4j2.yml</strong></p>
+<p>새로 생성한 파일에 다음과 같은 내용을 붙여넣습니다. 예시 이므로 본인의 상황에 맞게 커스텀하시면 됩니다.</p>
+<div class="gatsby-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml"><span class="token key atrule">Configutation</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> Default
+  <span class="token key atrule">status</span><span class="token punctuation">:</span> warn
+
+  <span class="token key atrule">Properties</span><span class="token punctuation">:</span>
+    <span class="token key atrule">Property</span><span class="token punctuation">:</span>
+      <span class="token key atrule">name</span><span class="token punctuation">:</span> log<span class="token punctuation">-</span>path
+      <span class="token key atrule">value</span><span class="token punctuation">:</span> <span class="token string">"logs"</span>
+
+  <span class="token key atrule">Appenders</span><span class="token punctuation">:</span>
+    <span class="token key atrule">Console</span><span class="token punctuation">:</span>
+      <span class="token key atrule">name</span><span class="token punctuation">:</span> Console_Appender
+      <span class="token key atrule">target</span><span class="token punctuation">:</span> SYSTEM_OUT
+      <span class="token key atrule">PatternLayout</span><span class="token punctuation">:</span>
+        <span class="token key atrule">charset</span><span class="token punctuation">:</span> <span class="token string">"UTF-8"</span>
+        <span class="token key atrule">pattern</span><span class="token punctuation">:</span> <span class="token string">"%highlight{[%-5level]} %d{yyyy-MM-dd HH:mm:ss.SSS} [%t][%F] %c{1} - %msg%n"</span>
+        <span class="token key atrule">disableAnsi</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+    <span class="token key atrule">File</span><span class="token punctuation">:</span>
+      <span class="token key atrule">name</span><span class="token punctuation">:</span> File_Appender
+      <span class="token key atrule">fileName</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>log<span class="token punctuation">-</span>path<span class="token punctuation">}</span>/logfile.log
+      <span class="token key atrule">PatternLayout</span><span class="token punctuation">:</span>
+        <span class="token key atrule">charset</span><span class="token punctuation">:</span> <span class="token string">"UTF-8"</span>
+        <span class="token key atrule">pattern</span><span class="token punctuation">:</span> <span class="token string">"[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t][%F] %c{1} - %msg%n"</span>
+    <span class="token key atrule">RollingFile</span><span class="token punctuation">:</span>
+      <span class="token key atrule">name</span><span class="token punctuation">:</span> RollingFile_Appender
+      <span class="token key atrule">fileName</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>log<span class="token punctuation">-</span>path<span class="token punctuation">}</span>/rollingfile.log
+      <span class="token key atrule">filePattern</span><span class="token punctuation">:</span> <span class="token string">"logs/archive/rollingfile.log.%d{yyyy-MM-dd-hh-mm}_%i.gz"</span>
+      <span class="token key atrule">PatternLayout</span><span class="token punctuation">:</span>
+        <span class="token key atrule">charset</span><span class="token punctuation">:</span> <span class="token string">"UTF-8"</span>
+        <span class="token key atrule">pattern</span><span class="token punctuation">:</span> <span class="token string">"[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t][%F] %c{1} - %msg%n"</span>
+      <span class="token key atrule">Policies</span><span class="token punctuation">:</span>
+        <span class="token key atrule">SizeBasedTriggeringPolicy</span><span class="token punctuation">:</span>
+          <span class="token key atrule">size</span><span class="token punctuation">:</span> <span class="token string">"200KB"</span>
+        <span class="token key atrule">TimeBasedTriggeringPolicy</span><span class="token punctuation">:</span>
+          <span class="token key atrule">interval</span><span class="token punctuation">:</span> <span class="token string">"30"</span>
+      <span class="token key atrule">DefaultRollOverStrategy</span><span class="token punctuation">:</span>
+        <span class="token key atrule">max</span><span class="token punctuation">:</span> <span class="token string">"30"</span>
+        <span class="token key atrule">fileIndex</span><span class="token punctuation">:</span> <span class="token string">"max"</span>
+  <span class="token key atrule">Loggers</span><span class="token punctuation">:</span>
+    <span class="token key atrule">Root</span><span class="token punctuation">:</span>
+      <span class="token key atrule">level</span><span class="token punctuation">:</span> info
+      <span class="token key atrule">AppenderRef</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">ref</span><span class="token punctuation">:</span> Console_Appender
+        <span class="token punctuation">-</span> <span class="token key atrule">ref</span><span class="token punctuation">:</span> File_Appender
+        <span class="token punctuation">-</span> <span class="token key atrule">ref</span><span class="token punctuation">:</span> RollingFile_Appender
+    <span class="token key atrule">Logger</span><span class="token punctuation">:</span>
+      <span class="token key atrule">name</span><span class="token punctuation">:</span> example.demospringboot
+      <span class="token key atrule">additivity</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+      <span class="token key atrule">level</span><span class="token punctuation">:</span> debug
+      <span class="token key atrule">AppenderRef</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">ref</span><span class="token punctuation">:</span> Console_Appender
+        <span class="token punctuation">-</span> <span class="token key atrule">ref</span><span class="token punctuation">:</span> File_Appender
+        <span class="token punctuation">-</span> <span class="token key atrule">ref</span><span class="token punctuation">:</span> RollingFile_Appender</code></pre></div>
+<h3 id="설명" style="position:relative;"><a href="#%EC%84%A4%EB%AA%85" aria-label="설명 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>설명</h3>
+<ul>
+<li>logger color</li>
+</ul>
+<p>아래 그림과 같이 logger에 색을 입히고 싶다면 아래 코드와 같이 설정되어있는지 확인하시면 됩니다.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 26.111111111111107%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAABYlAAAWJQFJUiTwAAAA7klEQVQY02WJ626CQBQGeZP2hxF0hRX2xl1AWdA0Tfv+DzMNYGyT/pjMOfMFxfCF6ybyywNdT+jKY5oZ00xPz6jK/0O6AWn71ed8QLqek2oJivaDc1ajTI9MG0RcEMuKU1K+vLD0v/fxlP8icg7CsQ81QXn9RqsLOvXodCKTI1bdUXLEZNPats3j9GPdpOhJREdy3Ih2Jbs3y+7dErjuE9U2uNaTtx5b3yi6GdeMa1sw1ZU07zjbFpEVK1FiCWNNGJunN4K0msmqGld7XDNhq5Hicn/9i5dmyhuZ60hUTRRbDrHjkGxEsSMUhr0w/AAIw6PxEnKuewAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="logger_color"
+        title="logger_color"
+        src="/static/c2259be0770f599e896921a313779fd7/37523/23-logger-color.png"
+        srcset="/static/c2259be0770f599e896921a313779fd7/e9ff0/23-logger-color.png 180w,
+/static/c2259be0770f599e896921a313779fd7/f21e7/23-logger-color.png 360w,
+/static/c2259be0770f599e896921a313779fd7/37523/23-logger-color.png 720w,
+/static/c2259be0770f599e896921a313779fd7/302a4/23-logger-color.png 1080w,
+/static/c2259be0770f599e896921a313779fd7/07a9c/23-logger-color.png 1440w,
+/static/c2259be0770f599e896921a313779fd7/05883/23-logger-color.png 2808w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<div class="gatsby-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml"><span class="token key atrule">pattern</span><span class="token punctuation">:</span> <span class="token string">"%highlight{[%-5level]} %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"</span>
+<span class="token key atrule">disableAnsi</span><span class="token punctuation">:</span> <span class="token boolean important">false</span></code></pre></div>
+<p><strong>%highlight{}</strong> 색상을 변경하고 싶은 구역을 설정합니다.</p>
+<p><strong>disableAnsi : false</strong>  색상 변경 여부를 지정합니다. <strong>True</strong> 일 경우 콘솔의 색이 변하지 않습니다.</p>
+<h3 id="applicationyml에-추가" style="position:relative;"><a href="#applicationyml%EC%97%90-%EC%B6%94%EA%B0%80" aria-label="applicationyml에 추가 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>application.yml에 추가</h3>
+<p>위의 작업을 마쳤다면 application.yml에 아래 내용을 추가합니다.</p>
+<div class="gatsby-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml">    <span class="token punctuation">---</span>
+    <span class="token key atrule">logging</span><span class="token punctuation">:</span>
+    <span class="token key atrule">config</span><span class="token punctuation">:</span> classpath<span class="token punctuation">:</span>log4j2.yml
+    <span class="token punctuation">---</span></code></pre></div>
+<h2 id="테스트" style="position:relative;"><a href="#%ED%85%8C%EC%8A%A4%ED%8A%B8" aria-label="테스트 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>테스트</h2>
 <hr>
-<p>지금까지 문제없이 따라오셨다면 간단한 페이지를 생성하고 테스트를 해보겠습니다.</p>
-<h3 id="controller-생성" style="position:relative;"><a href="#controller-%EC%83%9D%EC%84%B1" aria-label="controller 생성 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Controller 생성</h3>
-<ol>
-<li>
-<p>아래 경로에 해당 파일을 생성합니다.</p>
-<ul>
-<li>src/main/java/example/demospringboot/test/controller/MainController.java</li>
-</ul>
-</li>
-<li>
-<p>아래 코드를 삽입합니다.</p>
-</li>
-</ol>
-<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">example<span class="token punctuation">.</span>demospringboot<span class="token punctuation">.</span>test<span class="token punctuation">.</span>controller</span><span class="token punctuation">;</span>
+<h3 id="테스트-코드-전문" style="position:relative;"><a href="#%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%BD%94%EB%93%9C-%EC%A0%84%EB%AC%B8" aria-label="테스트 코드 전문 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>테스트 코드 전문</h3>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">org<span class="token punctuation">.</span>acj<span class="token punctuation">.</span>env</span><span class="token punctuation">;</span>
 
-<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype<span class="token punctuation">.</span></span><span class="token class-name">Controller</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>ui<span class="token punctuation">.</span></span><span class="token class-name">Model</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">GetMapping</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span></span><span class="token class-name">RequestParam</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>junit<span class="token punctuation">.</span>jupiter<span class="token punctuation">.</span>api<span class="token punctuation">.</span></span><span class="token class-name">Test</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span></span><span class="token class-name">Logger</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span></span><span class="token class-name">LoggerFactory</span><span class="token punctuation">;</span>
 
-<span class="token annotation punctuation">@Controller</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainController</span> <span class="token punctuation">{</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Log4j2Test</span> <span class="token punctuation">{</span>
 
-  <span class="token comment">/**
-   * @param name
-   * @param model
-   * @return
-   */</span>
-  <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/main"</span><span class="token punctuation">)</span>
-  <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestParam</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"name"</span><span class="token punctuation">,</span> required <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">,</span> defaultValue <span class="token operator">=</span> <span class="token string">"Wolrd"</span><span class="token punctuation">)</span> <span class="token class-name">String</span> name<span class="token punctuation">,</span> <span class="token class-name">Model</span> model<span class="token punctuation">)</span><span class="token punctuation">{</span>
-      model<span class="token punctuation">.</span><span class="token function">addAttribute</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token keyword">return</span> <span class="token string">"main"</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">Logger</span> logger <span class="token operator">=</span> <span class="token class-name">LoggerFactory</span><span class="token punctuation">.</span><span class="token function">getLogger</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+   <span class="token annotation punctuation">@Test</span>
+   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">log4j2LoggerTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+       <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"안녕 난 println이야"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+       logger<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"안녕 난 logger야"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
-<h3 id="html-파일-생성" style="position:relative;"><a href="#html-%ED%8C%8C%EC%9D%BC-%EC%83%9D%EC%84%B1" aria-label="html 파일 생성 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>HTML 파일 생성</h3>
-<ol>
-<li>
-<p>아래 경로에 해당 파일을 생성합니다.</p>
-<ul>
-<li>src/main/resource/templates/test/Main.html</li>
-</ul>
-</li>
-<li>
-<p>아래 코드를 삽입합니다.</p>
-</li>
-</ol>
-<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>Title<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name"><span class="token namespace">th:</span>text</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">'</span>Hello, <span class="token punctuation">'</span>+${name}+<span class="token punctuation">'</span>!<span class="token punctuation">'</span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>홍김돌<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre></div>
+<h3 id="결과" style="position:relative;"><a href="#%EA%B2%B0%EA%B3%BC" aria-label="결과 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>결과</h3>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 15.555555555555555%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAcElEQVQI15XNUQ6DIBBFUXZDUVBmBClTtKRtokn3v57XwAZMP87vvSqVA6V+kbcTnF6wVOD+ZP0DFCs4PqEo7JD9QJI3JhKYMUAPDD0s3W28pg1jooxlrVCrfHpw5gLnBc5n2Ga+d8bGS23sw4bW+gFigV9JqN4j4gAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="logger test result"
+        title="logger test result"
+        src="/static/059155748999aab22cc416131e5ca85c/37523/24-logging_test.png"
+        srcset="/static/059155748999aab22cc416131e5ca85c/e9ff0/24-logging_test.png 180w,
+/static/059155748999aab22cc416131e5ca85c/f21e7/24-logging_test.png 360w,
+/static/059155748999aab22cc416131e5ca85c/37523/24-logging_test.png 720w,
+/static/059155748999aab22cc416131e5ca85c/302a4/24-logging_test.png 1080w,
+/static/059155748999aab22cc416131e5ca85c/07a9c/24-logging_test.png 1440w,
+/static/059155748999aab22cc416131e5ca85c/ddc6c/24-logging_test.png 1534w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<h2 id="기타-참고" style="position:relative;"><a href="#%EA%B8%B0%ED%83%80-%EC%B0%B8%EA%B3%A0" aria-label="기타 참고 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>기타 참고</h2>
+<hr>
+<p><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.external-config.yaml">springboot_doc_yaml</a>
+<a href="https://logging.apache.org/log4j/2.x/manual/configuration.html">apache_log4j2_configuration</a>
+<a href="https://velog.io/@bread_dd/Log4j-2-%EC%A0%9C%EB%8C%80%EB%A1%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0-%EA%B0%9C%EB%85%90">log4j2_start</a></p>
 <div class="table-of-contents">
 <ul>
 <li>
-<p><a href="#%ED%99%98%EA%B2%BD">환경</a></p>
-</li>
-<li>
-<p><a href="#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%83%9D%EC%84%B1">프로젝트 생성</a></p>
+<p><a href="#%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0">라이브러리 가져오기</a></p>
 <ul>
-<li><a href="#spring-initializr%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%83%9D%EC%84%B1">spring initializr을 이용한 프로젝트 생성</a></li>
-</ul>
-</li>
-<li>
-<p><a href="#intellij-project-import">Intellij Project Import</a></p>
-<ul>
-<li><a href="#1-intellij-%EC%9D%98-workspace%EC%97%90-%EB%A8%BC%EC%A0%80-%EC%A0%91%EC%86%8D%ED%95%A9%EB%8B%88%EB%8B%A4">1. intellij 의 workspace에 먼저 접속합니다</a></li>
-<li><a href="#2-module-imoort">2. Module Imoort</a></li>
-<li><a href="#project-%EC%84%A4%EC%A0%95">project 설정</a></li>
-<li><a href="#modules-%EB%93%B1%EB%A1%9D">modules 등록</a></li>
+<li><a href="#%EA%B8%B0%EC%A1%B4-logging-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%A0%9C%EC%99%B8%ED%95%98%EA%B8%B0">기존 logging 라이브러리 제외하기</a></li>
+<li><a href="#log4j2-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0">log4j2 라이브러리 가져오기</a></li>
+<li><a href="#yml-%EC%84%A4%EC%A0%95%EC%9D%84-%EC%9C%84%ED%95%9C-jackson-dataformat-yaml-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0">yml 설정을 위한 jackson-dataformat-yaml 라이브러리 가져오기</a></li>
 </ul>
 </li>
 <li>
-<p><a href="#%EC%9E%91%EB%8F%99-%ED%85%8C%EC%8A%A4%ED%8A%B8">작동 테스트</a></p>
+<p><a href="#applicationyml-%EC%84%A4%EC%A0%95">application.yml 설정</a></p>
 <ul>
-<li><a href="#controller-%EC%83%9D%EC%84%B1">Controller 생성</a></li>
-<li><a href="#html-%ED%8C%8C%EC%9D%BC-%EC%83%9D%EC%84%B1">HTML 파일 생성</a></li>
+<li><a href="#%EC%98%88%EC%8B%9C-%EC%BD%94%EB%93%9C">예시 코드</a></li>
 </ul>
 </li>
+<li>
+<p><a href="#lgo4j2yml-%EC%84%A4%EC%A0%95">lgo4j2.yml 설정</a></p>
+<ul>
+<li><a href="#log4j2-%EC%84%A4%EC%A0%95-%EA%B5%AC%EC%A1%B0">log4j2 설정 구조</a></li>
+<li><a href="#log4j2yml-%EC%98%88%EC%8B%9C">log4j2.yml 예시</a></li>
+<li><a href="#%EC%84%A4%EB%AA%85">설명</a></li>
+<li><a href="#applicationyml%EC%97%90-%EC%B6%94%EA%B0%80">application.yml에 추가</a></li>
 </ul>
-</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/Mybatis/error-NumberformatException/"><div class="direction">이전 글</div><div class="title">[Mybatis] String NumberformatException Error가 나는 경우</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/Java/start_gradle_project /start_gradle_project/"><div class="direction">다음 글</div><div class="title">[Gradle] Gradle project 시작하기</div></a></div></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://www.github.com">안찬진</a> powered by<a href="https://github.com/zoomKoding/zoomkoding-gatsby-blog"> zoomkoding-gatsby-blog</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/Spring/springboot_start-1/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cd840d73727c2e366b63.js"],"app":["/app-012390d198ce3e5c25b0.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3c26d4b7e3608ed0ece4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4917da7ef5b541e98a81.js"],"component---src-pages-about-js":["/component---src-pages-about-js-b5804eba3d16afcb3700.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bc882cd03f70c89c8148.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-fea460fedd50cffb10cd.js"]};/*]]>*/</script><script src="/polyfill-cd840d73727c2e366b63.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-3528d048b96f92ca0d99.js" async=""></script><script src="/app-012390d198ce3e5c25b0.js" async=""></script><script src="/framework-0e1bf37de02f7cef2174.js" async=""></script><script src="/webpack-runtime-e82a0f1e2cd289355a4a.js" async=""></script></body></html>
+</li>
+<li>
+<p><a href="#%ED%85%8C%EC%8A%A4%ED%8A%B8">테스트</a></p>
+<ul>
+<li><a href="#%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%BD%94%EB%93%9C-%EC%A0%84%EB%AC%B8">테스트 코드 전문</a></li>
+<li><a href="#%EA%B2%B0%EA%B3%BC">결과</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#%EA%B8%B0%ED%83%80-%EC%B0%B8%EA%B3%A0">기타 참고</a></p>
+</li>
+</ul>
+</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/Spring/springboot_start-4-thymeleaf_layout/"><div class="direction">이전 글</div><div class="title">[springboot_start] thymeleaf layout 설정</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/Spring/springboot_start-3-undertow/"><div class="direction">다음 글</div><div class="title">[springboot_start] 내장 WAS를 undertow로 변경하기</div></a></div></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://www.github.com">안찬진</a> powered by<a href="https://github.com/zoomKoding/zoomkoding-gatsby-blog"> zoomkoding-gatsby-blog</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/Spring/springboot_start-2-log4j2/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cd840d73727c2e366b63.js"],"app":["/app-012390d198ce3e5c25b0.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3c26d4b7e3608ed0ece4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4917da7ef5b541e98a81.js"],"component---src-pages-about-js":["/component---src-pages-about-js-b5804eba3d16afcb3700.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bc882cd03f70c89c8148.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-fea460fedd50cffb10cd.js"]};/*]]>*/</script><script src="/polyfill-cd840d73727c2e366b63.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-3528d048b96f92ca0d99.js" async=""></script><script src="/app-012390d198ce3e5c25b0.js" async=""></script><script src="/framework-0e1bf37de02f7cef2174.js" async=""></script><script src="/webpack-runtime-e82a0f1e2cd289355a4a.js" async=""></script></body></html>
