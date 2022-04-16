@@ -2,7 +2,7 @@
 emoji: 👻
 title: '[Java] String 문자열 뒤집기'
 date: '2022-01-01 20:42:00'
-author: olkk
+author: OIKK
 tags: 
 categories: Java
 ---

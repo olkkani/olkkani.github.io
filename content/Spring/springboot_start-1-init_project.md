@@ -170,5 +170,15 @@ public class MainController {
 </html>
 ```
 
+### 테스트
+
+모든 준비가 끝났다면 DemoSpringbootApplication.java를 실행 후 [localhost:8080/main](localhost:8080/main)에 접속합니다.
+
+![start_project](./18-runapplication.png)
+
+HTML파일을 그대로 실행한다면 __Hello, 홍김돌__ 이라고 나오겠지만 서버로 실행했을 경우 Controller에서 기본 값으로 Wolrd를 주었기 때문에 다음과 같이 출력됩니다.
+
+이상으로 간단하게 springboot project를 실행해보았습니다. 이 후에는 본인의 상황에 맞는 라이브러리를 가져와 구현하면 됩니다.
+
 ```toc
 ```
