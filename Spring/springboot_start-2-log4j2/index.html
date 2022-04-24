@@ -64,7 +64,7 @@
         }
       }
     })
-  </script><title data-react-helmet="true">[springboot] Spring Boot project 시작하기, log4j2 + yml 1/?</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="[springboot] Spring Boot project 시작하기, log4j2 + yml 1/?"/><meta data-react-helmet="true" property="og:site_title" content="[springboot] Spring Boot project 시작하기, log4j2 + yml 1/?"/><meta data-react-helmet="true" name="description" content="이번 시간에는 springboot 에서 log4j2를 설정해보겠습니다. 라이브러리 가져오기 기존 logging 라이브러리 제외하기 스프링에서 제공하는 기본 라이브러리는 사용하지 않을 예정이므로 제외시킵니다.  log4j2 라이브러리 가져오기 다음으로는 log4j2와 slf4j를 위한 라이브러리를 가져오겠습니다. slf4j는 slf4j-impl에 포함되어있으므로 따로 가져오진 않겠습니다. 버전은 작성일 기준 2.17.1 이상을 가져오시길 바랍니다. log4j 취약점 논란이 있었기 때문에 maven repository에서 가져오실 땐 꼭 취약점이 발견되지 않은 버전을 가져오시길 바랍니다.  를 통해 가져오지 않는 이유는 maven repository 사이트의 표기와 달리 2.17.0 버전을 가져오기 때문입니다. yml 설정을 위한 jackson-dataformat-yaml 라이브러리 가져오기 log4j2 설정을 .xml로 관리해왔지만 이번 프로젝트는 .yml로 관리해보도록 하겠습니다.…"/><meta data-react-helmet="true" property="og:description" content="이번 시간에는 springboot 에서 log4j2를 설정해보겠습니다. 라이브러리 가져오기 기존 logging 라이브러리 제외하기 스프링에서 제공하는 기본 라이브러리는 사용하지 않을 예정이므로 제외시킵니다.  log4j2 라이브러리 가져오기 다음으로는 log4j2와 slf4j를 위한 라이브러리를 가져오겠습니다. slf4j는 slf4j-impl에 포함되어있으므로 따로 가져오진 않겠습니다. 버전은 작성일 기준 2.17.1 이상을 가져오시길 바랍니다. log4j 취약점 논란이 있었기 때문에 maven repository에서 가져오실 땐 꼭 취약점이 발견되지 않은 버전을 가져오시길 바랍니다.  를 통해 가져오지 않는 이유는 maven repository 사이트의 표기와 달리 2.17.0 버전을 가져오기 때문입니다. yml 설정을 위한 jackson-dataformat-yaml 라이브러리 가져오기 log4j2 설정을 .xml로 관리해왔지만 이번 프로젝트는 .yml로 관리해보도록 하겠습니다.…"/><meta data-react-helmet="true" property="og:author" content="안찬진"/><meta data-react-helmet="true" property="og:image" content="/og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-e82a0f1e2cd289355a4a.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-012390d198ce3e5c25b0.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-3528d048b96f92ca0d99.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/Spring/springboot_start-2-log4j2/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">chanjin_ahn.github</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">👻</div><div class="info"><div class="categories"><a class="category" href="/posts/Spring">Spring</a></div></div><h1 class="title">[springboot] Spring Boot project 시작하기, log4j2 + yml 1/?</h1><div class="info"><div class="author">posted by <strong>chajin_ahn</strong>,</div> <!-- -->January 09, 2022</div></header><div class="post-content"><div class="markdown"><p>이번 시간에는 springboot 에서 log4j2를 설정해보겠습니다.</p>
+  </script><title data-react-helmet="true">[springboot] Spring Boot project 시작하기, log4j2 + yml</title><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta data-react-helmet="true" property="og:title" content="[springboot] Spring Boot project 시작하기, log4j2 + yml"/><meta data-react-helmet="true" property="og:site_title" content="[springboot] Spring Boot project 시작하기, log4j2 + yml"/><meta data-react-helmet="true" name="description" content="이번 시간에는 springboot 에서 log4j2를 설정해보겠습니다. 라이브러리 가져오기 기존 logging 라이브러리 제외하기 스프링에서 제공하는 기본 라이브러리는 사용하지 않을 예정이므로 제외시킵니다.  log4j2 라이브러리 가져오기 다음으로는 log4j2와 slf4j를 위한 라이브러리를 가져오겠습니다. slf4j는 slf4j-impl에 포함되어있으므로 따로 가져오진 않겠습니다. 버전은 작성일 기준 2.17.1 이상을 가져오시길 바랍니다. log4j 취약점 논란이 있었기 때문에 maven repository에서 가져오실 땐 꼭 취약점이 발견되지 않은 버전을 가져오시길 바랍니다.  를 통해 가져오지 않는 이유는 maven repository 사이트의 표기와 달리 2.17.0 버전을 가져오기 때문입니다. yml 설정을 위한 jackson-dataformat-yaml 라이브러리 가져오기 log4j2 설정을 .xml 로 관리해왔지만 이번 프로젝트는 .yml 로 관리해보도록 하겠습니…"/><meta data-react-helmet="true" property="og:description" content="이번 시간에는 springboot 에서 log4j2를 설정해보겠습니다. 라이브러리 가져오기 기존 logging 라이브러리 제외하기 스프링에서 제공하는 기본 라이브러리는 사용하지 않을 예정이므로 제외시킵니다.  log4j2 라이브러리 가져오기 다음으로는 log4j2와 slf4j를 위한 라이브러리를 가져오겠습니다. slf4j는 slf4j-impl에 포함되어있으므로 따로 가져오진 않겠습니다. 버전은 작성일 기준 2.17.1 이상을 가져오시길 바랍니다. log4j 취약점 논란이 있었기 때문에 maven repository에서 가져오실 땐 꼭 취약점이 발견되지 않은 버전을 가져오시길 바랍니다.  를 통해 가져오지 않는 이유는 maven repository 사이트의 표기와 달리 2.17.0 버전을 가져오기 때문입니다. yml 설정을 위한 jackson-dataformat-yaml 라이브러리 가져오기 log4j2 설정을 .xml 로 관리해왔지만 이번 프로젝트는 .yml 로 관리해보도록 하겠습니…"/><meta data-react-helmet="true" property="og:author" content="안찬진"/><meta data-react-helmet="true" property="og:image" content="/og-image.png"/><meta data-react-helmet="true" property="og:type" content="website"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v29/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){if(void 0===e.target.dataset.mainImage)return;if(void 0===e.target.dataset.gatsbyImageSsr)return;const t=e.target;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script><link as="script" rel="preload" href="/webpack-runtime-e82a0f1e2cd289355a4a.js"/><link as="script" rel="preload" href="/framework-0e1bf37de02f7cef2174.js"/><link as="script" rel="preload" href="/app-012390d198ce3e5c25b0.js"/><link as="script" rel="preload" href="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-3528d048b96f92ca0d99.js"/><link as="script" rel="preload" href="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"/><link as="fetch" rel="preload" href="/page-data/Spring/springboot_start-2-log4j2/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1073350324.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/1956554647.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/sq/d/2938748437.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">chanjin_ahn.github</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18" role="combobox" aria-expanded="false"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-11tfndm"><input type="text" aria-invalid="false" autoComplete="off" value="" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" autoCapitalize="none" spellcheck="false"/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">👻</div><div class="info"><div class="categories"><a class="category" href="/posts/Spring">Spring</a></div></div><h1 class="title">[springboot] Spring Boot project 시작하기, log4j2 + yml</h1><div class="info"><div class="author">posted by <strong>chanjin_ahn</strong>,</div> <!-- -->January 09, 2022</div></header><div class="post-content"><div class="markdown"><p>이번 시간에는 springboot 에서 log4j2를 설정해보겠습니다.</p>
 <h2 id="라이브러리-가져오기" style="position:relative;"><a href="#%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0" aria-label="라이브러리 가져오기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>라이브러리 가져오기</h2>
 <hr>
 <h3 id="기존-logging-라이브러리-제외하기" style="position:relative;"><a href="#%EA%B8%B0%EC%A1%B4-logging-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%A0%9C%EC%99%B8%ED%95%98%EA%B8%B0" aria-label="기존 logging 라이브러리 제외하기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>기존 logging 라이브러리 제외하기</h3>
@@ -107,7 +107,7 @@
         implementation group: &#39;org.apache.logging.log4j&#39;, name: &#39;log4j-slf4j-impl&#39;, version: &#39;2.17.1&#39;
     }</code></pre></div>
 <h3 id="yml-설정을-위한-jackson-dataformat-yaml-라이브러리-가져오기" style="position:relative;"><a href="#yml-%EC%84%A4%EC%A0%95%EC%9D%84-%EC%9C%84%ED%95%9C-jackson-dataformat-yaml-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0" aria-label="yml 설정을 위한 jackson dataformat yaml 라이브러리 가져오기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>yml 설정을 위한 jackson-dataformat-yaml 라이브러리 가져오기</h3>
-<p>log4j2 설정을 .xml로 관리해왔지만 이번 프로젝트는 .yml로 관리해보도록 하겠습니다. .yml으로 log4j2 설정을 관리하기 위해선 관련 라이브러리를 가져올 필요가 있습니다. 아래 라이브러리를 <strong>dependencies</strong> 에 포함하도록 합니다.</p>
+<p>log4j2 설정을 .xml 로 관리해왔지만 이번 프로젝트는 .yml 로 관리해보도록 하겠습니다. .yml 으로 log4j2 설정을 관리하기 위해선 관련 라이브러리를 가져올 필요가 있습니다. 아래 라이브러리를 <strong>dependencies</strong> 에 포함하도록 합니다.</p>
 <div class="gatsby-highlight" data-language="gradle"><pre class="language-gradle"><code class="language-gradle">    implementation group: &#39;com.fasterxml.jackson.dataformat&#39;, name: &#39;jackson-dataformat-yaml&#39;, version: &#39;2.13.1&#39;</code></pre></div>
 <p><span
       class="gatsby-resp-image-wrapper"
@@ -119,8 +119,8 @@
   ></span>
   <img
         class="gatsby-resp-image-image"
-        alt="bulid.gradle"
-        title="bulid.gradle"
+        alt="build.gradle"
+        title="build.gradle"
         src="/static/95ddeaba7bf41ac2ddacce9667210706/37523/22-implementation_log4j2.png"
         srcset="/static/95ddeaba7bf41ac2ddacce9667210706/e9ff0/22-implementation_log4j2.png 180w,
 /static/95ddeaba7bf41ac2ddacce9667210706/f21e7/22-implementation_log4j2.png 360w,
@@ -132,124 +132,190 @@
         decoding="async"
       />
     </span></p>
-<h2 id="applicationyml-설정" style="position:relative;"><a href="#applicationyml-%EC%84%A4%EC%A0%95" aria-label="applicationyml 설정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>application.yml 설정</h2>
+<h2 id="log4j2yml-생성-및-applicationyml-설정" style="position:relative;"><a href="#log4j2yml-%EC%83%9D%EC%84%B1-%EB%B0%8F-applicationyml-%EC%84%A4%EC%A0%95" aria-label="log4j2yml 생성 및 applicationyml 설정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>log4j2.yml 생성 및 application.yml 설정</h2>
 <hr>
-<h3 id="예시-코드" style="position:relative;"><a href="#%EC%98%88%EC%8B%9C-%EC%BD%94%EB%93%9C" aria-label="예시 코드 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>예시 코드</h3>
+<h3 id="applicationyml-설정" style="position:relative;"><a href="#applicationyml-%EC%84%A4%EC%A0%95" aria-label="applicationyml 설정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>application.yml 설정</h3>
+<p>log4j2 파일을 생성하기 전에 application.yml 에 생성할 파일의 경로를 정의합니다. 파일을 생성한 후에 정의해도 상관없습니다.</p>
 <div class="gatsby-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml">  <span class="token key atrule">logging</span><span class="token punctuation">:</span>
     <span class="token key atrule">config</span><span class="token punctuation">:</span> classpath<span class="token punctuation">:</span>log4j2.yml</code></pre></div>
-<h2 id="lgo4j2yml-설정" style="position:relative;"><a href="#lgo4j2yml-%EC%84%A4%EC%A0%95" aria-label="lgo4j2yml 설정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>lgo4j2.yml 설정</h2>
+<h3 id="log4j2yml-파일-생성" style="position:relative;"><a href="#log4j2yml-%ED%8C%8C%EC%9D%BC-%EC%83%9D%EC%84%B1" aria-label="log4j2yml 파일 생성 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>log4j2.yml 파일 생성</h3>
+<p>log4j2.yml 파일을 생성합니다. 위치는 아래와 같습니다.</p>
+<p><strong>src/main/resources/log4j2.yml</strong></p>
+<h3 id="log4j2yml-예시-설명은-하단-참고" style="position:relative;"><a href="#log4j2yml-%EC%98%88%EC%8B%9C-%EC%84%A4%EB%AA%85%EC%9D%80-%ED%95%98%EB%8B%A8-%EC%B0%B8%EA%B3%A0" aria-label="log4j2yml 예시 설명은 하단 참고 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>log4j2.yml 예시 (설명은 하단 참고)</h3>
+<p>생성한 파일에 예시 내용을 붙여넣습니다. 그대로 사용해도 상관없지만 본인의 상황에 맞게 커스텀하시길 바랍니다.</p>
+<div class="gatsby-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml"><span class="token key atrule">Configutation</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> Default
+  <span class="token key atrule">status</span><span class="token punctuation">:</span> warn
+
+  <span class="token key atrule">Properties</span><span class="token punctuation">:</span>
+    <span class="token key atrule">Property</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">"log-path"</span>
+      <span class="token key atrule">value</span><span class="token punctuation">:</span> <span class="token string">"./logs"</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">"pattern"</span>
+      <span class="token key atrule">value</span><span class="token punctuation">:</span> <span class="token string">"%highlight{[%-5level]} %d{yyyy-MM-dd HH:mm:ss.SSS} [%t][%F] %c{1} - %msg%n"</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">"charset-UTF-8"</span>
+      <span class="token key atrule">value</span><span class="token punctuation">:</span> <span class="token string">"UTF-8"</span>
+
+  <span class="token key atrule">Appenders</span><span class="token punctuation">:</span>
+    <span class="token key atrule">Console</span><span class="token punctuation">:</span>
+      <span class="token key atrule">name</span><span class="token punctuation">:</span> Console_Appender
+      <span class="token key atrule">target</span><span class="token punctuation">:</span> SYSTEM_OUT
+      <span class="token key atrule">PatternLayout</span><span class="token punctuation">:</span>
+        <span class="token key atrule">charset</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>charset<span class="token punctuation">-</span>UTF<span class="token punctuation">-</span><span class="token number">8</span><span class="token punctuation">}</span>
+        <span class="token key atrule">pattern</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>pattern<span class="token punctuation">}</span>
+        <span class="token key atrule">disableAnsi</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+    <span class="token key atrule">RollingFile</span><span class="token punctuation">:</span>
+      <span class="token key atrule">name</span><span class="token punctuation">:</span> RollingFile_Appender
+      <span class="token key atrule">fileName</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>log<span class="token punctuation">-</span>path<span class="token punctuation">}</span>/rollingfile.log
+      <span class="token key atrule">filePattern</span><span class="token punctuation">:</span> <span class="token string">"logs/archive/rollingfile.log.%d{yyyy-MM-dd-hh-mm}_%i.gz"</span>
+      <span class="token key atrule">PatternLayout</span><span class="token punctuation">:</span>
+        <span class="token key atrule">charset</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>charset<span class="token punctuation">-</span>UTF<span class="token punctuation">-</span><span class="token number">8</span><span class="token punctuation">}</span>
+        <span class="token key atrule">pattern</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>pattern<span class="token punctuation">}</span>
+      <span class="token key atrule">Policies</span><span class="token punctuation">:</span>
+        <span class="token key atrule">SizeBasedTriggeringPolicy</span><span class="token punctuation">:</span>
+          <span class="token key atrule">size</span><span class="token punctuation">:</span> <span class="token string">"200KB"</span>
+        <span class="token key atrule">TimeBasedTriggeringPolicy</span><span class="token punctuation">:</span>
+          <span class="token key atrule">interval</span><span class="token punctuation">:</span> <span class="token string">"1"</span>
+      <span class="token key atrule">DefaultRollOverStrategy</span><span class="token punctuation">:</span>
+        <span class="token key atrule">max</span><span class="token punctuation">:</span> <span class="token string">"30"</span>
+        <span class="token key atrule">fileIndex</span><span class="token punctuation">:</span> <span class="token string">"max"</span>
+  <span class="token key atrule">Loggers</span><span class="token punctuation">:</span>
+    <span class="token key atrule">Root</span><span class="token punctuation">:</span>
+      <span class="token key atrule">level</span><span class="token punctuation">:</span> debug
+      <span class="token key atrule">AppenderRef</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">ref</span><span class="token punctuation">:</span> Console_Appender
+        <span class="token punctuation">-</span> <span class="token key atrule">ref</span><span class="token punctuation">:</span> RollingFile_Appender
+    <span class="token key atrule">Logger</span><span class="token punctuation">:</span>
+      <span class="token key atrule">name</span><span class="token punctuation">:</span> example.demospringboot
+      <span class="token key atrule">additivity</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+      <span class="token key atrule">level</span><span class="token punctuation">:</span> debug
+      <span class="token key atrule">AppenderRef</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">ref</span><span class="token punctuation">:</span> Console_Appender
+        <span class="token punctuation">-</span> <span class="token key atrule">ref</span><span class="token punctuation">:</span> RollingFile_Appender</code></pre></div>
+<h2 id="log4j2yml-설정-구조" style="position:relative;"><a href="#log4j2yml-%EC%84%A4%EC%A0%95-%EA%B5%AC%EC%A1%B0" aria-label="log4j2yml 설정 구조 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>log4j2.yml 설정 구조</h2>
 <hr>
-<p>log 출력 방식을 설정할 수 있는 log4j2.yml 파일을 생성하고 설정해보겠습니다.</p>
-<h3 id="log4j2-설정-구조" style="position:relative;"><a href="#log4j2-%EC%84%A4%EC%A0%95-%EA%B5%AC%EC%A1%B0" aria-label="log4j2 설정 구조 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>log4j2 설정 구조</h3>
-<ol>
-<li>
-<p>Appenders</p>
-<p>로그의 출력 위치를 지정합니다. Appender로 출력할 수 있는 범위는 Console, file 등이 있습니다.</p>
-<ul>
-<li>ConsoleAppender: 콘솔에 출력합니다.</li>
-<li>Fileappender: 파일에 로그 메세지를 출력합니다.</li>
-<li>RollingFileAppender: 특정 조건에 따라 콘솔 파일을 저장합니다.
-<ul>
-<li>Policy
-<ul>
-<li>OnStartupTriggeringPolicy: jvm start</li>
-<li>TimeBasedTriggeringPolicy: time</li>
-<li>SizeBasedTriggeringPlicy: file size</li>
-<li>CronTriggeringPolicy: Cron Exception</li>
-</ul>
-</li>
-<li>DefaultRolloverStrategy
-<ul>
-<li>fileindex: min = 작은 index가 최신 파일 | max: 높은 index가 최신 파일</li>
-<li>min: counter의 최소값입니다. 기본값은 1</li>
-<li>max: counter의 최대값입니다. 기본값은 7, 설정 값을 초과할 경우 오래된 파일을 삭제합니다.</li>
-<li>compressionLevel: 0~9까지의 정수값, 0은 압축하지않고, 1은 최고 속도, 9는 최고 압축</li>
-<li>tempCompressedFilePattern: 압축하는 동안의 파일 이름 패턴</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>로그의 크기가 지정한 용량 이상이 되면 다른 이름의 파일로 출력합니다.</li>
-<li>DailyRollingFileAppender: 하루를 단위로 로그 메세지를 파일로 출력합니다.</li>
-</ul>
-</li>
-<li>
-<p>PatternLayout:</p>
-<p>로그의 출력 포맷을 지정합니다.</p>
+<h3 id="configuration" style="position:relative;"><a href="#configuration" aria-label="configuration permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Configuration</h3>
+<p>로그를 설정하기 위한 최상위 태그입니다. 하위에는 다음과 같은 태그를 삽입할 수 있습니다.</p>
+<table>
+<thead>
+<tr>
+<th align="center">항목</th>
+<th align="left">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Properties</td>
+<td align="left">해당 파일에서 사용할 수 있는 공통 변수를 정의합니다. name, log layout pattern 등을 정의하는 것이 추후 관리에 편합니다.</td>
+</tr>
+<tr>
+<td align="center">Appenders</td>
+<td align="left">로그의 패턴과 저장 패턴 등을 설정할 수 있습니다.</td>
+</tr>
+<tr>
+<td align="center">Loggers</td>
+<td align="left">출력하는 로그 범위를 지정할 수 있습니다. 설정에 따라 로그를 노출시키거나 생략할 수 있습니다.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="properties" style="position:relative;"><a href="#properties" aria-label="properties permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Properties</h3>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml">  <span class="token key atrule">Properties</span><span class="token punctuation">:</span>
+  <span class="token key atrule">Property</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">"log-path"</span>
+      <span class="token key atrule">value</span><span class="token punctuation">:</span> <span class="token string">"./logs"</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="center">tag</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">name</td>
+<td align="left">호출할 때 사용할 수 있는 property 의 이름입니다.</td>
+</tr>
+<tr>
+<td align="center">value</td>
+<td align="left">해당 property 를 호출했을 경우 실제 값입니다.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="layout-pattern" style="position:relative;"><a href="#layout-pattern" aria-label="layout pattern permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Layout Pattern</h3>
+<p>로그에 표시될 정보와 순서를 정의할 수 있습니다. 각 태그에 대한 설명은 다음과 같습니다.</p>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml">    "%highlight<span class="token punctuation">{</span><span class="token punctuation">[</span>%<span class="token punctuation">-</span>5level<span class="token punctuation">]</span><span class="token punctuation">}</span> %d<span class="token punctuation">{</span>yyyy<span class="token punctuation">-</span>MM<span class="token punctuation">-</span>dd HH<span class="token punctuation">:</span>mm<span class="token punctuation">:</span>ss.SSS<span class="token punctuation">}</span> <span class="token punctuation">[</span>%t<span class="token punctuation">]</span><span class="token punctuation">[</span>%F<span class="token punctuation">]</span> %c<span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">}</span> <span class="token punctuation">-</span> %msg%n"</code></pre></div>
 <table>
 <thead>
 <tr>
 <th align="center">Format</th>
-<th align="center">descprtion</th>
+<th align="left">description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="center">%c, %logger</td>
-<td align="center">해당 로그를 쓰는 로거의 이름</td>
+<td align="left">해당 로그를 쓰는 로거의 이름</td>
 </tr>
 <tr>
 <td align="center">%C, %Class</td>
-<td align="center">해당 로그를 요청한 클래스 이름</td>
+<td align="left">해당 로그를 요청한 클래스 이름</td>
 </tr>
 <tr>
 <td align="center">%d, %date</td>
-<td align="center">해당 로그가 발생한 시간</td>
+<td align="left">해당 로그가 발생한 시간</td>
 </tr>
 <tr>
 <td align="center">%enc, %encoding</td>
-<td align="center">특정 언어에서의 출력을 위한 문자 인코딩</td>
+<td align="left">특정 언어에서의 출력을 위한 문자 인코딩</td>
 </tr>
 <tr>
 <td align="center">%ex, %exception, %throwable</td>
-<td align="center">예외로그, 길이 설정이 가능</td>
+<td align="left">예외로그, 길이 설정이 가능</td>
 </tr>
 <tr>
 <td align="center">%F, %file</td>
-<td align="center">해당 로그가 발생한 클래스 파일명</td>
+<td align="left">해당 로그가 발생한 클래스 파일명</td>
 </tr>
 <tr>
 <td align="center">%l, %location</td>
-<td align="center">해당 로그가 발생한 클래스명, 메소드명</td>
+<td align="left">해당 로그가 발생한 클래스명, 메소드명</td>
 </tr>
 <tr>
 <td align="center">%L, %line</td>
-<td align="center">해당 로그가 발생한 라인 번호</td>
+<td align="left">해당 로그가 발생한 라인 번호</td>
 </tr>
 <tr>
 <td align="center">%m, %msg, %message</td>
-<td align="center">로그문에 전달된 메세지</td>
+<td align="left">로그문에 전달된 메세지</td>
 </tr>
 <tr>
 <td align="center">%n</td>
-<td align="center">줄바꿈</td>
+<td align="left">줄바꿈</td>
 </tr>
 <tr>
-<td align="center">%p, %locel</td>
-<td align="center">로그 레벨</td>
+<td align="center">%p, %level</td>
+<td align="left">로그 레벨</td>
 </tr>
 <tr>
 <td align="center">%r, %relative</td>
-<td align="center">로그 처리시간</td>
+<td align="left">로그 처리시간</td>
 </tr>
 <tr>
 <td align="center">%t, %thread</td>
-<td align="center">해당 로그가 발생한 스레드 명</td>
+<td align="left">해당 로그가 발생한 스레드 명</td>
 </tr>
 <tr>
 <td align="center">%style{pattern}{ANSI style}</td>
-<td align="center">ANSI를 사용하여 특정 패턴을 스타일링</td>
+<td align="left">ANSI 를 사용하여 특정 패턴을 스타일링</td>
 </tr>
 <tr>
 <td align="center">%highlight{pattern}{style}</td>
-<td align="center">로그 레벨명을 ANSI 색으로 하이라이트</td>
+<td align="left">로그 레벨명을 ANSI 색으로 하이라이트</td>
 </tr>
 </tbody>
 </table>
-</li>
-<li>
-<p>logging level</p>
-<p>지정한 로깅 레벨 이상의 로그만 출력 됩니다.</p>
+<h3 id="logging-level" style="position:relative;"><a href="#logging-level" aria-label="logging level permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>logging level</h3>
+<p>지정한 로깅 레벨 이상의 로그만 출력 됩니다. <strong>INFO</strong> 로 지정할 경우 DEBUG 와 TRACE 레벨의 로그는 생략됩니다.</p>
 <ul>
 <li>FATAL</li>
 <li>ERROR</li>
@@ -258,71 +324,50 @@
 <li>DEBUG</li>
 <li>TRACE</li>
 </ul>
-</li>
-</ol>
-<h3 id="log4j2yml-예시" style="position:relative;"><a href="#log4j2yml-%EC%98%88%EC%8B%9C" aria-label="log4j2yml 예시 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>log4j2.yml 예시</h3>
-<p>log4j2.yml 파일을 생성합니다. 위치는 아래와 같습니다.
-<strong>src/main/resources/log4j2.yml</strong></p>
-<p>새로 생성한 파일에 다음과 같은 내용을 붙여넣습니다. 예시 이므로 본인의 상황에 맞게 커스텀하시면 됩니다.</p>
-<div class="gatsby-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml"><span class="token key atrule">Configutation</span><span class="token punctuation">:</span>
-  <span class="token key atrule">name</span><span class="token punctuation">:</span> Default
-  <span class="token key atrule">status</span><span class="token punctuation">:</span> warn
-
-  <span class="token key atrule">Properties</span><span class="token punctuation">:</span>
-    <span class="token key atrule">Property</span><span class="token punctuation">:</span>
-      <span class="token key atrule">name</span><span class="token punctuation">:</span> log<span class="token punctuation">-</span>path
-      <span class="token key atrule">value</span><span class="token punctuation">:</span> <span class="token string">"logs"</span>
-
-  <span class="token key atrule">Appenders</span><span class="token punctuation">:</span>
+<h3 id="appenders" style="position:relative;"><a href="#appenders" aria-label="appenders permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Appenders</h3>
+<table>
+<thead>
+<tr>
+<th align="center">name</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Console</td>
+<td align="left">콘솔창에 출력될 로그를 설정 합니다.</td>
+</tr>
+<tr>
+<td align="center">File</td>
+<td align="left">파일 형태로 저장될 로그를 설정합니다.</td>
+</tr>
+<tr>
+<td align="center">RollingFile</td>
+<td align="left">특정 트러거에 따라 파일로 백업할 로그를 설정합니다.</td>
+</tr>
+</tbody>
+</table>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml">  <span class="token key atrule">Appenders</span><span class="token punctuation">:</span>
     <span class="token key atrule">Console</span><span class="token punctuation">:</span>
       <span class="token key atrule">name</span><span class="token punctuation">:</span> Console_Appender
       <span class="token key atrule">target</span><span class="token punctuation">:</span> SYSTEM_OUT
       <span class="token key atrule">PatternLayout</span><span class="token punctuation">:</span>
-        <span class="token key atrule">charset</span><span class="token punctuation">:</span> <span class="token string">"UTF-8"</span>
-        <span class="token key atrule">pattern</span><span class="token punctuation">:</span> <span class="token string">"%highlight{[%-5level]} %d{yyyy-MM-dd HH:mm:ss.SSS} [%t][%F] %c{1} - %msg%n"</span>
-        <span class="token key atrule">disableAnsi</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
-    <span class="token key atrule">File</span><span class="token punctuation">:</span>
-      <span class="token key atrule">name</span><span class="token punctuation">:</span> File_Appender
-      <span class="token key atrule">fileName</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>log<span class="token punctuation">-</span>path<span class="token punctuation">}</span>/logfile.log
-      <span class="token key atrule">PatternLayout</span><span class="token punctuation">:</span>
-        <span class="token key atrule">charset</span><span class="token punctuation">:</span> <span class="token string">"UTF-8"</span>
-        <span class="token key atrule">pattern</span><span class="token punctuation">:</span> <span class="token string">"[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t][%F] %c{1} - %msg%n"</span>
-    <span class="token key atrule">RollingFile</span><span class="token punctuation">:</span>
-      <span class="token key atrule">name</span><span class="token punctuation">:</span> RollingFile_Appender
-      <span class="token key atrule">fileName</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>log<span class="token punctuation">-</span>path<span class="token punctuation">}</span>/rollingfile.log
-      <span class="token key atrule">filePattern</span><span class="token punctuation">:</span> <span class="token string">"logs/archive/rollingfile.log.%d{yyyy-MM-dd-hh-mm}_%i.gz"</span>
-      <span class="token key atrule">PatternLayout</span><span class="token punctuation">:</span>
-        <span class="token key atrule">charset</span><span class="token punctuation">:</span> <span class="token string">"UTF-8"</span>
-        <span class="token key atrule">pattern</span><span class="token punctuation">:</span> <span class="token string">"[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t][%F] %c{1} - %msg%n"</span>
-      <span class="token key atrule">Policies</span><span class="token punctuation">:</span>
-        <span class="token key atrule">SizeBasedTriggeringPolicy</span><span class="token punctuation">:</span>
-          <span class="token key atrule">size</span><span class="token punctuation">:</span> <span class="token string">"200KB"</span>
-        <span class="token key atrule">TimeBasedTriggeringPolicy</span><span class="token punctuation">:</span>
-          <span class="token key atrule">interval</span><span class="token punctuation">:</span> <span class="token string">"30"</span>
-      <span class="token key atrule">DefaultRollOverStrategy</span><span class="token punctuation">:</span>
-        <span class="token key atrule">max</span><span class="token punctuation">:</span> <span class="token string">"30"</span>
-        <span class="token key atrule">fileIndex</span><span class="token punctuation">:</span> <span class="token string">"max"</span>
-  <span class="token key atrule">Loggers</span><span class="token punctuation">:</span>
-    <span class="token key atrule">Root</span><span class="token punctuation">:</span>
-      <span class="token key atrule">level</span><span class="token punctuation">:</span> info
-      <span class="token key atrule">AppenderRef</span><span class="token punctuation">:</span>
-        <span class="token punctuation">-</span> <span class="token key atrule">ref</span><span class="token punctuation">:</span> Console_Appender
-        <span class="token punctuation">-</span> <span class="token key atrule">ref</span><span class="token punctuation">:</span> File_Appender
-        <span class="token punctuation">-</span> <span class="token key atrule">ref</span><span class="token punctuation">:</span> RollingFile_Appender
-    <span class="token key atrule">Logger</span><span class="token punctuation">:</span>
-      <span class="token key atrule">name</span><span class="token punctuation">:</span> example.demospringboot
-      <span class="token key atrule">additivity</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
-      <span class="token key atrule">level</span><span class="token punctuation">:</span> debug
-      <span class="token key atrule">AppenderRef</span><span class="token punctuation">:</span>
-        <span class="token punctuation">-</span> <span class="token key atrule">ref</span><span class="token punctuation">:</span> Console_Appender
-        <span class="token punctuation">-</span> <span class="token key atrule">ref</span><span class="token punctuation">:</span> File_Appender
-        <span class="token punctuation">-</span> <span class="token key atrule">ref</span><span class="token punctuation">:</span> RollingFile_Appender</code></pre></div>
-<h3 id="설명" style="position:relative;"><a href="#%EC%84%A4%EB%AA%85" aria-label="설명 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>설명</h3>
+        <span class="token key atrule">charset</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>charset<span class="token punctuation">-</span>UTF<span class="token punctuation">-</span><span class="token number">8</span><span class="token punctuation">}</span>
+        <span class="token key atrule">pattern</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>pattern<span class="token punctuation">}</span>
+        <span class="token key atrule">disableAnsi</span><span class="token punctuation">:</span> <span class="token boolean important">false</span></code></pre></div>
 <ul>
-<li>logger color</li>
+<li>name: loggers 에서 호출할 이름을 정의합니다.</li>
+<li>target: 출력 방식입니다. Console 에서 사용됩니다.</li>
+<li>PatternLayout
+<ul>
+<li>charset: 인코딩 방식입니다.</li>
+<li>pattern: 출력 레이아웃 방식입니다. 사용자 정의에 맞게 로그가 출력됩니다.</li>
+<li>disableAnsi: 색상 변경 여부를 지정합니다. <strong>true</strong> 일 경우 콘솔의 색이 변하지 않습니다.</li>
 </ul>
-<p>아래 그림과 같이 logger에 색을 입히고 싶다면 아래 코드와 같이 설정되어있는지 확인하시면 됩니다.</p>
-<p><span
+</li>
+</ul>
+<p>패턴과 강조 색이 잘 반영되었다면 아래 화면과 같이 출력됩니다.
+<span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
     >
@@ -347,16 +392,81 @@
         decoding="async"
       />
     </span></p>
-<div class="gatsby-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml"><span class="token key atrule">pattern</span><span class="token punctuation">:</span> <span class="token string">"%highlight{[%-5level]} %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"</span>
-<span class="token key atrule">disableAnsi</span><span class="token punctuation">:</span> <span class="token boolean important">false</span></code></pre></div>
-<p><strong>%highlight{}</strong> 색상을 변경하고 싶은 구역을 설정합니다.</p>
-<p><strong>disableAnsi : false</strong>  색상 변경 여부를 지정합니다. <strong>True</strong> 일 경우 콘솔의 색이 변하지 않습니다.</p>
-<h3 id="applicationyml에-추가" style="position:relative;"><a href="#applicationyml%EC%97%90-%EC%B6%94%EA%B0%80" aria-label="applicationyml에 추가 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>application.yml에 추가</h3>
-<p>위의 작업을 마쳤다면 application.yml에 아래 내용을 추가합니다.</p>
-<div class="gatsby-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml">    <span class="token punctuation">---</span>
-    <span class="token key atrule">logging</span><span class="token punctuation">:</span>
-    <span class="token key atrule">config</span><span class="token punctuation">:</span> classpath<span class="token punctuation">:</span>log4j2.yml
-    <span class="token punctuation">---</span></code></pre></div>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml">    <span class="token key atrule">RollingFile</span><span class="token punctuation">:</span>
+      <span class="token key atrule">name</span><span class="token punctuation">:</span> RollingFile_Appender
+      <span class="token key atrule">fileName</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>log<span class="token punctuation">-</span>path<span class="token punctuation">}</span>/rollingfile.log
+      <span class="token key atrule">filePattern</span><span class="token punctuation">:</span> <span class="token string">"logs/archive/rollingfile.log.%d{yyyy-MM-dd-hh-mm}_%i.gz"</span>
+      <span class="token key atrule">PatternLayout</span><span class="token punctuation">:</span>
+        <span class="token key atrule">charset</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>charset<span class="token punctuation">-</span>UTF<span class="token punctuation">-</span><span class="token number">8</span><span class="token punctuation">}</span>
+        <span class="token key atrule">pattern</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>pattern<span class="token punctuation">}</span>
+      <span class="token key atrule">Policies</span><span class="token punctuation">:</span>
+        <span class="token key atrule">SizeBasedTriggeringPolicy</span><span class="token punctuation">:</span>
+          <span class="token key atrule">size</span><span class="token punctuation">:</span> <span class="token string">"200KB"</span>
+        <span class="token key atrule">TimeBasedTriggeringPolicy</span><span class="token punctuation">:</span>
+          <span class="token key atrule">interval</span><span class="token punctuation">:</span> <span class="token string">"1"</span>
+</code></pre></div>
+<ul>
+<li>fileName: 파일이 저장될 경로와 파일명입니다.</li>
+<li>filePattern: 트리거에 따라 백업될 파일의 경로와 이름입니다. layout pattern 을 적용하여 파일 중복을 예방합니다.</li>
+<li>Policies: RollingFile appender 에서 지정할 트리거 항목입니다.
+<ul>
+<li>OnStartupTriggeringPolicy: jvm 을 시작할 경우 트리거가 발동합니다.</li>
+<li>TimeBasedTriggeringPolicy: 특정 시간마다 트리거가 발동합니다. filePattern 에 지정한 단위로 롤링됩니다. (mm: 분 단위)
+<ul>
+<li>interval: 설정한 시간 간격마다 로그를 write 합니다. 기본값은 1입니다.</li>
+</ul>
+</li>
+<li>SizeBasedTriggeringPolicy: 파일 사이즈를 트리거로 지정합니다.
+<ul>
+<li>size: 설정한 파일의 용량을 초과할 경우 트리거가 발동합니다.</li>
+</ul>
+</li>
+<li>CronTriggeringPolicy: 크론 표현식을 기반으로 트리거가 발동합니다.</li>
+</ul>
+</li>
+</ul>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml">  <span class="token key atrule">DefaultRollOverStrategy</span><span class="token punctuation">:</span>
+    <span class="token key atrule">max</span><span class="token punctuation">:</span> <span class="token string">"30"</span>
+    <span class="token key atrule">fileIndex</span><span class="token punctuation">:</span> <span class="token string">"max"</span></code></pre></div>
+<ul>
+<li>DefaultRolloverStrategy: 날짜 패턴과 파일 패턴을 이용하여 파일을 저장합니다.
+<ul>
+<li>fileIndex: <em>max</em> 로 지정할 경우 값이 높은 index 가 최신 파일이 됩니다.(내림차순) min 으로 지정할 경우 작은 index 가 최신 파일이 되며 기존 파일들을 rename 하는 방식입니다.(오름차순)</li>
+<li>min: index count 의 최소값을 지정합니다. 기본값은 1 입니다.</li>
+<li>max: index count 의 최대값을 지정합니다. 최대값에 도달할 경우 오래된 파일을 삭제합니다. 기본값은 7 입니다.</li>
+<li>compressionLevel: 0~9까지의 정수값, 0은 압축하지않고, 1은 최고 속도, 9는 최고 압축 zip 파일만 가능합니다.</li>
+<li>tempCompressedFilePattern: 압축하는 동안의 파일 이름 패턴입니다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="loggers" style="position:relative;"><a href="#loggers" aria-label="loggers permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Loggers</h3>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml">  <span class="token key atrule">Loggers</span><span class="token punctuation">:</span>
+    <span class="token key atrule">Root</span><span class="token punctuation">:</span>
+      <span class="token key atrule">level</span><span class="token punctuation">:</span> debug
+      <span class="token key atrule">AppenderRef</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">ref</span><span class="token punctuation">:</span> Console_Appender
+        <span class="token punctuation">-</span> <span class="token key atrule">ref</span><span class="token punctuation">:</span> RollingFile_Appender
+    <span class="token key atrule">Logger</span><span class="token punctuation">:</span>
+      <span class="token key atrule">name</span><span class="token punctuation">:</span> example.demospringboot
+      <span class="token key atrule">additivity</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+      <span class="token key atrule">level</span><span class="token punctuation">:</span> debug
+      <span class="token key atrule">AppenderRef</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">ref</span><span class="token punctuation">:</span> Console_Appender
+        <span class="token punctuation">-</span> <span class="token key atrule">ref</span><span class="token punctuation">:</span> RollingFile_Appender</code></pre></div>
+<ul>
+<li>Root: 기본 설정값을 정의합니다. logger 에 따로 지정하지 않은 경우 <strong>Root</strong> 규칙을 따릅니다. 필수로 설정해야 합니다.
+<ul>
+<li>level: 로그의 레벨을 지정합니다.</li>
+<li>AppenderRef: 해당 설정을 적용할 Appenders 를 지정합니다.</li>
+</ul>
+</li>
+<li>Logger: Root 의 설정을 따르지 않는 logger 를 지정합니다.  하나 이상 설정할 수 있습니다.
+<ul>
+<li>name: 설정한 logger name 이 호출한 logger 으로 시작한다면 정의한 level 규칙을 따릅니다.</li>
+<li>additivity: logger 중복 여부를 지정합니다. <strong>false</strong> 로 지정할 경우 중복되지 않습니다.</li>
+</ul>
+</li>
+</ul>
 <h2 id="테스트" style="position:relative;"><a href="#%ED%85%8C%EC%8A%A4%ED%8A%B8" aria-label="테스트 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>테스트</h2>
 <hr>
 <h3 id="테스트-코드-전문" style="position:relative;"><a href="#%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%BD%94%EB%93%9C-%EC%A0%84%EB%AC%B8" aria-label="테스트 코드 전문 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>테스트 코드 전문</h3>
@@ -404,9 +514,9 @@
     </span></p>
 <h2 id="기타-참고" style="position:relative;"><a href="#%EA%B8%B0%ED%83%80-%EC%B0%B8%EA%B3%A0" aria-label="기타 참고 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>기타 참고</h2>
 <hr>
-<p><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.external-config.yaml">springboot_doc_yaml</a>
-<a href="https://logging.apache.org/log4j/2.x/manual/configuration.html">apache_log4j2_configuration</a>
-<a href="https://velog.io/@bread_dd/Log4j-2-%EC%A0%9C%EB%8C%80%EB%A1%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0-%EA%B0%9C%EB%85%90">log4j2_start</a></p>
+<p><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.external-config.yaml">springboot_doc_yaml</a></p>
+<p><a href="https://logging.apache.org/log4j/2.x/manual/configuration.html">apache_log4j2_configuration</a></p>
+<p><a href="https://velog.io/@bread_dd/Log4j-2-%EC%A0%9C%EB%8C%80%EB%A1%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0-%EA%B0%9C%EB%85%90">log4j2_start</a></p>
 <div class="table-of-contents">
 <ul>
 <li>
@@ -418,18 +528,22 @@
 </ul>
 </li>
 <li>
-<p><a href="#applicationyml-%EC%84%A4%EC%A0%95">application.yml 설정</a></p>
+<p><a href="#log4j2yml-%EC%83%9D%EC%84%B1-%EB%B0%8F-applicationyml-%EC%84%A4%EC%A0%95">log4j2.yml 생성 및 application.yml 설정</a></p>
 <ul>
-<li><a href="#%EC%98%88%EC%8B%9C-%EC%BD%94%EB%93%9C">예시 코드</a></li>
+<li><a href="#applicationyml-%EC%84%A4%EC%A0%95">application.yml 설정</a></li>
+<li><a href="#log4j2yml-%ED%8C%8C%EC%9D%BC-%EC%83%9D%EC%84%B1">log4j2.yml 파일 생성</a></li>
+<li><a href="#log4j2yml-%EC%98%88%EC%8B%9C-%EC%84%A4%EB%AA%85%EC%9D%80-%ED%95%98%EB%8B%A8-%EC%B0%B8%EA%B3%A0">log4j2.yml 예시 (설명은 하단 참고)</a></li>
 </ul>
 </li>
 <li>
-<p><a href="#lgo4j2yml-%EC%84%A4%EC%A0%95">lgo4j2.yml 설정</a></p>
+<p><a href="#log4j2yml-%EC%84%A4%EC%A0%95-%EA%B5%AC%EC%A1%B0">log4j2.yml 설정 구조</a></p>
 <ul>
-<li><a href="#log4j2-%EC%84%A4%EC%A0%95-%EA%B5%AC%EC%A1%B0">log4j2 설정 구조</a></li>
-<li><a href="#log4j2yml-%EC%98%88%EC%8B%9C">log4j2.yml 예시</a></li>
-<li><a href="#%EC%84%A4%EB%AA%85">설명</a></li>
-<li><a href="#applicationyml%EC%97%90-%EC%B6%94%EA%B0%80">application.yml에 추가</a></li>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#properties">Properties</a></li>
+<li><a href="#layout-pattern">Layout Pattern</a></li>
+<li><a href="#logging-level">logging level</a></li>
+<li><a href="#appenders">Appenders</a></li>
+<li><a href="#loggers">Loggers</a></li>
 </ul>
 </li>
 <li>
@@ -443,4 +557,4 @@
 <p><a href="#%EA%B8%B0%ED%83%80-%EC%B0%B8%EA%B3%A0">기타 참고</a></p>
 </li>
 </ul>
-</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/Spring/springboot_start-4-thymeleaf_layout/"><div class="direction">이전 글</div><div class="title">[springboot_start] thymeleaf layout 설정</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/Spring/springboot_start-3-undertow/"><div class="direction">다음 글</div><div class="title">[springboot_start] 내장 WAS를 undertow로 변경하기</div></a></div></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://www.github.com">안찬진</a> powered by<a href="https://github.com/zoomKoding/zoomkoding-gatsby-blog"> zoomkoding-gatsby-blog</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/Spring/springboot_start-2-log4j2/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cd840d73727c2e366b63.js"],"app":["/app-012390d198ce3e5c25b0.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3c26d4b7e3608ed0ece4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4917da7ef5b541e98a81.js"],"component---src-pages-about-js":["/component---src-pages-about-js-b5804eba3d16afcb3700.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bc882cd03f70c89c8148.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-fea460fedd50cffb10cd.js"]};/*]]>*/</script><script src="/polyfill-cd840d73727c2e366b63.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-3528d048b96f92ca0d99.js" async=""></script><script src="/app-012390d198ce3e5c25b0.js" async=""></script><script src="/framework-0e1bf37de02f7cef2174.js" async=""></script><script src="/webpack-runtime-e82a0f1e2cd289355a4a.js" async=""></script></body></html>
+</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/Spring/springboot_start-4-thymeleaf_layout/"><div class="direction">이전 글</div><div class="title">[springboot_start] thymeleaf layout 설정</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/Java/start_gradle_project /start_gradle_project/"><div class="direction">다음 글</div><div class="title">[Gradle] Gradle project 시작하기</div></a></div></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://www.github.com">안찬진</a> powered by<a href="https://github.com/zoomKoding/zoomkoding-gatsby-blog"> zoomkoding-gatsby-blog</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" viewBox="0 0 24 24" aria-hidden="true" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/Spring/springboot_start-2-log4j2/";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-cd840d73727c2e366b63.js"],"app":["/app-012390d198ce3e5c25b0.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-3c26d4b7e3608ed0ece4.js"],"component---src-pages-404-js":["/component---src-pages-404-js-4917da7ef5b541e98a81.js"],"component---src-pages-about-js":["/component---src-pages-about-js-b5804eba3d16afcb3700.js"],"component---src-pages-index-js":["/component---src-pages-index-js-bc882cd03f70c89c8148.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-ef83b594aa693e649d30.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-fea460fedd50cffb10cd.js"]};/*]]>*/</script><script src="/polyfill-cd840d73727c2e366b63.js" nomodule=""></script><script src="/component---src-templates-blog-template-js-ef83b594aa693e649d30.js" async=""></script><script src="/f9d3028dbef90a6e9b8db85387d63dd9f4edf538-3528d048b96f92ca0d99.js" async=""></script><script src="/app-012390d198ce3e5c25b0.js" async=""></script><script src="/framework-0e1bf37de02f7cef2174.js" async=""></script><script src="/webpack-runtime-e82a0f1e2cd289355a4a.js" async=""></script></body></html>
