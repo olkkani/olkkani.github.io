@@ -25,4 +25,4 @@ public
 .DS_Store
 
 # Intellij
-.idea/
+.idea/*
