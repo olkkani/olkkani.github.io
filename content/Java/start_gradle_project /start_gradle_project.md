@@ -43,23 +43,23 @@ Gradle 프로젝트를 생성하기 전에 해당 프로젝트를 시작할 폴�
   gradle init
 ```
 
-![stat_gradle_new_project](./gradle-init-1..png)
+![stat_gradle_new_project](gradle-init-1.png)
 
 생성하고자 하는 프로젝트의 타입을 선택합니다. 저는 이번에 2, "application"을 선택하여 진행하겠습니다.
 
-![language_select](./gradle-init-2.png)
+![language_select](gradle-init-2.png)
 
 다음은 프로젝트의 언어를 선택합니다. 저는 이번에 "java"를 선택하겠습니다.
 
-![bulid script dsl](./gradle-init-3.png)
+![bulid script dsl](gradle-init-3.png)
 
 다음은 script DSL을 선택합니다. 저는 이번에 "groovy"를 선택하겠습니다.
 
-![select_test_framwork](./gradle-init-4.png)
+![select_test_framwork](gradle-init-4.png)
 
 다음은 테스트 프레임워크를 선택합니다. 선택할 수 있는 테스트 프레임워크는 여러개가 존재하지만 저는 이번에 "junit jufiter"를 선택하겠습니다.
 
-![insert_project_name](./gradle-init-5.png)
+![insert_project_name](gradle-init-5.png)
 
 다음은 프로젝트 명을 입력합니다. 디폴트 값은 폴더의 이름을 따라가지만 다른 프로젝트 명을 입력할 수도 있습니다.
 
