@@ -4,4 +4,4 @@
 
 ---
 
-![github blug url](njinahn.github.io)
+![github blug url](https://chanjinahn.github.io/)
