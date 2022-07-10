@@ -311,11 +311,8 @@ public class Log4j2Test {
 
 ---
 
-[springboot_doc_yaml](https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.external-config.yaml)
-
 [apache_log4j2_configuration](https://logging.apache.org/log4j/2.x/manual/configuration.html)
-
-[log4j2_start](https://velog.io/@bread_dd/Log4j-2-%EC%A0%9C%EB%8C%80%EB%A1%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0-%EA%B0%9C%EB%85%90)
+[docs.spring.io-config yaml](https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.external-config.yaml)
 
 ```toc
 ```

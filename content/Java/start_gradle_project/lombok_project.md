@@ -4,7 +4,7 @@ title: '[Java] gradle project lombok 설정'
 date: "2022-06-20 21:33:00"
 author: chanjin_ahn
 tags: Java, Gradle
-categories: Java
+categories: Java Spring
 ---
 
 ## 개발 환경

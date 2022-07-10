@@ -1,0 +1,103 @@
+{
+  "main": {
+    "id": "401bd0d55f0494eb",
+    "type": "split",
+    "children": [
+      {
+        "id": "dacad3b80d51a0cf",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Java/start_gradle_project/lombok_project.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "cc6afbfc5631762f",
+    "type": "split",
+    "children": [
+      {
+        "id": "db697533fce64eac",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "402f04b7ace4b626",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "fb8c666bc50ebf4c",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": true,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "b3f627a3a023dbfe",
+    "type": "split",
+    "children": [
+      {
+        "id": "0c32aab21c619eba",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "6739d729e7538243",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Java/start_gradle_project/lombok_project.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "dacad3b80d51a0cf",
+  "lastOpenFiles": [
+    "Java/start_gradle_project/lombok_project.md",
+    "Java/start_gradle_project/lombok_proejct-result.png",
+    "Java/start_gradle_project/start_gradle_project.md",
+    "Java/start_gradle_project/JUnit5.md",
+    "Spring/springboot_start-2-log4j2.md",
+    "Spring/22-implementation_log4j2.png",
+    "Java/start_gradle_project/JUnit5_test.png",
+    "Spring/springboot_start-1-init_project.md",
+    "Spring/23-logger-color.png",
+    "Spring/21-exclude_starter_logging.png"
+  ]
+}

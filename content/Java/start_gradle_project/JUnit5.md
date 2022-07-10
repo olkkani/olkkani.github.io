@@ -4,7 +4,7 @@ title: '[Gradle] Gradle Project 에 JUnit5 + AssertThat 설정'
 date: "2022-06-21 18:36:00"
 author: chanjin_ahn
 tags: Java
-categories: Spring, Java
+categories: Spring Java
 ---
 
 이번 포스팅에서는 Gradle Project 에 Junit5 를 사용 환경을 설정합니다.
