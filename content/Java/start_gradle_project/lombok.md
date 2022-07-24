@@ -15,6 +15,7 @@ categories: Java Spring
 |:---:|-----------------------|
 | OS  | M1 Mac(Monterey 12.4) |
 | IDE | Intellij(2022.1.2)    |
+| Java | jdk17 (temurin) |
 
 ## Gradle Project 에 Lombok 적용하기
 
