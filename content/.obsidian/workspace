@@ -4,15 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "dacad3b80d51a0cf",
+        "id": "3bf65dd0dd477204",
         "type": "leaf",
         "state": {
-          "type": "markdown",
-          "state": {
-            "file": "Java/start_gradle_project/lombok_project.md",
-            "mode": "source",
-            "source": false
-          }
+          "type": "empty",
+          "state": {}
         }
       }
     ],
@@ -69,7 +65,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Java/start_gradle_project/lombok_project.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -87,17 +82,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "dacad3b80d51a0cf",
+  "active": "3bf65dd0dd477204",
   "lastOpenFiles": [
+    "Spring/springboot_start-4-thymeleaf_layout.md",
     "Java/start_gradle_project/lombok_project.md",
+    "Java/start_gradle_project/lombok_project-enable_annotation_processing.png",
+    "Spring/springboot_start-2-log4j2.md",
+    "Spring/springboot_start-3-undertow.md",
+    "Spring/springboot_start-1-init_project.md",
+    "Spring/Untitled.md",
     "Java/start_gradle_project/lombok_proejct-result.png",
     "Java/start_gradle_project/start_gradle_project.md",
-    "Java/start_gradle_project/JUnit5.md",
-    "Spring/springboot_start-2-log4j2.md",
-    "Spring/22-implementation_log4j2.png",
-    "Java/start_gradle_project/JUnit5_test.png",
-    "Spring/springboot_start-1-init_project.md",
-    "Spring/23-logger-color.png",
-    "Spring/21-exclude_starter_logging.png"
+    "Java/start_gradle_project/JUnit5.md"
   ]
 }
