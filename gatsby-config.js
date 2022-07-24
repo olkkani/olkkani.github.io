@@ -31,13 +31,13 @@ module.exports = {
           },
           'branch-deploy': {
             policy: [{ userAgent: '*', disallow: ['/'] }],
-            sitemap: null,
-            host: null,
+            sitemap: 'https://chanjinahn.github.io/sitemap.xml',
+            host: 'https://chanjinahn.github.io',
           },
           'deploy-preview': {
             policy: [{ userAgent: '*', disallow: ['/'] }],
-            sitemap: null,
-            host: null,
+            sitemap: 'https://chanjinahn.github.io/sitemap.xml',
+            host: 'https://chanjinahn.github.io',
           },
         },
       },
