@@ -47,4 +47,5 @@ org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis
 OGNL인터프리터에서는 ''나 '?'를 char형으로 인식하고 '??'나 "?"는 String으로 인식합니다. 때문에 동적 쿼리의 비교문을 작성할때 NumberFormat으로 비교를 시도하고 해당 에러가 발생하는 것입니다.
 
 ## 결론
+---
 ""를 쓰는 습관을 들이자.

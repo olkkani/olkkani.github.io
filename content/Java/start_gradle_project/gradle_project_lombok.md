@@ -7,7 +7,7 @@ tags: Java, Gradle
 categories: Java Spring
 ---
 
-## 개발 환경
+## 환경
 
 ---
 
