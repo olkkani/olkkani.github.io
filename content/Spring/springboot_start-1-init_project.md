@@ -180,5 +180,13 @@ HTML파일을 그대로 실행한다면 __Hello, 홍김돌__ 이라고 나오겠
 
 이상으로 간단하게 springboot project를 실행해보았습니다. 이 후에는 본인의 상황에 맞는 라이브러리를 가져와 구현하면 됩니다.
 
+<script src="https://utteranc.es/client.js"
+        repo="ChanjinAhn / ChanjinAhn.github.ioChanjinAhn / ChanjinAhn.github.io"
+        issue-term="pathname"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+
 ```toc
 ```
