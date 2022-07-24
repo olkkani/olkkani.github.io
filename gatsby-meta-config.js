@@ -2,7 +2,7 @@ module.exports = {
   title: `chanjin_ahn.github`,
   description: `나의 개발일기`,
   language: `ko`, // `ko`, `en` => currently support versions for Korean and English
-  siteUrl: `https://github.com/ChanjinAhn/`,
+  siteUrl: 'https://chanjinahn.github.io',
   ogImage: `/og-image.png`, // Path to your in the 'static' folder
   comments: {
     utterances: {
