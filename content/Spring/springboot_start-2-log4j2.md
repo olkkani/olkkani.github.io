@@ -57,6 +57,7 @@ log4j2 설정을 .xml 로 관리해왔지만 이번 프로젝트는 .yml 로 관
 ---
 
 ### application.yml 설정
+
 log4j2 파일을 생성하기 전에 application.yml 에 생성할 파일의 경로를 정의합니다. 파일을 생성한 후에 정의해도 상관없습니다.
 
 ```yml
@@ -65,9 +66,8 @@ log4j2 파일을 생성하기 전에 application.yml 에 생성할 파일의 경
 ```
 
 ### log4j2.yml 파일 생성
-log4j2.yml 파일을 생성합니다. 위치는 아래와 같습니다.
 
-__src/main/resources/log4j2.yml__
+log4j2.yml 파일을 생성합니다. 위치는 __src/main/resources/log4j2.yml__ 입니다.
 
 ### log4j2.yml 예시 (설명은 하단 참고)
 
@@ -140,6 +140,7 @@ Configutation:
 |  Loggers   | 출력하는 로그 범위를 지정할 수 있습니다. 설정에 따라 로그를 노출시키거나 생략할 수 있습니다.                           |
 
 ### Properties
+
 ```yaml
   Properties:
   Property:
@@ -175,12 +176,12 @@ Configutation:
 |         %p, %level          | 로그 레벨                   |
 |        %r, %relative        | 로그 처리시간                 |
 |         %t, %thread         | 해당 로그가 발생한 스레드 명        |
-| %style{pattern}{ANSI style} | ANSI 를 사용하여 특정 패턴을 스타일링 | 
+| %style{pattern}{ANSI style} | ANSI 를 사용하여 특정 패턴을 스타일링 |
 | %highlight{pattern}{style}  | 로그 레벨명을 ANSI 색으로 하이라이트  |
 
 ### logging level
 
-지정한 로깅 레벨 이상의 로그만 출력 됩니다. __INFO__ 로 지정할 경우 DEBUG 와 TRACE 레벨의 로그는 생략됩니다. 
+지정한 로깅 레벨 이상의 로그만 출력 됩니다. __INFO__ 로 지정할 경우 DEBUG 와 TRACE 레벨의 로그는 생략됩니다.
 
 - FATAL
 - ERROR
@@ -207,12 +208,13 @@ Configutation:
         pattern: ${pattern}
         disableAnsi: false
 ```
+
 - name: loggers 에서 호출할 이름을 정의합니다.
 - target: 출력 방식입니다. Console 에서 사용됩니다.
 - PatternLayout
-    - charset: 인코딩 방식입니다.
-    - pattern: 출력 레이아웃 방식입니다. 사용자 정의에 맞게 로그가 출력됩니다.
-    - disableAnsi: 색상 변경 여부를 지정합니다. __true__ 일 경우 콘솔의 색이 변하지 않습니다.
+  - charset: 인코딩 방식입니다.
+  - pattern: 출력 레이아웃 방식입니다. 사용자 정의에 맞게 로그가 출력됩니다.
+  - disableAnsi: 색상 변경 여부를 지정합니다. __true__ 일 경우 콘솔의 색이 변하지 않습니다.
 
 패턴과 강조 색이 잘 반영되었다면 아래 화면과 같이 출력됩니다.
 ![logger_color](23-logger-color.png)
@@ -232,6 +234,7 @@ Configutation:
           interval: "1"
 
 ```
+
 - fileName: 파일이 저장될 경로와 파일명입니다.
 - filePattern: 트리거에 따라 백업될 파일의 경로와 이름입니다. layout pattern 을 적용하여 파일 중복을 예방합니다.
 - Policies: RollingFile appender 에서 지정할 트리거 항목입니다.
@@ -241,11 +244,13 @@ Configutation:
   - SizeBasedTriggeringPolicy: 파일 사이즈를 트리거로 지정합니다.
     - size: 설정한 파일의 용량을 초과할 경우 트리거가 발동합니다.
   - CronTriggeringPolicy: 크론 표현식을 기반으로 트리거가 발동합니다.
+
 ```yaml
   DefaultRollOverStrategy:
     max: "30"
     fileIndex: "max"
 ```
+
 - DefaultRolloverStrategy: 날짜 패턴과 파일 패턴을 이용하여 파일을 저장합니다.
   - fileIndex: _max_ 로 지정할 경우 값이 높은 index 가 최신 파일이 됩니다.(내림차순) min 으로 지정할 경우 작은 index 가 최신 파일이 되며 기존 파일들을 rename 하는 방식입니다.(오름차순)
   - min: index count 의 최소값을 지정합니다. 기본값은 1 입니다.
@@ -254,7 +259,6 @@ Configutation:
   - tempCompressedFilePattern: 압축하는 동안의 파일 이름 패턴입니다.
 
 ### Loggers
-
 
 ```yaml
   Loggers:
@@ -271,8 +275,9 @@ Configutation:
         - ref: Console_Appender
         - ref: RollingFile_Appender
 ```
+
 - Root: 기본 설정값을 정의합니다. logger 에 따로 지정하지 않은 경우 __Root__ 규칙을 따릅니다. 필수로 설정해야 합니다.
-  - level: 로그의 레벨을 지정합니다. 
+  - level: 로그의 레벨을 지정합니다.
   - AppenderRef: 해당 설정을 적용할 Appenders 를 지정합니다.
 - Logger: Root 의 설정을 따르지 않는 logger 를 지정합니다.  하나 이상 설정할 수 있습니다.
   - name: 설정한 logger name 이 호출한 logger 으로 시작한다면 정의한 level 규칙을 따릅니다.

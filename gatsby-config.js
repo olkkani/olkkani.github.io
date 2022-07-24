@@ -119,7 +119,10 @@ module.exports = {
             options: {
               classPrefix: 'language-',
               inlineCodeMarker: null,
-              aliases: {},
+              aliases: {
+                console: 'bash',
+                gradle: 'yml',
+              },
               showLineNumbers: false,
               noInlineHighlight: false,
               languageExtensions: [

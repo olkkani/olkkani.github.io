@@ -15,11 +15,11 @@ String path = "D" + File.separator + "sampleFile" + File.separator + "testImage.
     System.out.println(filePathWithName);
 ```
 
-```console
+``` bash
     D:/sampleFile/testImage.png
 ```
 
-실행을 한다면 각 운영체제에 맞게 파일 구분자가 출력되는 것을 확인할 수 있습니다. 
+실행을 한다면 각 운영체제에 맞게 파일 구분자가 출력되는 것을 확인할 수 있습니다.
 
 다만 이렇게 한다면 경로가 늘어날 수록 코드도 길어지고 관리하기 어렵다는 단점이 있습니다. 이러한 경우를 개선한 Path를 소개하겠습니다. 간단하기 때문에 예시 코드를 보여드리겠습니다.
 
@@ -30,7 +30,7 @@ String path = "D" + File.separator + "sampleFile" + File.separator + "testImage.
 
 ```
 
-```console
+``` bash
     D:/sampleFile/testImage.png
 ```
 

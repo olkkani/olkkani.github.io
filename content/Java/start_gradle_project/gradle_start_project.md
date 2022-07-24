@@ -21,10 +21,12 @@ categories: Java
 ---
 
 ### Gradle Install Hombrew
+
 [Gradle Installation Documents](https://gradle.org/install/)
 
 Gradle 공식 문서에 따라 설치하도록 합니다. Hombrew 로 설치하는 것 역시 권장 방법이므로 터미널에 다음과 같이 입력 후 실행합니다.
-``` zsh
+
+``` bash
 brew install gradle
 ```
 
@@ -32,11 +34,11 @@ brew install gradle
 
 Gradle 프로젝트를 생성하기 전에 해당 프로젝트를 시작할 폴더를 새로 만듭니다. 폴더 명과 별개로 프로젝트 이름은 따로 지정할 수도 있습니다. 방법은 아래 말씀드리겠습니다.
 
-```bash
+``` bash
  # ex) mkdir 프로젝트_폴더_이름
 
  mkdir demo-java
-	 
+
  # 생성한 프로젝트로 이동
  cd demo-java
 ```
@@ -70,7 +72,6 @@ gradle init
 다음은 프로젝트 명을 입력합니다. 디폴트 값은 폴더의 이름을 따라가지만 다른 프로젝트 명을 입력할 수도 있습니다.
 
 설정을 전부 끝마쳤다면 설정한 옵션에 맞춰 Gradle 프로젝트가 생성됩니다.
-
 
 ```toc
 ```

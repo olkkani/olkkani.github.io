@@ -17,7 +17,7 @@ categories: Spring
 
 tomcat은 사용하지 않을 예정이므로 제외합니다.
 
-```gradle
+```yaml
     configurations {
         all{
             // was tomcat 제외
@@ -30,7 +30,8 @@ tomcat은 사용하지 않을 예정이므로 제외합니다.
 
 버전은 본인의 상황에 맞게 maven repository 에서 가져오시면 됩니다.
 undertow 라이브러리와 autobulid 를 위한 devtools 를 추가합니다.
-```gradle
+
+```yaml
     dependencies {
         implementation group: 'org.springframework.boot', name: 'spring-boot-starter-undertow', version: '2.6.3'
         developmentOnly 'org.springframework.boot:spring-boot-devtools'
@@ -56,6 +57,7 @@ undertow 라이브러리와 autobulid 를 위한 devtools 를 추가합니다.
       port: 8080
     ---
 ```
+
 설정에 대한 프로파일 명을 __common__ 로 지정합니다. 해당 프로파일을 불러올 경우의 설정을 정의할 수 있습니다.
 
 - spring.devtools.livereload.enabled=true: view 파일의 수정 사항을 즉각 반영합니다.
