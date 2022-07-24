@@ -9,6 +9,15 @@ categories: Spring Java
 
 이번 포스팅에서는 Gradle Project 에 Junit5 를 사용 환경을 설정합니다.
 
+## 환경
+
+---
+
+| 종류  | 환경                    |
+|:---:|-----------------------|
+| OS  | M1 Mac(Monterey 12.4) |
+| IDE | Intellij(2022.1.2)    |
+
 ## Gradle Project 에 JUnit5 라이브러리 추가
 
 ---
