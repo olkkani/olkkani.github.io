@@ -7,15 +7,19 @@ tags:
 categories: Spring
 ---
 
-이번 포스팅에서는 기존 WAS를 Tomcat에서 undertow로 변경해보겠습니다. tomcat은 오래전부터 사용된 WAS이나 아쉬운 점이 많아 사용 빈도가 줄고 있다고 합니다. 그래서 undertow로 바꿔보도록 하겠습니다.
-
-## 라이브러리 가져오기
+## 개요
 
 ---
 
-### 기존 Tomcat 라이브러리 제외하기
+새롭게 생성한 Spring Boot Project 에 WAS를 Tomcat에서 undertow로 변경해보겠습니다. tomcat은 오래전부터 사용된 WAS이나 아쉬운 점이 많아 사용 빈도가 줄고 있다고 합니다. 그래서 undertow로 바꿔보도록 하겠습니다.
 
-tomcat은 사용하지 않을 예정이므로 제외합니다.
+## 의존성 추가
+
+---
+
+### bulid.gradle 파일을 수정하여 Tomcat 을 제외
+
+tomcat은 사용하지 않을 예정이므로 제외합니다. 제외하지 않을 경우 에러가 발생할 수 있으니 꼭 제외할 수 있도록 합니다.
 
 ```yaml
     configurations {

@@ -7,16 +7,17 @@ tags:
 categories: Spring
 ---
 
-Spring Boot를 이용하여 새로운 프로젝트를 만들어보도록 하겠습니다.
+## 개요
 
-## 환경
+신규 Spring Project 를 spring initializr 사이트를 이용하여 생성하고 Intellij IDE 에 import 하는 방법에 대해서 알아보겠습니다.
 
 ---
 
-- OS: MacOS 12.1(Monterey)
-- IDE: Intellij(2021.2)
-- language: java 17
-- project: Gradle project
+| 종류   | 환경                     |
+| :---: | ----------------------- |
+| OS    | M1 Mac(Monterey 12.4)   |
+| IDE   | Intellij(2022.1.2)      |
+| Java  | jdk17 (temurin)         |
 
 ## 프로젝트 생성
 
@@ -30,11 +31,13 @@ Spring Boot를 이용하여 새로운 프로젝트를 만들어보도록 하겠�
 
 2. Project 환경 선택
 
-- Projrect: Gradle Proejct
-- Language: Java
-- Spring Boot: 2.6.2
-- Packaging: Jar
-- Java: 17
+| 종류         | 환경           |
+| :---:       | -----         |
+| project     | Gradle Prject |
+| language    | java          |
+| spring boot | 2.6.2         |
+| packaging   | jar           |
+| java        | 17            |
 
 Project Metadata는 각 프로젝트 성격에 맞춰서 작성하면 됩니다.
 
@@ -47,7 +50,7 @@ Dependencies는 우측 __Add Dependencies__ 버튼을 클릭하여 추가할 수
 
 ![Dependencies 설정 화면](./11-start-initializr.png)
 
-3. 프로젝트 생성
+1. 프로젝트 생성
 
 모든 준비가 끝났으면 __GENERATE__ 버튼을 눌러 새로운 프로젝트를 로컬 저장소에 저장합니다.
 
@@ -109,8 +112,7 @@ test와 test resource는 test에 필요한 폴더입니다. 각각 source와 res
 
 모든 것이 끝났다면 __OK__ 버튼을 눌러 창을 닫고 구조를 확인합니다.
 
-<img src="./17-structure.png" height="700" />
-
+![project_stucture](./17-structure.jpeg)
 
 ## 작동 테스트
 

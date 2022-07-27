@@ -9,9 +9,11 @@ categories: Spring Java
 
 이번 포스팅에서는 Gradle Project 에 Junit5 를 사용 환경을 설정합니다.
 
-## 환경
+## 개요
 
 ---
+
+Gradle Project 에 Junit5 + AssertThat 을 설정해보도록 하겠습니다. 맥락을 이해한다면 Spring 프레임워크를 사용하거나 Maven Project 에도 적용할 수 있으니 참고 바랍니다.
 
 | 종류  | 환경                    |
 |:---:|-----------------------|
@@ -46,7 +48,7 @@ test {
 ---
 
 Gradle 과 동일하게 설정해도 무관하지만 Spring boot 에는 **spring-boot-starter-test** 가 존재하기 때문에 종속성을 다르게 가져갈 필요가 있습니다.
-사실 잘 살펴보면 jupiter 를 비롯한 여러 라이브러리를 포함하는 것을 확인할 수 있습니다.
+하위 의존성을 잘 살펴보면 jupiter 를 비롯한 여러 라이브러리를 포함하는 것을 확인할 수 있습니다.
 
 ### Srping Project build.gradle 파일 수정
 
@@ -64,9 +66,9 @@ Gradle 과 동일하게 설정해도 무관하지만 Spring boot 에는 **spring
 
 ### homcrest 종속성 제외
 
-assertThat 을 사용하기 위해 spring-boot-stater-test **hamcrest** 와 **assertj** 가 기본적으로 포함되어 있습니다.
+spring-boot-stater-test 에는 **hamcrest** 와 **assertj** 가 기본적으로 포함되어 있기때문에 추가하는 수고를 덜합니다.
 
-저는 hombrest 를 사용하지 않을 예정이므로 종속성에서 제외하도록 하겠습니다. 필수는 아니므로 본인 선택에 따라 제외하도록 합니다.
+다만 homcrest 대신 assertj 를 사용할 예정이므로 hamcrest 는 종속성에서 제외하도록 하겠습니다. 필수는 아니므로 본인 선택에 따라 제외하도록 합니다.
 
 ```yaml
 configurations {
@@ -76,7 +78,7 @@ configurations {
 }
 ```
 
-## Assert That Static Import
+## Assert That Static Import 로 Junit5 와 assertj 적용 테스트
 
 ---
 AssertThat 을 알고 있다면 assertThat 을 Static Import 하여 사용하는 것을 확인할 수 있습니다.
@@ -85,7 +87,7 @@ assertThat() 을 사용하기 위해서는 매번 타이핑하여 Static Import 
 
 ### (1/3) IntelliJ 에서 Static Import 하는  일반적인 방법 (안될 가능성 높음)
 
- IntelliJ 를 사용하시는 분들은 `assertThat()` 까지 입력한 후 **Show Context Action** (Mac: ⌥⏎ Windows: alt+enter) 로 static import 하여 사용합니다.
+ IntelliJ 를 사용하시는 많은 분들은 `assertThat()` 까지 입력한 후 **Show Context Action** (Mac: ⌥⏎ Windows: alt+enter) 로 static import 하여 사용합니다.
 
 ![not found static import method](JUnit5-assertThat_not_found_static_import.png)
 다만 저는 static import method 라는 선택지가 나오지 않아서 난처했습니다. 인터넷에 검색했을 땐 모두 해당 방법이 나오므로 시도해본 뒤 저랑 같은 상황이면 빠르게 다음 방법으로 넘어가도록 합니다.
@@ -102,7 +104,7 @@ assertThat() 을 사용하기 위해서는 매번 타이핑하여 Static Import 
 
 확실히 유효한 방법이나 조금 불편합니다. 저는 불편해서 세 번째 방법을 주로 사용합니다.
 
-### (3/3) IntelliJ 에서 Static import 하는 최종 방법
+### (3/3) IntelliJ 에서 Static import 하는 최종 방법 (개인적으로 쓰는 방법)
 
 조금 사용하다보니깐 처음 방법과 다르지 않은 방법을 발견하여 현재 이 방법으로 사용하는 중입니다.
 

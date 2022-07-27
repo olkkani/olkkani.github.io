@@ -1,15 +1,17 @@
 ---
 emoji: 👻
-title: '[Java] gradle project lombok 설정'
+title: '[Java] Gradle Project lombok 설정'
 date: "2022-06-20 21:33:00"
 author: chanjin_ahn
 tags: Java, Gradle
 categories: Java Spring
 ---
 
-## 환경
+## 개요
 
 ---
+
+Gradle Proejct 에 Lombok 을 추가하는 가장 정석적이고 깔끔한 방법을 소개하고자 합니다. 추가적으로 Intellij IDE 에서 해야되는 간단한 설정도 확인할 수 있습니다.
 
 | 종류  | 환경                    |
 |:---:|-----------------------|
@@ -32,7 +34,7 @@ categories: Java Spring
     }
 ```
 
-라이브러리 추가 뿐만 아니라 annotation 설정을 해야하는 일반 gradle 환경과 달리 간단하게 적용할 수 있는 것이 가장 큰 장점입니다.
+Dependences 에 의존성과 annotation 설정을 해야하는 일반 gradle 환경과 달리 간단하게 적용할 수 있는 것이 가장 큰 장점입니다.
 
 ## IntelliJ 에 Lombok 설정하기
 

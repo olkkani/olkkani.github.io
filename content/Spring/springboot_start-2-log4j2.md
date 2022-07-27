@@ -312,12 +312,13 @@ public class Log4j2Test {
 
 ![logger test result](24-logging_test.png)
 
-## 기타 참고
+## 참고
 
 ---
 
-[apache_log4j2_configuration](https://logging.apache.org/log4j/2.x/manual/configuration.html)
-[docs.spring.io-config yaml](https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.external-config.yaml)
+[https://logging.apache.org/log4j/2.x/manual/configuration.html](https://logging.apache.org/log4j/2.x/manual/configuration.html)
+
+[https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.external-config.yaml](https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.external-config.yaml)
 
 ```toc
 ```

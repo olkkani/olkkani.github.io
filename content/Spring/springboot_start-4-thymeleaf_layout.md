@@ -1,6 +1,6 @@
 ---
 emoji: 👻
-title: '[springboot_start] thymeleaf layout 설정'
+title: '[springboot_start] thymeleaf layout 설정(작성 중)'
 date: '2022-01-09 20:42:00'
 author: chajin_ahn
 tags: 
@@ -9,14 +9,17 @@ categories: Spring
 
 이번에는 thymeleaf 기본 설정과 thymeleaf layout 설정하는 방법에 대해서 알아보겠습니다.
 
-## 개발 환경
+## 개요
 
 ---
-| 종류 | 환경 |
-| :---: | :--- |
-| OS | M1 Mac (Monterey 12.4) |
-| IDE | Intellij (2022.1.3) |
-| Java | jdk17 (temurin) |
+
+이번에는 thymeleaf 를 프로젝트에 적용하는 방법과 thymeleaf layout 을 설정하는 방법에 대해서 알아보겠습니다. thymeleaf 의 태그와 사용 방법은 공식 문서를 확인해주시길 바랍니다.
+
+| 종류   | 환경                     |
+| :---: | ----------------------- |
+| OS    | M1 Mac(Monterey 12.4)   |
+| IDE   | Intellij(2022.1.2)      |
+| Java  | jdk17 (temurin)         |
 
 ## Thymeleaf 환경 설정
 
@@ -39,6 +42,10 @@ Thymeleaf Layout 는  공통적인 Header 나 Footer 등을 따로 구현하고 
 
 build.gralde 파일에 다음과 같은 의존성을 추가합니다. java version 이 11이상일 경우 다른 의존성을 추가해야된다는 검색결과가 있지만 저는 이상이 없었기 때문에 그대로 진행합니다.
 
+
 ```yaml
 implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.1.0'
+```
+
+```toc
 ```
