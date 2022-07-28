@@ -7,13 +7,13 @@ tags: Java
 categories: Spring Java
 ---
 
-이번 포스팅에서는 Gradle Project 에 Junit5 를 사용 환경을 설정합니다.
-
 ## 개요
 
 ---
 
-Gradle Project 에 Junit5 + AssertThat 을 설정해보도록 하겠습니다. 맥락을 이해한다면 Spring 프레임워크를 사용하거나 Maven Project 에도 적용할 수 있으니 참고 바랍니다.
+Gradle Project 에 Junit5 + AssertThat 을 설정해보도록 하겠습니다.
+
+맥락을 이해한다면 Spring 프레임워크를 사용하거나 Maven Project 에도 적용할 수 있으니 참고 바랍니다.
 
 | 종류  | 환경                    |
 |:---:|-----------------------|
@@ -78,7 +78,7 @@ configurations {
 }
 ```
 
-## Assert That Static Import 로 Junit5 와 assertj 적용 테스트
+## Assert That Static Import 사용법
 
 ---
 AssertThat 을 알고 있다면 assertThat 을 Static Import 하여 사용하는 것을 확인할 수 있습니다.

@@ -11,7 +11,7 @@ categories: Spring Mybatis
 
 ---
 
-Mybatis 에러 중 **java.lang.NumberFormatException** 와 같은 에러가 발생하는 경우 해결 방법에 대해서 알아보겠습니다.
+Mybatis 에러 중 **java.lang.NumberFormatException** 와 같은 에러가 발생하는 2가지 경우와 해결 방법에 대해서 알아보겠습니다.
 
 ### 에러 예시 화면
 
