@@ -1,3 +1,11 @@
+---
+emoji: 👻
+title: '[java] choice OpenJDK'
+date: '2022-09-19 18:00:00'
+author: olkk
+tags: 
+categories: Sourcetree
+---
 ## 개요
 ---
 JDK 에 대해서 잘 모른다면 선택지조차 모른채 관습적으로 사용하던 JDK만을 사용하는 경우가 있습니다. 해당 포스트에서는 주관적인 관점에서 JDK 를 선택하는 기준과 버전별 추천하는 JDK 에 대해서 다뤄보고자 합니다.OpenJDK의 정의, 상용JDK 보다 나은 점, 버전 별 차이와 같은 요소들을 차치하고 간결하게 구성되어있습니다.
