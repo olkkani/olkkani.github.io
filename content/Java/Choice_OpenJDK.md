@@ -1,11 +1,21 @@
 ---
 emoji: 👻
+<<<<<<< HEAD
 title: '[java] choice OpenJDK'
 date: '2022-09-19 18:00:00'
 author: olkk
 tags: 
 categories: Sourcetree
 ---
+=======
+title: '[java] OpenJDK 선택하기'
+date: "2022-09-20 18:00:00"
+author: Chanjin Ahn
+tags: Java
+categories: Spring Java
+---
+
+>>>>>>> c1a788b99d51822a25cc1ba771417d4513f84916
 ## 개요
 ---
 JDK 에 대해서 잘 모른다면 선택지조차 모른채 관습적으로 사용하던 JDK만을 사용하는 경우가 있습니다. 해당 포스트에서는 주관적인 관점에서 JDK 를 선택하는 기준과 버전별 추천하는 JDK 에 대해서 다뤄보고자 합니다.OpenJDK의 정의, 상용JDK 보다 나은 점, 버전 별 차이와 같은 요소들을 차치하고 간결하게 구성되어있습니다.
@@ -28,6 +38,7 @@ OpenJDK 는 Oracle 에서 제공하는 OpenJDK 말고도 다양한 배급처가 
 | --- | --- | ---|
 | 8 | Zulu | 신뢰성이 높고 지원기간이 압도적으로 김(~2030) |
 | 11 이상 | Temurin | 이클립스 재단의 Adoptium 에서 이전되었으며 최근에 가장 핫함 |
+
 매우 주관적이며 추후 상황에 따라 변경될 여지가 있습니다. 더 좋은 대안을 알게되거나 알려주신다면 높은 확률로 바뀌게 될 것 같습니다.
 ## Referencing & Citation
 ---
