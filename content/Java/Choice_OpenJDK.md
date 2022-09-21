@@ -3,8 +3,8 @@ emoji: 👻
 title: '[java] OpenJDK 선택하기'
 date: "2022-09-20 18:00:00"
 author: Chanjin Ahn
-tags: Java
-categories: Sourcetree
+tags: java
+categories: java
 
 ---
 ## 개요
