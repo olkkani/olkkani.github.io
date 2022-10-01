@@ -1,26 +1,26 @@
 module.exports = {
-  title: `chanjin_ahn.github`,
+  title: `알고있는건 함께`,
   description: `나의 개발일기`,
   language: `ko`, // `ko`, `en` => currently support versions for Korean and English
-  siteUrl: 'https://chanjinahn.github.io',
+  siteUrl: 'https://olkkani.github.io',
   ogImage: `/og-image.png`, // Path to your in the 'static' folder
   comments: {
     utterances: {
-      repo: 'ChanjinAhn/ChanjinAhn.github.io', // `zoomkoding/zoomkoding-gatsby-blog`,
+      repo: 'olkkani/olkkani.github.io', // `zoomkoding/zoomkoding-gatsby-blog`,
     },
   },
   ga: 'G-RL74JVCNRR', // Google Analytics Tracking ID
   author: {
     name: `안찬진`,
     bio: {
-      role: `개발자`,
-      description: ['능동적으로 일하는', '이로운 것을 만드는'],
+      role: `백엔드 개발자`,
+      description: ['더 나은 방법을 탐구하는', '클린 코드를 좋아하는'],
       thumbnail: 'sample.png', // Path to the image in the 'asset' folder
     },
     social: {
-      github: ``, // `https://github.com/zoomKoding`,
+      github: `https://github.com/olkkani`, // `https://github.com/zoomKoding`,
       linkedIn: ``, // `https://www.linkedin.com/in/jinhyeok-jeong-800871192`,
-      email: ``, // `zoomkoding@gmail.com`,
+      email: `olkkani@gmail.com`, // `zoomkoding@gmail.com`,
     },
   },
 
