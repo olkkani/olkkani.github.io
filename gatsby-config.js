@@ -6,7 +6,19 @@ module.exports = {
   siteMetadata: metaConfig,
 
   plugins: [
-    
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        // You can add multiple tracking ids and a pageview event will be fired for all of them.
+        trackingIds: [
+          metaConfig.ga, // 설정 Google Analytics / GA
+          // "AW-CONVERSION_ID", // Google Ads / Adwords / AW
+          // "DC-FLOODIGHT_ID", // Marketing Platform advertising products (Display & Video 360, Search Ads 360, and Campaign Manager)
+        ],
+        head: false, // head에 tracking script를 넣고 싶다면 true로 변경 
+        anonymize: true,
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -31,25 +43,25 @@ module.exports = {
           },
           'branch-deploy': {
             policy: [{ userAgent: '*', disallow: ['/'] }],
-            sitemap: 'https://chanjinahn.github.io/sitemap.xml',
-            host: 'https://chanjinahn.github.io',
+            sitemap: 'https://olkkani.github.io/sitemap.xml',
+            host: 'https://olkkani.github.io',
           },
           'deploy-preview': {
             policy: [{ userAgent: '*', disallow: ['/'] }],
-            sitemap: 'https://chanjinahn.github.io/sitemap.xml',
-            host: 'https://chanjinahn.github.io',
+            sitemap: 'https://olkkani.github.io/sitemap.xml',
+            host: 'https://olkkani.github.io',
           },
         },
       },
     },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: metaConfig.ga,
-        head: true,
-        anonymize: true,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-google-analytics`,
+    //   options: {
+    //     trackingId: metaConfig.ga,
+    //     head: true,
+    //     anonymize: true,
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
