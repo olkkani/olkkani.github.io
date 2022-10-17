@@ -20,7 +20,7 @@ const createBlogPages = ({ createPage, results }) => {
         nextSlug: next?.fields.slug ?? '',
         prevSlug: previous?.fields.slug ?? '',
       },
-    });
+    });F
   });
 };
 
