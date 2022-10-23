@@ -1,0 +1,552 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:image" content="/og-image.png"/><meta data-react-helmet="true" property="og:author" content="안찬진"/><meta data-react-helmet="true" property="og:description" content="이번 시간에는 springboot 에서 log4j2를 설정해보겠습니다. 라이브러리 가져오기 기존 logging 라이브러리 제외하기 스프링에서 제공하는 기본 라이브러리는 사용하지 않을 예정이므로 제외시킵니다.  log4j2 라이브러리 가져오기 다음으로는 log4j2와 slf4j를 위한 라이브러리를 가져오겠습니다. slf4j는 slf4j-impl에 포함되어있으므로 따로 가져오진 않겠습니다. 버전은 작성일 기준 2.17.1 이상을 가져오시길 바랍니다. log4j 취약점 논란이 있었기 때문에 maven repository에서 가져오실 땐 꼭 취약점이 발견되지 않은 버전을 가져오시길 바랍니다.  를 통해 가져오지 않는 이유는 maven repository 사이트의 표기와 달리 2.17.0 버전을 가져오기 때문입니다. yml 설정을 위한 jackson-dataformat-yaml 라이브러리 가져오기 log4j2 설정을 .xml 로 관리해왔지만 이번 프로젝트는 .yml 로 관리해보도록 하겠습니…"/><meta data-react-helmet="true" name="description" content="이번 시간에는 springboot 에서 log4j2를 설정해보겠습니다. 라이브러리 가져오기 기존 logging 라이브러리 제외하기 스프링에서 제공하는 기본 라이브러리는 사용하지 않을 예정이므로 제외시킵니다.  log4j2 라이브러리 가져오기 다음으로는 log4j2와 slf4j를 위한 라이브러리를 가져오겠습니다. slf4j는 slf4j-impl에 포함되어있으므로 따로 가져오진 않겠습니다. 버전은 작성일 기준 2.17.1 이상을 가져오시길 바랍니다. log4j 취약점 논란이 있었기 때문에 maven repository에서 가져오실 땐 꼭 취약점이 발견되지 않은 버전을 가져오시길 바랍니다.  를 통해 가져오지 않는 이유는 maven repository 사이트의 표기와 달리 2.17.0 버전을 가져오기 때문입니다. yml 설정을 위한 jackson-dataformat-yaml 라이브러리 가져오기 log4j2 설정을 .xml 로 관리해왔지만 이번 프로젝트는 .yml 로 관리해보도록 하겠습니…"/><meta data-react-helmet="true" property="og:site_title" content="[springboot] Spring Boot project 시작하기, log4j2 + yml"/><meta data-react-helmet="true" property="og:title" content="[springboot] Spring Boot project 시작하기, log4j2 + yml"/><meta data-react-helmet="true" name="google-site-verification" content="tXOop5qSb4lXwVezPNWWIYzVZZ1KdJSJa8f2Y0p9etk"/><meta data-react-helmet="true" name="viewport" content="initial-scale=1, width=device-width"/><meta name="generator" content="Gatsby 4.19.2"/><style data-href="/styles.f0f69b0fea852e43ed02.css" data-identity="gatsby-global-css">@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:100;src:local("Montserrat Thin "),local("Montserrat-Thin"),url(/static/montserrat-latin-100-8d7d79679b70dbe27172b6460e7a7910.woff2) format("woff2"),url(/static/montserrat-latin-100-ec38980a9e0119a379e2a9b3dbb1901a.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:100;src:local("Montserrat Thin italic"),local("Montserrat-Thinitalic"),url(/static/montserrat-latin-100italic-e279051046ba1286706adc886cf1c96b.woff2) format("woff2"),url(/static/montserrat-latin-100italic-3b325a3173c8207435cd1b76e19bf501.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:200;src:local("Montserrat Extra Light "),local("Montserrat-Extra Light"),url(/static/montserrat-latin-200-9d266fbbfa6cab7009bd56003b1eeb67.woff2) format("woff2"),url(/static/montserrat-latin-200-2d8ba08717110d27122e54c34b8a5798.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:200;src:local("Montserrat Extra Light italic"),local("Montserrat-Extra Lightitalic"),url(/static/montserrat-latin-200italic-6e5b3756583bb2263eb062eae992735e.woff2) format("woff2"),url(/static/montserrat-latin-200italic-a0d6f343e4b536c582926255367a57da.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:300;src:local("Montserrat Light "),local("Montserrat-Light"),url(/static/montserrat-latin-300-00b3e893aab5a8fd632d6342eb72551a.woff2) format("woff2"),url(/static/montserrat-latin-300-ea303695ceab35f17e7d062f30e0173b.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:300;src:local("Montserrat Light italic"),local("Montserrat-Lightitalic"),url(/static/montserrat-latin-300italic-56f34ea368f6aedf89583d444bbcb227.woff2) format("woff2"),url(/static/montserrat-latin-300italic-54b0bf2c8c4c12ffafd803be2466a790.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:400;src:local("Montserrat Regular "),local("Montserrat-Regular"),url(/static/montserrat-latin-400-b71748ae4f80ec8c014def4c5fa8688b.woff2) format("woff2"),url(/static/montserrat-latin-400-0659a9f4e90db5cf51b50d005bff1e41.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:400;src:local("Montserrat Regular italic"),local("Montserrat-Regularitalic"),url(/static/montserrat-latin-400italic-6eed6b4cbb809c6efc7aa7ddad6dbe3e.woff2) format("woff2"),url(/static/montserrat-latin-400italic-7583622cfde30ae49086d18447ab28e7.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:500;src:local("Montserrat Medium "),local("Montserrat-Medium"),url(/static/montserrat-latin-500-091b209546e16313fd4f4fc36090c757.woff2) format("woff2"),url(/static/montserrat-latin-500-edd311588712a96bbf435fad264fff62.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:500;src:local("Montserrat Medium italic"),local("Montserrat-Mediumitalic"),url(/static/montserrat-latin-500italic-c90ced68b46050061d1a41842d6dfb43.woff2) format("woff2"),url(/static/montserrat-latin-500italic-5146cbfe02b1deea5dffea27a5f2f998.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:600;src:local("Montserrat SemiBold "),local("Montserrat-SemiBold"),url(/static/montserrat-latin-600-0480d2f8a71f38db8633b84d8722e0c2.woff2) format("woff2"),url(/static/montserrat-latin-600-b77863a375260a05dd13f86a1cee598f.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:600;src:local("Montserrat SemiBold italic"),local("Montserrat-SemiBolditalic"),url(/static/montserrat-latin-600italic-cf46ffb11f3a60d7df0567f8851a1d00.woff2) format("woff2"),url(/static/montserrat-latin-600italic-c4fcfeeb057724724097167e57bd7801.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:700;src:local("Montserrat Bold "),local("Montserrat-Bold"),url(/static/montserrat-latin-700-7dbcc8a5ea2289d83f657c25b4be6193.woff2) format("woff2"),url(/static/montserrat-latin-700-99271a835e1cae8c76ef8bba99a8cc4e.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:700;src:local("Montserrat Bold italic"),local("Montserrat-Bolditalic"),url(/static/montserrat-latin-700italic-c41ad6bdb4bd504a843d546d0a47958d.woff2) format("woff2"),url(/static/montserrat-latin-700italic-6779372f04095051c62ed36bc1dcc142.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:800;src:local("Montserrat ExtraBold "),local("Montserrat-ExtraBold"),url(/static/montserrat-latin-800-db9a3e0ba7eaea32e5f55328ace6cf23.woff2) format("woff2"),url(/static/montserrat-latin-800-4e3c615967a2360f5db87d2f0fd2456f.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:800;src:local("Montserrat ExtraBold italic"),local("Montserrat-ExtraBolditalic"),url(/static/montserrat-latin-800italic-bf45bfa14805969eda318973947bc42b.woff2) format("woff2"),url(/static/montserrat-latin-800italic-fe82abb0bcede51bf724254878e0c374.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:normal;font-weight:900;src:local("Montserrat Black "),local("Montserrat-Black"),url(/static/montserrat-latin-900-e66c7edc609e24bacbb705175669d814.woff2) format("woff2"),url(/static/montserrat-latin-900-8211f418baeb8ec880b80ba3c682f957.woff) format("woff")}@font-face{font-display:swap;font-family:Montserrat;font-style:italic;font-weight:900;src:local("Montserrat Black italic"),local("Montserrat-Blackitalic"),url(/static/montserrat-latin-900italic-4454c775e48152c1a72510ceed3603e2.woff2) format("woff2"),url(/static/montserrat-latin-900italic-efcaa0f6a82ee0640b83a0916e6e8d68.woff) format("woff")}.search-input-wrapper{align-items:center;display:none;margin-top:3px;width:180px}@media(min-width:768px){.search-input-wrapper{display:flex}}.search-icon{color:var(--primary-text-color);margin-right:2px}.search-input{height:100%;width:100%}.search-input .MuiAutocomplete-inputRoot{padding-right:0!important}.search-input .MuiInputBase-input{color:var(--primary-text-color)!important;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;font-size:16px;font-weight:500;padding-bottom:2px!important}.search-input .MuiInput-underline:before{border-bottom-width:1px}.search-input .MuiInput-underline:after,.search-input .MuiInput-underline:before{border-bottom-color:var(--primary-text-color)}.page-header-wrapper{display:flex;height:60px;justify-content:center;width:100%}.page-header-wrapper .page-header{align-items:center;display:flex;justify-content:space-between;max-width:720px;width:100%}.page-header-wrapper .page-header .link{color:var(--primary-text-color);font-size:17px;font-weight:700}@media(min-width:768px){.page-header-wrapper .page-header .link{font-size:20px;font-weight:700}}.page-header-wrapper .page-header .trailing-section{align-items:center;display:flex}.page-header-wrapper .page-header .trailing-section .link{margin-right:10px}@media(min-width:768px){.page-header-wrapper .page-header .trailing-section .link{margin-right:20px}}.page-footer-wrapper{align-items:center;display:flex;height:62px;justify-content:center;margin-top:auto;width:100%}.page-footer-wrapper .page-footer{max-width:720px;text-align:center;width:100%}.page-footer-wrapper .page-footer .link{color:var(--primary-text-color);font-size:20px;font-weight:700;margin-right:20px}.page-footer-wrapper .page-footer a{color:#3a95ff}.dark-mode-button-wrapper{align-items:center;bottom:20px;display:flex;justify-content:center;position:fixed;right:20px}.dark-mode-button{-webkit-backdrop-filter:blur(30px);backdrop-filter:blur(30px);background-color:#363f47!important;border-radius:50px;box-shadow:0 5px 25px rgba(0,0,0,.12);cursor:pointer;height:50px;width:50px;z-index:3}.dark-mode-icon{color:#fff}a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{border:0;font-size:100%;font:inherit;margin:0;padding:0;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:"";content:none}table{border-collapse:collapse;border-spacing:0}a{outline:none;text-decoration:none}html{--background-color:#fff;--primary-text-color:#000;--secondary-text-color:#9e9e9e;--content-text-color:#37352f;--button-background-color:#f3f3f4;--button-text-color:#363f47;--tab-text-color:#6e6d7a;--tab-hover-text-color:#0d0c22;--tab-selected-background-color:rgba(13,12,34,.05);--bio-link-icon-color:rgba(0,0,0,.54);--about-link-icon-color:#a8a8a8;--chip-background-color:#f3f3f4;--link-text-color:rgba(55,53,47,.7);--post-card-border-color:rgba(0,0,0,.12);--markdown-table-even-cell-background-color:#f6f8fa;--markdown-table-border-color:#dfe2e5;--markdown-blockquote-border-color:#dfe2e5;--markdown-border-color:#e1e4e8}html[data-theme=dark]{--background-color:#232326;--primary-text-color:#e6e6e6;--secondary-text-color:#768390;--content-text-color:#e6e6e6;--button-background-color:#444c56;--button-text-color:#363f47;--tab-text-color:#768390;--tab-hover-text-color:#acbac7;--tab-selected-background-color:#373e47;--chip-background-color:#323a42;--bio-link-icon-color:#e6e6e6;--about-link-icon-color:#a8a8a8;--link-text-color:#90b0ec;--post-card-border-color:#363f47;--markdown-table-even-cell-background-color:#2d333b;--markdown-table-border-color:#444c56;--markdown-blockquote-border-color:#4f5864;--markdown-border-color:#e1e4e8}*{-webkit-appearance:none;appearance:none;box-sizing:border-box}html{font-size:14px;height:100%;overflow-y:scroll;width:100%}body{background-color:var(--background-color)!important}a{color:var(--link-text-color)}.page-wrapper{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:var(--primary-text-color);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;justify-content:center;min-height:100vh;padding-left:15px;padding-right:15px;word-break:keep-all}.page-wrapper,.page-wrapper .page-content{align-items:center;display:flex;flex-direction:column;width:100%}.page-wrapper .page-content{max-width:720px}.icon{color:var(--about-link-icon-color);font-size:20px}.social-links .icon{color:var(--bio-link-icon-color);font-size:30px}@-webkit-keyframes blinking-cursor{0%{opacity:0}50%{opacity:1}to{opacity:0}}@keyframes blinking-cursor{0%{opacity:0}50%{opacity:1}to{opacity:0}}.bio{color:var(--primary-text-color);display:flex;flex-direction:column;justify-content:space-between;margin-bottom:120px;margin-top:120px;width:100%}@media(min-width:768px){.bio{align-items:center;flex-direction:row}}.bio .introduction{display:flex;flex-direction:column;word-break:keep-all}.bio .introduction .react-rotating-text-cursor{-webkit-animation:blinking-cursor .8s cubic-bezier(.68,.01,.01,.99) 0s infinite;animation:blinking-cursor .8s cubic-bezier(.68,.01,.01,.99) 0s infinite}.bio .introduction strong{display:inline-block;font-weight:600}.bio .introduction.korean{font-size:32px;font-weight:100;line-height:1.2}.bio .introduction.korean .title .react-rotating-text-cursor{font-size:35px;line-height:35px}@media(min-width:768px){.bio .introduction.korean{font-size:40px}.bio .introduction.korean .title .react-rotating-text-cursor{font-size:45px;line-height:45px}}.bio .introduction.english{font-family:montserrat;font-size:25px;line-height:1.2}@media(min-width:768px){.bio .introduction.english{font-size:45px}}.bio .introduction.english .name{font-size:35px;font-weight:600}.bio .introduction.english .job{font-size:35px}.bio .introduction.english .description{font-size:20px;font-weight:200;margin-top:8px}.bio .introduction.english .social-links{display:flex;margin-top:20px}.bio .thumbnail{display:none;width:250px}@media(min-width:768px){.bio .thumbnail{display:block}}.section-header-wrapper{display:flex;justify-content:center;margin-bottom:32px;width:100%}.section-header-wrapper .section-header{border-bottom:4px solid var(--primary-text-color);color:var(--primary-text-color);font-size:30px;font-weight:700;padding-bottom:5px}.timestamp-section{align-items:center;display:flex;flex-direction:column;justify-content:center;margin-bottom:50px;width:100%;word-break:keep-all}.timestamp-section .body{padding:0 10px;width:100%}.timestamp-section .body .timestamp{border-left:2px solid #bdbdbd;display:flex;font-size:18px;font-weight:400;justify-items:center;margin-left:5px;padding:10px 0;width:100%}.timestamp-section .body .timestamp:first-child{padding-top:7px}.timestamp-section .body .timestamp:last-child{padding-bottom:7px}.timestamp-section .body .timestamp:before{align-self:center;background-color:var(--background-color);border:2px solid #828282;border-radius:10px;content:"";height:10px;left:-1px;position:relative;-webkit-transform:translatex(-50%);transform:translatex(-50%);width:10px}.timestamp-section .body .timestamp .date{align-self:center;color:#828282;margin-left:5px;margin-right:5px;min-width:115px;width:115px}@media(min-width:768px){.timestamp-section .body .timestamp .date{min-width:200px;width:200px}}.timestamp-section .body .timestamp .activity{line-height:23px;width:100%}.project-section{align-items:center;justify-content:center}.project-section,.project-section .project{display:flex;flex-direction:column;width:100%}.project-section .project{margin-bottom:30px;padding:15px}.project-section .project .head{font-size:20px;font-weight:700;line-height:30px;margin-bottom:10px}.project-section .project .body{display:flex;flex-direction:column;width:100%}.project-section .project .body .thumbnail{margin-bottom:10px;width:100%}.project-section .project .body .tech-stack{display:flex;margin-bottom:10px}.project-section .project .body .tech-stack .tech{background-color:var(--chip-background-color);border-radius:10px;font-size:15px;font-weight:500;margin-right:5px;padding:5px 7px}.project-section .project .body .description{font-size:16px;font-weight:400;line-height:1.4}@media(min-width:768px){.project-section .project .body{flex-direction:column}.project-section .project .body .content{margin-top:0}}.post-header{border-bottom:1px solid var(--post-card-border-color);display:flex;flex-direction:column;justify-content:center;margin-bottom:40px;margin-top:20px;padding-bottom:10px;width:100%;word-break:keep-all}.post-header .emoji{font-size:78px;margin-bottom:20px}.post-header .categories{margin-bottom:5px}.post-header .categories .category{color:var(--primary-text-color);font-weight:600;margin-right:4px}.post-header .categories .category:hover{text-decoration:underline}.post-header .title{color:var(--primary-text-color);font-size:32px;font-weight:600;line-height:1.3;margin-bottom:6px}.post-header .info{color:var(--secondary-text-color);display:flex;flex-wrap:wrap;font-size:16px;font-weight:500;line-height:1.5;width:100%}.post-header .info .author{margin-right:4px}.post-header .info strong{color:var(--primary-text-color);font-weight:600}.post-navigator{-webkit-column-gap:1.4%;column-gap:1.4%;display:grid;grid-template-columns:49.3% 49.3%;width:100%}.post-navigator .post-card{border:1px solid var(--post-card-border-color);border-radius:6px;color:var(--primary-text-color);cursor:pointer;display:flex;flex-direction:column;padding:15px;transition:-webkit-transform .2s;transition:transform .2s;transition:transform .2s,-webkit-transform .2s;width:100%}.post-navigator .post-card:hover .title{text-decoration:underline}.post-navigator .post-card.prev{margin-right:auto}.post-navigator .post-card.next{margin-left:auto}.post-navigator .post-card .direction{color:gray;font-size:14px;font-weight:500;margin-bottom:5px}.post-navigator .post-card .title{font-size:16px;font-weight:600;line-height:1.4;margin-bottom:7px}.markdown .octicon{fill:currentColor;display:inline-block;vertical-align:text-bottom}.markdown .anchor{float:left;line-height:1;margin-left:-20px;padding-right:4px}.markdown .anchor:focus{outline:none}.markdown h1 .octicon-link,.markdown h2 .octicon-link,.markdown h3 .octicon-link,.markdown h4 .octicon-link,.markdown h5 .octicon-link,.markdown h6 .octicon-link{color:#1b1f23;vertical-align:middle;visibility:hidden}.markdown h1:hover .anchor,.markdown h2:hover .anchor,.markdown h3:hover .anchor,.markdown h4:hover .anchor,.markdown h5:hover .anchor,.markdown h6:hover .anchor{text-decoration:none}.markdown h1:hover .anchor .octicon-link,.markdown h2:hover .anchor .octicon-link,.markdown h3:hover .anchor .octicon-link,.markdown h4:hover .anchor .octicon-link,.markdown h5:hover .anchor .octicon-link,.markdown h6:hover .anchor .octicon-link{visibility:visible}.markdown h1:hover .anchor .octicon-link:before,.markdown h2:hover .anchor .octicon-link:before,.markdown h3:hover .anchor .octicon-link:before,.markdown h4:hover .anchor .octicon-link:before,.markdown h5:hover .anchor .octicon-link:before,.markdown h6:hover .anchor .octicon-link:before{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' aria-hidden='true' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z'/%3E%3C/svg%3E");content:" ";display:inline-block;height:16px;width:16px}.markdown{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;word-wrap:break-word;color:var(--content-text-color);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;font-size:16px;font-weight:500;line-height:1.5}.markdown details{display:block}.markdown summary{display:list-item}.markdown a{background-color:initial}.markdown a:active,.markdown a:hover{outline-width:0}.markdown strong{font-weight:inherit;font-weight:bolder}.markdown h1{margin:.67em 0}.markdown img{border-style:none}.markdown code,.markdown kbd,.markdown pre{font-family:monospace,monospace;font-size:1em}.markdown hr{box-sizing:initial;overflow:visible}.markdown input{font:inherit;margin:0;overflow:visible}.markdown [type=checkbox]{box-sizing:border-box;padding:0}.markdown *{box-sizing:border-box}.markdown input{font-family:inherit;font-size:inherit;line-height:inherit}.markdown a{border-bottom:.05em solid;border-color:var(--link-text-color);color:var(--link-text-color);text-decoration:none}.markdown a.anchor{border-bottom:none}.markdown strong{font-weight:700}.markdown hr{background:transparent;border-bottom:1px solid var(--markdown-blockquote-border-color);height:0;margin:15px 0;overflow:hidden}.markdown hr:after,.markdown hr:before{content:"";display:table}.markdown hr:after{clear:both}.markdown table{border-collapse:collapse;border-spacing:0}.markdown td,.markdown th{padding:0}.markdown details summary{cursor:pointer}.markdown h1,.markdown h2,.markdown h3,.markdown h4,.markdown h5,.markdown h6{margin-bottom:0;margin-top:0}.markdown h1{font-size:32px}.markdown h1,.markdown h2{font-weight:600}.markdown h2{font-size:24px}.markdown h3{font-size:20px}.markdown h3,.markdown h4{font-weight:600}.markdown h4{font-size:16px}.markdown h5{font-size:14px}.markdown h5,.markdown h6{font-weight:600}.markdown h6{font-size:12px}.markdown p{margin-bottom:10px;margin-top:0}.markdown blockquote{margin:0}.markdown ol,.markdown ul{margin-bottom:0;margin-top:0;padding-left:0}.markdown ol ol,.markdown ul ol{list-style-type:lower-roman}.markdown ol ol ol,.markdown ol ul ol,.markdown ul ol ol,.markdown ul ul ol{list-style-type:lower-alpha}.markdown dd{margin-left:0}.markdown code,.markdown pre{font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;font-size:12px}.markdown code.language-text{border-radius:3px;font-size:85%;padding:.2em .4em}.markdown :not(pre)>code.language-text{background:hsla(44,6%,50%,.15);color:#eb5757;overflow-wrap:break-word}.markdown pre{margin-bottom:0;margin-top:0}.markdown input::-webkit-inner-spin-button,.markdown input::-webkit-outer-spin-button{-webkit-appearance:none;appearance:none;margin:0}.markdown :checked+.radio-label{border-color:#0366d6;position:relative;z-index:1}.markdown .border{border:1px solid var(--markdown-border-color)!important}.markdown .border-0{border:0!important}.markdown .border-bottom{border-bottom:1px solid var(--markdown-border-color)!important}.markdown .rounded-1{border-radius:3px!important}.markdown .bg-white{background-color:transparent!important}.markdown .bg-gray-light{background-color:#fafbfc!important}.markdown .text-gray-light{color:#6a737d!important}.markdown .pl-3,.markdown .px-3{padding-left:16px!important}.markdown .px-3{padding-right:16px!important}.markdown .f6{font-size:12px!important}.markdown .lh-condensed{line-height:1.25!important}.markdown .text-bold{font-weight:600!important}.markdown .pl-c{color:#6a737d}.markdown .pl-c1,.markdown .pl-s .pl-v{color:#005cc5}.markdown .pl-e,.markdown .pl-en{color:#6f42c1}.markdown .pl-s .pl-s1,.markdown .pl-smi{color:#24292e}.markdown .pl-ent{color:#22863a}.markdown .pl-k{color:#d73a49}.markdown .pl-pds,.markdown .pl-s,.markdown .pl-s .pl-pse .pl-s1,.markdown .pl-sr,.markdown .pl-sr .pl-cce,.markdown .pl-sr .pl-sra,.markdown .pl-sr .pl-sre{color:#032f62}.markdown .pl-smw,.markdown .pl-v{color:#e36209}.markdown .pl-bu{color:#b31d28}.markdown .pl-ii{background-color:#b31d28;color:#fafbfc}.markdown .pl-c2{background-color:#d73a49;color:#fafbfc}.markdown .pl-c2:before{content:"^M"}.markdown .pl-sr .pl-cce{color:#22863a;font-weight:700}.markdown .pl-ml{color:#735c0f}.markdown .pl-mh,.markdown .pl-mh .pl-en,.markdown .pl-ms{color:#005cc5;font-weight:700}.markdown .pl-mi{color:#24292e;font-style:italic}.markdown .pl-mb{color:#24292e;font-weight:700}.markdown .pl-md{background-color:#ffeef0;color:#b31d28}.markdown .pl-mi1{background-color:#f0fff4;color:#22863a}.markdown .pl-mc{background-color:#ffebda;color:#e36209}.markdown .pl-mi2{background-color:#005cc5;color:#f6f8fa}.markdown .pl-mdr{color:#6f42c1;font-weight:700}.markdown .pl-ba{color:#586069}.markdown .pl-sg{color:#959da5}.markdown .pl-corl{color:#032f62;text-decoration:underline}.markdown .mb-0{margin-bottom:0!important}.markdown .my-2{margin-bottom:8px!important;margin-top:8px!important}.markdown .pl-0{padding-left:0!important}.markdown .py-0{padding-bottom:0!important;padding-top:0!important}.markdown .pl-1{padding-left:4px!important}.markdown .pl-2{padding-left:8px!important}.markdown .py-2{padding-bottom:8px!important;padding-top:8px!important}.markdown .pl-3{padding-left:16px!important}.markdown .pl-4{padding-left:24px!important}.markdown .pl-5{padding-left:32px!important}.markdown .pl-6{padding-left:40px!important}.markdown .pl-7{padding-left:48px!important}.markdown .pl-8{padding-left:64px!important}.markdown .pl-9{padding-left:80px!important}.markdown .pl-10{padding-left:96px!important}.markdown .pl-11{padding-left:112px!important}.markdown .pl-12{padding-left:128px!important}.markdown hr{border-bottom-color:#eee}.markdown kbd{background-color:#fafbfc;border:1px solid #d1d5da;border-radius:3px;box-shadow:inset 0 -1px 0 #d1d5da;color:#444d56;display:inline-block;font:11px SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;line-height:10px;padding:3px 5px;vertical-align:middle}.markdown:after,.markdown:before{content:"";display:table}.markdown:after{clear:both}.markdown>:first-child{margin-top:0!important}.markdown>:last-child{margin-bottom:0!important}.markdown a:not([href]){color:inherit;text-decoration:none}.markdown blockquote,.markdown details,.markdown dl,.markdown ol,.markdown p,.markdown pre,.markdown table,.markdown ul{margin-bottom:16px;margin-top:0}.markdown hr{background-color:var(--markdown-border-color);border:0;height:.25em;margin:24px 0;padding:0}.markdown blockquote{border-left:.25em solid var(--markdown-blockquote-border-color);color:#6a737d;padding:0 1em}.markdown blockquote>:first-child{margin-top:0}.markdown blockquote>:last-child{margin-bottom:0}.markdown h1,.markdown h2,.markdown h3,.markdown h4,.markdown h5,.markdown h6{font-weight:600;line-height:1.25;margin-bottom:16px;margin-top:24px}.markdown h1{font-size:2em}.markdown h2{font-size:1.5em}.markdown h3{font-size:1.25em}.markdown h4{font-size:1em}.markdown h5{font-size:.875em}.markdown h6{color:#6a737d;font-size:.85em}.markdown ol,.markdown ul{padding-left:2em}.markdown ol ol,.markdown ol ul,.markdown ul ol,.markdown ul ul{margin-bottom:0;margin-top:0}.markdown ol{list-style-type:decimal}.markdown ul{list-style-type:disc}.markdown li{word-wrap:break-all;display:list-item;text-align:-webkit-match-parent}.markdown li>p{margin-top:16px}.markdown li+li{margin-top:.25em}.markdown dl{padding:0}.markdown dl dt{font-size:1em;font-style:italic;font-weight:600;margin-top:16px;padding:0}.markdown dl dd{margin-bottom:16px;padding:0 16px}.markdown table{display:block;overflow:auto;width:100%}.markdown table th{font-weight:600}.markdown table td,.markdown table th{border:1px solid var(--markdown-table-border-color);padding:6px 13px}.markdown table tr{border-top:1px solid var(--markdown-table-border-color)}.markdown table tr:nth-child(2n){background-color:var(--markdown-table-even-cell-background-color)}.markdown img{background-color:transparent;box-sizing:initial;display:block;margin:0 auto;max-width:100%}.markdown img[align=right]{padding-left:20px}.markdown img[align=left]{padding-right:20px}.markdown code{background-color:rgba(27,31,35,.05);border-radius:3px;font-size:85%;margin:0;padding:.2em .4em}.markdown pre{word-wrap:normal}.markdown pre>code{background:transparent;border:0;font-size:100%;margin:0;padding:0;white-space:pre;word-break:normal}.markdown .highlight{margin-bottom:16px}.markdown .highlight pre{margin-bottom:0;word-break:normal}.markdown .highlight pre,.markdown pre{background-color:#f6f8fa;border-radius:3px;font-size:85%;line-height:1.45;overflow:auto;padding:16px}.markdown pre code{word-wrap:normal;background-color:initial;border:0;display:inline;line-height:inherit;margin:0;max-width:auto;overflow:visible;padding:0}.markdown .commit-tease-sha{color:#444d56;display:inline-block;font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;font-size:90%}.markdown .full-commit .btn-outline:not(:disabled):hover{border-color:#005cc5;color:#005cc5}.markdown .blob-wrapper{overflow-x:auto;overflow-y:hidden}.markdown .blob-wrapper-embedded{max-height:240px;overflow-y:auto}.markdown .blob-num{color:rgba(27,31,35,.3);cursor:pointer;font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;font-size:12px;line-height:20px;min-width:50px;padding-left:10px;padding-right:10px;text-align:right;-webkit-user-select:none;user-select:none;vertical-align:top;white-space:nowrap;width:1%}.markdown .blob-num:hover{color:rgba(27,31,35,.6)}.markdown .blob-num:before{content:attr(data-line-number)}.markdown .blob-code{line-height:20px;padding-left:10px;padding-right:10px;position:relative;vertical-align:top}.markdown .blob-code-inner{word-wrap:normal;color:#24292e;font-family:SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;font-size:12px;overflow:visible;white-space:pre}.markdown .pl-token.active,.markdown .pl-token:hover{background:#ffea7f;cursor:pointer}.markdown .tab-size[data-tab-size="1"]{-o-tab-size:1;tab-size:1}.markdown .tab-size[data-tab-size="2"]{-o-tab-size:2;tab-size:2}.markdown .tab-size[data-tab-size="3"]{-o-tab-size:3;tab-size:3}.markdown .tab-size[data-tab-size="4"]{-o-tab-size:4;tab-size:4}.markdown .tab-size[data-tab-size="5"]{-o-tab-size:5;tab-size:5}.markdown .tab-size[data-tab-size="6"]{-o-tab-size:6;tab-size:6}.markdown .tab-size[data-tab-size="7"]{-o-tab-size:7;tab-size:7}.markdown .tab-size[data-tab-size="8"]{-o-tab-size:8;tab-size:8}.markdown .tab-size[data-tab-size="9"]{-o-tab-size:9;tab-size:9}.markdown .tab-size[data-tab-size="10"]{-o-tab-size:10;tab-size:10}.markdown .tab-size[data-tab-size="11"]{-o-tab-size:11;tab-size:11}.markdown .tab-size[data-tab-size="12"]{-o-tab-size:12;tab-size:12}.markdown .task-list-item{list-style-type:none}.markdown .task-list-item+.task-list-item{margin-top:3px}.markdown .task-list-item input{margin:0 .2em .25em -1.6em;vertical-align:middle}.markdown .table-of-contents{align-items:flex-start;display:flex;flex-direction:column;justify-content:center;position:fixed;right:0;top:75px;width:340px}@media(max-width:1300px){.markdown .table-of-contents{display:none}}.markdown .table-of-contents ul{cursor:pointer;list-style-type:none}.markdown .table-of-contents ul li a{border-bottom:none;color:var(--secondary-text-color);font-size:14px;height:30px;padding:6px 2px;width:100%}.markdown .table-of-contents ul p{margin:0}.markdown .gatsby-resp-image-wrapper{display:flex!important;justify-content:center!important;max-height:560px!important;width:100%!important}.markdown .gatsby-resp-image-wrapper img{height:auto!important;max-height:560px!important;max-width:100%!important;position:relative!important;width:auto!important}.markdown .gatsby-resp-image-wrapper+em{color:#6a737d;display:block;font-size:15px;font-style:italic;text-align:center}code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#ccc;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;hyphens:none;line-height:1.5;-o-tab-size:4;tab-size:4;text-align:left;white-space:pre;word-break:normal;word-spacing:normal}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}.post-content{margin-bottom:20px;width:100%}.category-page-header-wrapper,.post-content{display:flex;flex-direction:column;justify-content:center}.category-page-header-wrapper{align-items:center;margin-bottom:30px;margin-top:30px}.category-page-header-wrapper .category-page-title{border-bottom:3px solid var(--primary-text-color);font-size:40px;font-weight:700;margin-bottom:15px;padding-bottom:7px;text-align:center;width:-webkit-fit-content;width:-moz-fit-content;width:fit-content}.category-page-header-wrapper .category-page-subtitle{font-size:20px;font-weight:500;padding-bottom:10px;text-align:center}.post-card-wrapper{display:flex;justify-content:center;min-height:150px;width:100%}.post-card-wrapper .post-card{border:1px solid var(--post-card-border-color);border-radius:6px;color:var(--primary-text-color);cursor:pointer;display:flex;flex-direction:column;height:100%;margin-bottom:15px;max-width:720px;padding:15px;transition:-webkit-transform .2s;transition:transform .2s;transition:transform .2s,-webkit-transform .2s;width:100%}.post-card-wrapper .post-card:hover .title{text-decoration:underline}@media(min-width:768px){.post-card-wrapper .post-card{margin-bottom:0}}.post-card-wrapper .post-card .title{font-size:18px;font-weight:600;line-height:1.4;margin-bottom:7px}.post-card-wrapper .post-card .description{-webkit-line-clamp:3;-webkit-box-orient:vertical;color:var(--primary-text-color);display:-webkit-box;font-size:13px;line-height:20px;margin-bottom:10px;overflow:hidden;text-overflow:ellipsis}.post-card-wrapper .post-card .info{color:var(--about-link-icon-color);display:flex;font-size:14px;justify-content:space-between;margin-top:auto}.post-card-wrapper .post-card .info .categories{display:flex}.post-card-wrapper .post-card .info .categories .category{margin-left:4px}.post-card-wrapper .post-card .info .categories .category:hover{text-decoration:underline}.post-card-column-wrapper{display:flex;justify-content:center;width:100%}.post-card-column-wrapper .post-card-column{align-items:center;display:flex;flex-direction:column}.post-card-column-wrapper .post-card-column .post-card-wrapper{margin-bottom:10px}.post-card-column-wrapper .post-card-column .more-post-card-button{background-color:var(--button-background-color);font-size:15px;font-weight:500;height:40px}.post-tabs-wrapper{align-self:flex-start;display:flex;flex-direction:column;justify-content:center;top:0;width:100%}.post-tabs-wrapper .post-tabs{display:flex;height:40px;justify-content:center;margin-bottom:12px;max-width:760px;width:100%}.post-tabs-wrapper .post-tabs .mui-tabs .MuiTab-root{color:var(--tab-text-color);font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;font-size:17px;font-weight:500;height:40px;min-height:auto;min-width:auto;padding:10px 12px;transition:all .2s ease}.post-tabs-wrapper .post-tabs .mui-tabs .Mui-selected,.post-tabs-wrapper .post-tabs .mui-tabs .MuiTab-root :hover{color:var(--tab-hover-text-color);transition:all .2s ease}.post-tabs-wrapper .post-tabs .mui-tabs .Mui-selected{background-color:var(--tab-selected-background-color);border-radius:8px;font-weight:600}.post-tabs-wrapper .post-tabs .mui-tabs .MuiTabScrollButton-root{height:40px;width:20px}.post-tabs-wrapper .post-tabs .mui-tabs .MuiTabs-scrollable{height:40px}.post-tabs-wrapper .post-tabs .mui-tabs .MuiTabs-indicator{display:none}</style><style data-emotion="css-global o6gwfi">html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;box-sizing:border-box;-webkit-text-size-adjust:100%;}*,*::before,*::after{box-sizing:inherit;}strong,b{font-weight:700;}body{margin:0;color:rgba(0, 0, 0, 0.87);font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:400;font-size:1rem;line-height:1.5;letter-spacing:0.00938em;background-color:#fff;}@media print{body{background-color:#fff;}}body::backdrop{background-color:#fff;}</style><style data-emotion="css-global 1prfaxn">@-webkit-keyframes mui-auto-fill{from{display:block;}}@keyframes mui-auto-fill{from{display:block;}}@-webkit-keyframes mui-auto-fill-cancel{from{display:block;}}@keyframes mui-auto-fill-cancel{from{display:block;}}</style><style data-emotion="css 1l6di18 feqhe6 1yf1g2m mnn31 vubbuv 1yxmbwk 6flbmm">.css-1l6di18.Mui-focused .MuiAutocomplete-clearIndicator{visibility:visible;}@media (pointer: fine){.css-1l6di18:hover .MuiAutocomplete-clearIndicator{visibility:visible;}}.css-1l6di18 .MuiAutocomplete-tag{margin:3px;max-width:calc(100% - 6px);}.css-1l6di18 .MuiAutocomplete-inputRoot{-webkit-box-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;}.MuiAutocomplete-hasPopupIcon.css-1l6di18 .MuiAutocomplete-inputRoot,.MuiAutocomplete-hasClearIcon.css-1l6di18 .MuiAutocomplete-inputRoot{padding-right:30px;}.MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.css-1l6di18 .MuiAutocomplete-inputRoot{padding-right:56px;}.css-1l6di18 .MuiAutocomplete-inputRoot .MuiAutocomplete-input{width:0;min-width:30px;}.css-1l6di18 .MuiInput-root{padding-bottom:1px;}.css-1l6di18 .MuiInput-root .MuiInput-input{padding:4px 4px 4px 0px;}.css-1l6di18 .MuiInput-root.MuiInputBase-sizeSmall .MuiInput-input{padding:2px 4px 3px 0;}.css-1l6di18 .MuiOutlinedInput-root{padding:9px;}.MuiAutocomplete-hasPopupIcon.css-1l6di18 .MuiOutlinedInput-root,.MuiAutocomplete-hasClearIcon.css-1l6di18 .MuiOutlinedInput-root{padding-right:39px;}.MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.css-1l6di18 .MuiOutlinedInput-root{padding-right:65px;}.css-1l6di18 .MuiOutlinedInput-root .MuiAutocomplete-input{padding:7.5px 4px 7.5px 6px;}.css-1l6di18 .MuiOutlinedInput-root .MuiAutocomplete-endAdornment{right:9px;}.css-1l6di18 .MuiOutlinedInput-root.MuiInputBase-sizeSmall{padding:6px;}.css-1l6di18 .MuiOutlinedInput-root.MuiInputBase-sizeSmall .MuiAutocomplete-input{padding:2.5px 4px 2.5px 6px;}.css-1l6di18 .MuiFilledInput-root{padding-top:19px;padding-left:8px;}.MuiAutocomplete-hasPopupIcon.css-1l6di18 .MuiFilledInput-root,.MuiAutocomplete-hasClearIcon.css-1l6di18 .MuiFilledInput-root{padding-right:39px;}.MuiAutocomplete-hasPopupIcon.MuiAutocomplete-hasClearIcon.css-1l6di18 .MuiFilledInput-root{padding-right:65px;}.css-1l6di18 .MuiFilledInput-root .MuiFilledInput-input{padding:7px 4px;}.css-1l6di18 .MuiFilledInput-root .MuiAutocomplete-endAdornment{right:9px;}.css-1l6di18 .MuiFilledInput-root.MuiInputBase-sizeSmall{padding-bottom:1px;}.css-1l6di18 .MuiFilledInput-root.MuiInputBase-sizeSmall .MuiFilledInput-input{padding:2.5px 4px;}.css-1l6di18 .MuiInputBase-hiddenLabel{padding-top:8px;}.css-1l6di18 .MuiAutocomplete-input{-webkit-box-flex:1;-webkit-flex-grow:1;-ms-flex-positive:1;flex-grow:1;text-overflow:ellipsis;opacity:1;}.css-feqhe6{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;position:relative;min-width:0;padding:0;margin:0;border:0;vertical-align:top;width:100%;}.css-1yf1g2m{font-family:"Roboto","Helvetica","Arial",sans-serif;font-weight:400;font-size:1rem;line-height:1.4375em;letter-spacing:0.00938em;color:rgba(0, 0, 0, 0.87);box-sizing:border-box;position:relative;cursor:text;display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;width:100%;position:relative;}.css-1yf1g2m.Mui-disabled{color:rgba(0, 0, 0, 0.38);cursor:default;}label+.css-1yf1g2m{margin-top:16px;}.css-1yf1g2m:after{border-bottom:2px solid #1976d2;left:0;bottom:0;content:"";position:absolute;right:0;-webkit-transform:scaleX(0);-moz-transform:scaleX(0);-ms-transform:scaleX(0);transform:scaleX(0);-webkit-transition:-webkit-transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;transition:transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;pointer-events:none;}.css-1yf1g2m.Mui-focused:after{-webkit-transform:scaleX(1) translateX(0);-moz-transform:scaleX(1) translateX(0);-ms-transform:scaleX(1) translateX(0);transform:scaleX(1) translateX(0);}.css-1yf1g2m.Mui-error:after{border-bottom-color:#d32f2f;-webkit-transform:scaleX(1);-moz-transform:scaleX(1);-ms-transform:scaleX(1);transform:scaleX(1);}.css-1yf1g2m:before{border-bottom:1px solid rgba(0, 0, 0, 0.42);left:0;bottom:0;content:"\00a0";position:absolute;right:0;-webkit-transition:border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;pointer-events:none;}.css-1yf1g2m:hover:not(.Mui-disabled):before{border-bottom:2px solid rgba(0, 0, 0, 0.87);}@media (hover: none){.css-1yf1g2m:hover:not(.Mui-disabled):before{border-bottom:1px solid rgba(0, 0, 0, 0.42);}}.css-1yf1g2m.Mui-disabled:before{border-bottom-style:dotted;}.css-mnn31{font:inherit;letter-spacing:inherit;color:currentColor;padding:4px 0 5px;border:0;box-sizing:content-box;background:none;height:1.4375em;margin:0;-webkit-tap-highlight-color:transparent;display:block;min-width:0;width:100%;-webkit-animation-name:mui-auto-fill-cancel;animation-name:mui-auto-fill-cancel;-webkit-animation-duration:10ms;animation-duration:10ms;}.css-mnn31::-webkit-input-placeholder{color:currentColor;opacity:0.42;-webkit-transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}.css-mnn31::-moz-placeholder{color:currentColor;opacity:0.42;-webkit-transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}.css-mnn31:-ms-input-placeholder{color:currentColor;opacity:0.42;-webkit-transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}.css-mnn31::-ms-input-placeholder{color:currentColor;opacity:0.42;-webkit-transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}.css-mnn31:focus{outline:0;}.css-mnn31:invalid{box-shadow:none;}.css-mnn31::-webkit-search-decoration{-webkit-appearance:none;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31::-webkit-input-placeholder{opacity:0!important;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31::-moz-placeholder{opacity:0!important;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31:-ms-input-placeholder{opacity:0!important;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31::-ms-input-placeholder{opacity:0!important;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31:focus::-webkit-input-placeholder{opacity:0.42;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31:focus::-moz-placeholder{opacity:0.42;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31:focus:-ms-input-placeholder{opacity:0.42;}label[data-shrink=false]+.MuiInputBase-formControl .css-mnn31:focus::-ms-input-placeholder{opacity:0.42;}.css-mnn31.Mui-disabled{opacity:1;-webkit-text-fill-color:rgba(0, 0, 0, 0.38);}.css-mnn31:-webkit-autofill{-webkit-animation-duration:5000s;animation-duration:5000s;-webkit-animation-name:mui-auto-fill;animation-name:mui-auto-fill;}.css-vubbuv{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:1em;height:1em;display:inline-block;fill:currentColor;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;-webkit-transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;font-size:1.5rem;}.css-1yxmbwk{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;position:relative;box-sizing:border-box;-webkit-tap-highlight-color:transparent;background-color:transparent;outline:0;border:0;margin:0;border-radius:0;padding:0;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;-moz-appearance:none;-webkit-appearance:none;-webkit-text-decoration:none;text-decoration:none;color:inherit;text-align:center;-webkit-flex:0 0 auto;-ms-flex:0 0 auto;flex:0 0 auto;font-size:1.5rem;padding:8px;border-radius:50%;overflow:visible;color:rgba(0, 0, 0, 0.54);-webkit-transition:background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}.css-1yxmbwk::-moz-focus-inner{border-style:none;}.css-1yxmbwk.Mui-disabled{pointer-events:none;cursor:default;}@media print{.css-1yxmbwk{-webkit-print-color-adjust:exact;color-adjust:exact;}}.css-1yxmbwk:hover{background-color:rgba(0, 0, 0, 0.04);}@media (hover: none){.css-1yxmbwk:hover{background-color:transparent;}}.css-1yxmbwk.Mui-disabled{background-color:transparent;color:rgba(0, 0, 0, 0.26);}.css-6flbmm{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;width:1em;height:1em;display:inline-block;fill:currentColor;-webkit-flex-shrink:0;-ms-flex-negative:0;flex-shrink:0;-webkit-transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;font-size:2.1875rem;}</style><link rel="preconnect" href="https://www.googletagmanager.com"/><link rel="dns-prefetch" href="https://www.googletagmanager.com"/><link rel="icon" href="/favicon-32x32.png?v=ad9e124e5060ab5ddbaf24744e1cfc72" type="image/png"/><link rel="manifest" href="/manifest.webmanifest" crossorigin="anonymous"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=ad9e124e5060ab5ddbaf24744e1cfc72"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=ad9e124e5060ab5ddbaf24744e1cfc72"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=ad9e124e5060ab5ddbaf24744e1cfc72"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=ad9e124e5060ab5ddbaf24744e1cfc72"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=ad9e124e5060ab5ddbaf24744e1cfc72"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=ad9e124e5060ab5ddbaf24744e1cfc72"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=ad9e124e5060ab5ddbaf24744e1cfc72"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=ad9e124e5060ab5ddbaf24744e1cfc72"/><style type="text/css">
+    .anchor.before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateX(-100%);
+      padding-right: 4px;
+    }
+    .anchor.after {
+      display: inline-block;
+      padding-left: 4px;
+    }
+    h1 .anchor svg,
+    h2 .anchor svg,
+    h3 .anchor svg,
+    h4 .anchor svg,
+    h5 .anchor svg,
+    h6 .anchor svg {
+      visibility: hidden;
+    }
+    h1:hover .anchor svg,
+    h2:hover .anchor svg,
+    h3:hover .anchor svg,
+    h4:hover .anchor svg,
+    h5:hover .anchor svg,
+    h6:hover .anchor svg,
+    h1 .anchor:focus svg,
+    h2 .anchor:focus svg,
+    h3 .anchor:focus svg,
+    h4 .anchor:focus svg,
+    h5 .anchor:focus svg,
+    h6 .anchor:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          var clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+          var offset = element.getBoundingClientRect().top + scrollTop - clientTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - 0)
+          }), 0)
+        }
+      }
+    })
+  </script><title data-react-helmet="true">[springboot] Spring Boot project 시작하기, log4j2 + yml</title><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2"/><link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2"/><style>@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxK.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format("woff2")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:300;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmSU5fBBc-.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:400;src:url(/static/webfonts/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxM.woff) format("woff")}@font-face{font-display:swap;font-family:Roboto;font-style:normal;font-weight:500;src:url(/static/webfonts/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc-.woff) format("woff")}</style><link rel="sitemap" type="application/xml" href="/sitemap.xml"/><style>.gatsby-image-wrapper{position:relative;overflow:hidden}.gatsby-image-wrapper picture.object-fit-polyfill{position:static!important}.gatsby-image-wrapper img{bottom:0;height:100%;left:0;margin:0;max-width:none;padding:0;position:absolute;right:0;top:0;width:100%;object-fit:cover}.gatsby-image-wrapper [data-main-image]{opacity:0;transform:translateZ(0);transition:opacity .25s linear;will-change:opacity}.gatsby-image-wrapper-constrained{display:inline-block;vertical-align:top}</style><noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript><script type="module">const e="undefined"!=typeof HTMLImageElement&&"loading"in HTMLImageElement.prototype;e&&document.body.addEventListener("load",(function(e){const t=e.target;if(void 0===t.dataset.mainImage)return;if(void 0===t.dataset.gatsbyImageSsr)return;let a=null,n=t;for(;null===a&&n;)void 0!==n.parentNode.dataset.gatsbyImageWrapper&&(a=n.parentNode),n=n.parentNode;const o=a.querySelector("[data-placeholder-image]"),r=new Image;r.src=t.currentSrc,r.decode().catch((()=>{})).then((()=>{t.style.opacity=1,o&&(o.style.opacity=0,o.style.transition="opacity 500ms linear")}))}),!0);</script></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><div class="page-wrapper"><header class="page-header-wrapper"><div class="page-header"><div class="front-section"><a class="link" href="/">알고있는건 함께</a></div><div class="trailing-section"><a class="link" href="/about">about</a><a class="link" href="/posts">posts</a><div class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-1l6di18"><div class="search-input-wrapper"><div class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root search-input css-feqhe6"><div class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-adornedEnd MuiAutocomplete-inputRoot css-1yf1g2m"><input aria-invalid="false" autoComplete="off" id=":Rsiq:" type="text" class="MuiInput-input MuiInputBase-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-mnn31" aria-autocomplete="list" aria-expanded="false" autoCapitalize="none" spellcheck="false" role="combobox" value=""/><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium search-icon css-vubbuv" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="SearchOutlinedIcon"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg></div></div></div></div></div></div></header><main class="page-content"><header class="post-header"><div class="emoji">👻</div><div class="info"><div class="categories"><a class="category" href="/posts/spring">spring</a></div></div><h1 class="title">[springboot] Spring Boot project 시작하기, log4j2 + yml</h1><div class="info"><div class="author">posted by <strong>chanjin_ahn</strong>,</div> <!-- -->January 09, 2022</div></header><div class="post-content"><div class="markdown"><p>이번 시간에는 springboot 에서 log4j2를 설정해보겠습니다.</p>
+<h2 id="라이브러리-가져오기" style="position:relative;"><a href="#%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0" aria-label="라이브러리 가져오기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>라이브러리 가져오기</h2>
+<hr>
+<h3 id="기존-logging-라이브러리-제외하기" style="position:relative;"><a href="#%EA%B8%B0%EC%A1%B4-logging-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%A0%9C%EC%99%B8%ED%95%98%EA%B8%B0" aria-label="기존 logging 라이브러리 제외하기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>기존 logging 라이브러리 제외하기</h3>
+<p>스프링에서 제공하는 기본 라이브러리는 사용하지 않을 예정이므로 제외시킵니다.</p>
+<div class="gatsby-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml">    configurations <span class="token punctuation">{</span>
+        all<span class="token punctuation">{</span>
+            <span class="token key atrule">exclude module</span><span class="token punctuation">:</span> <span class="token string">'spring-boot-starter-logging'</span>
+        <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 21.666666666666668%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAmUlEQVQY04WP0Q7CIAxF+RsdUKAwxsZGFo3P7v+/5pqBLnEP+tC0t8k5aUWnB3BaEO8bwvoE+RnkMgxnEGd0Oh51Vf1XPu8kJQjiCakkkE/QfgVxAYcC60sV78BF9gd4ln6ypAjtRogwLXhsN9i4wIUZJozQnFp3A+g9S/PjQtWEJmQIGzKmNUNVOFeBsk20V5X6VIG/L5sRL2y7fZ6JUnYRAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="기존 logging 라이브러리 제거"
+        title="기존 logging 라이브러리 제거"
+        src="/static/d4430f6e377b644102d317263c9ca56b/37523/21-exclude_starter_logging.png"
+        srcset="/static/d4430f6e377b644102d317263c9ca56b/e9ff0/21-exclude_starter_logging.png 180w,
+/static/d4430f6e377b644102d317263c9ca56b/f21e7/21-exclude_starter_logging.png 360w,
+/static/d4430f6e377b644102d317263c9ca56b/37523/21-exclude_starter_logging.png 720w,
+/static/d4430f6e377b644102d317263c9ca56b/e0885/21-exclude_starter_logging.png 918w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<h3 id="log4j2-라이브러리-가져오기" style="position:relative;"><a href="#log4j2-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0" aria-label="log4j2 라이브러리 가져오기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>log4j2 라이브러리 가져오기</h3>
+<p>다음으로는 log4j2와 slf4j를 위한 라이브러리를 가져오겠습니다. slf4j는 slf4j-impl에 포함되어있으므로 따로 가져오진 않겠습니다. 버전은 작성일 기준 2.17.1 이상을 가져오시길 바랍니다. log4j 취약점 논란이 있었기 때문에 maven repository에서 가져오실 땐 꼭 취약점이 발견되지 않은 버전을 가져오시길 바랍니다.</p>
+<p><code class="language-text">spring-boot-starter-log4j2</code> 를 통해 가져오지 않는 이유는 maven repository 사이트의 표기와 달리 2.17.0 버전을 가져오기 때문입니다.</p>
+<div class="gatsby-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml">    dependencies <span class="token punctuation">{</span> 
+        <span class="token key atrule">implementation group</span><span class="token punctuation">:</span> <span class="token string">'org.apache.logging.log4j'</span><span class="token punctuation">,</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">'log4j-core'</span><span class="token punctuation">,</span> <span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'2.17.2'</span>
+        <span class="token key atrule">implementation group</span><span class="token punctuation">:</span> <span class="token string">'org.apache.logging.log4j'</span><span class="token punctuation">,</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">'log4j-api'</span><span class="token punctuation">,</span> <span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'2.17.2'</span>
+        <span class="token key atrule">implementation group</span><span class="token punctuation">:</span> <span class="token string">'org.apache.logging.log4j'</span><span class="token punctuation">,</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">'log4j-slf4j-impl'</span><span class="token punctuation">,</span> <span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'2.17.2'</span>
+    <span class="token punctuation">}</span></code></pre></div>
+<h3 id="yml-설정을-위한-jackson-dataformat-yaml-라이브러리-가져오기" style="position:relative;"><a href="#yml-%EC%84%A4%EC%A0%95%EC%9D%84-%EC%9C%84%ED%95%9C-jackson-dataformat-yaml-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0" aria-label="yml 설정을 위한 jackson dataformat yaml 라이브러리 가져오기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>yml 설정을 위한 jackson-dataformat-yaml 라이브러리 가져오기</h3>
+<p>log4j2 설정을 .xml 로 관리해왔지만 이번 프로젝트는 .yml 로 관리해보도록 하겠습니다. .yml 으로 log4j2 설정을 관리하기 위해선 관련 라이브러리를 가져올 필요가 있습니다. 아래 라이브러리를 <strong>dependencies</strong> 에 포함하도록 합니다.</p>
+<div class="gatsby-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml">    <span class="token key atrule">implementation group</span><span class="token punctuation">:</span> <span class="token string">'com.fasterxml.jackson.dataformat'</span><span class="token punctuation">,</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">'jackson-dataformat-yaml'</span><span class="token punctuation">,</span> <span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'2.13.1'</span></code></pre></div>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 31.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA9ElEQVQY032QyW7DMAxE8zmtN0nWRi1OrCZGkDaHHHrt/3/GFKJdN5f2MJBIgI+cObTSwUwL7NsnJJ2hPMEdM0yMGCliDJsoQvmAZrB4aQ3rtbOs5/+h6QxsOsFfv2DmB9JlRrkXzO8FoUywOUGHCB0jWuH24T+BvfLQIUPQFYJuGMwRJgbYKcOkBOkCBk0YtEc/+hXQ/HMhnTLyUjDQB1S4QDlie9VyBbJVF9YIfOCal2zwZ2B9GRjPBYKBCw8zMKUdKO3a+8mxAoUmdMLt0P1CExNszmjVjF5PqBFUVZvVorAEaQmdXPtcbxdyFCOhU7/ZfgO3AMFMyuDwNQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="build.gradle"
+        title="build.gradle"
+        src="/static/95ddeaba7bf41ac2ddacce9667210706/37523/22-implementation_log4j2.png"
+        srcset="/static/95ddeaba7bf41ac2ddacce9667210706/e9ff0/22-implementation_log4j2.png 180w,
+/static/95ddeaba7bf41ac2ddacce9667210706/f21e7/22-implementation_log4j2.png 360w,
+/static/95ddeaba7bf41ac2ddacce9667210706/37523/22-implementation_log4j2.png 720w,
+/static/95ddeaba7bf41ac2ddacce9667210706/22475/22-implementation_log4j2.png 1039w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<h2 id="log4j2yml-생성-및-applicationyml-설정" style="position:relative;"><a href="#log4j2yml-%EC%83%9D%EC%84%B1-%EB%B0%8F-applicationyml-%EC%84%A4%EC%A0%95" aria-label="log4j2yml 생성 및 applicationyml 설정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>log4j2.yml 생성 및 application.yml 설정</h2>
+<hr>
+<h3 id="applicationyml-설정" style="position:relative;"><a href="#applicationyml-%EC%84%A4%EC%A0%95" aria-label="applicationyml 설정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>application.yml 설정</h3>
+<p>log4j2 파일을 생성하기 전에 application.yml 에 생성할 파일의 경로를 정의합니다. 파일을 생성한 후에 정의해도 상관없습니다.</p>
+<div class="gatsby-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml">  <span class="token key atrule">logging</span><span class="token punctuation">:</span>
+    <span class="token key atrule">config</span><span class="token punctuation">:</span> classpath<span class="token punctuation">:</span>log4j2.yml</code></pre></div>
+<h3 id="log4j2yml-파일-생성" style="position:relative;"><a href="#log4j2yml-%ED%8C%8C%EC%9D%BC-%EC%83%9D%EC%84%B1" aria-label="log4j2yml 파일 생성 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>log4j2.yml 파일 생성</h3>
+<p>log4j2.yml 파일을 생성합니다. 위치는 <strong>src/main/resources/log4j2.yml</strong> 입니다.</p>
+<h3 id="log4j2yml-예시-설명은-하단-참고" style="position:relative;"><a href="#log4j2yml-%EC%98%88%EC%8B%9C-%EC%84%A4%EB%AA%85%EC%9D%80-%ED%95%98%EB%8B%A8-%EC%B0%B8%EA%B3%A0" aria-label="log4j2yml 예시 설명은 하단 참고 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>log4j2.yml 예시 (설명은 하단 참고)</h3>
+<p>생성한 파일에 예시 내용을 붙여넣습니다. 그대로 사용해도 상관없지만 본인의 상황에 맞게 커스텀하시길 바랍니다.</p>
+<div class="gatsby-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml"><span class="token key atrule">Configutation</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> Default
+  <span class="token key atrule">status</span><span class="token punctuation">:</span> warn
+
+  <span class="token key atrule">Properties</span><span class="token punctuation">:</span>
+    <span class="token key atrule">Property</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">"log-path"</span>
+      <span class="token key atrule">value</span><span class="token punctuation">:</span> <span class="token string">"./logs"</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">"pattern"</span>
+      <span class="token key atrule">value</span><span class="token punctuation">:</span> <span class="token string">"%highlight{[%-5level]} %d{yyyy-MM-dd HH:mm:ss.SSS} [%t][%F] %c{1} - %msg%n"</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">"charset-UTF-8"</span>
+      <span class="token key atrule">value</span><span class="token punctuation">:</span> <span class="token string">"UTF-8"</span>
+
+  <span class="token key atrule">Appenders</span><span class="token punctuation">:</span>
+    <span class="token key atrule">Console</span><span class="token punctuation">:</span>
+      <span class="token key atrule">name</span><span class="token punctuation">:</span> Console_Appender
+      <span class="token key atrule">target</span><span class="token punctuation">:</span> SYSTEM_OUT
+      <span class="token key atrule">PatternLayout</span><span class="token punctuation">:</span>
+        <span class="token key atrule">charset</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>charset<span class="token punctuation">-</span>UTF<span class="token punctuation">-</span><span class="token number">8</span><span class="token punctuation">}</span>
+        <span class="token key atrule">pattern</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>pattern<span class="token punctuation">}</span>
+        <span class="token key atrule">disableAnsi</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+    <span class="token key atrule">RollingFile</span><span class="token punctuation">:</span>
+      <span class="token key atrule">name</span><span class="token punctuation">:</span> RollingFile_Appender
+      <span class="token key atrule">fileName</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>log<span class="token punctuation">-</span>path<span class="token punctuation">}</span>/rollingfile.log
+      <span class="token key atrule">filePattern</span><span class="token punctuation">:</span> <span class="token string">"logs/archive/rollingfile.log.%d{yyyy-MM-dd-hh-mm}_%i.gz"</span>
+      <span class="token key atrule">PatternLayout</span><span class="token punctuation">:</span>
+        <span class="token key atrule">charset</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>charset<span class="token punctuation">-</span>UTF<span class="token punctuation">-</span><span class="token number">8</span><span class="token punctuation">}</span>
+        <span class="token key atrule">pattern</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>pattern<span class="token punctuation">}</span>
+      <span class="token key atrule">Policies</span><span class="token punctuation">:</span>
+        <span class="token key atrule">SizeBasedTriggeringPolicy</span><span class="token punctuation">:</span>
+          <span class="token key atrule">size</span><span class="token punctuation">:</span> <span class="token string">"200KB"</span>
+        <span class="token key atrule">TimeBasedTriggeringPolicy</span><span class="token punctuation">:</span>
+          <span class="token key atrule">interval</span><span class="token punctuation">:</span> <span class="token string">"1"</span>
+      <span class="token key atrule">DefaultRollOverStrategy</span><span class="token punctuation">:</span>
+        <span class="token key atrule">max</span><span class="token punctuation">:</span> <span class="token string">"30"</span>
+        <span class="token key atrule">fileIndex</span><span class="token punctuation">:</span> <span class="token string">"max"</span>
+  <span class="token key atrule">Loggers</span><span class="token punctuation">:</span>
+    <span class="token key atrule">Root</span><span class="token punctuation">:</span>
+      <span class="token key atrule">level</span><span class="token punctuation">:</span> debug
+      <span class="token key atrule">AppenderRef</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">ref</span><span class="token punctuation">:</span> Console_Appender
+        <span class="token punctuation">-</span> <span class="token key atrule">ref</span><span class="token punctuation">:</span> RollingFile_Appender
+    <span class="token key atrule">Logger</span><span class="token punctuation">:</span>
+      <span class="token key atrule">name</span><span class="token punctuation">:</span> example.demospringboot
+      <span class="token key atrule">additivity</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+      <span class="token key atrule">level</span><span class="token punctuation">:</span> debug
+      <span class="token key atrule">AppenderRef</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">ref</span><span class="token punctuation">:</span> Console_Appender
+        <span class="token punctuation">-</span> <span class="token key atrule">ref</span><span class="token punctuation">:</span> RollingFile_Appender</code></pre></div>
+<h2 id="log4j2yml-설정-구조" style="position:relative;"><a href="#log4j2yml-%EC%84%A4%EC%A0%95-%EA%B5%AC%EC%A1%B0" aria-label="log4j2yml 설정 구조 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>log4j2.yml 설정 구조</h2>
+<hr>
+<h3 id="configuration" style="position:relative;"><a href="#configuration" aria-label="configuration permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Configuration</h3>
+<p>로그를 설정하기 위한 최상위 태그입니다. 하위에는 다음과 같은 태그를 삽입할 수 있습니다.</p>
+<table>
+<thead>
+<tr>
+<th align="center">항목</th>
+<th align="left">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Properties</td>
+<td align="left">해당 파일에서 사용할 수 있는 공통 변수를 정의합니다. name, log layout pattern 등을 정의하는 것이 추후 관리에 편합니다.</td>
+</tr>
+<tr>
+<td align="center">Appenders</td>
+<td align="left">로그의 패턴과 저장 패턴 등을 설정할 수 있습니다.</td>
+</tr>
+<tr>
+<td align="center">Loggers</td>
+<td align="left">출력하는 로그 범위를 지정할 수 있습니다. 설정에 따라 로그를 노출시키거나 생략할 수 있습니다.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="properties" style="position:relative;"><a href="#properties" aria-label="properties permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Properties</h3>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml">  <span class="token key atrule">Properties</span><span class="token punctuation">:</span>
+  <span class="token key atrule">Property</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">"log-path"</span>
+      <span class="token key atrule">value</span><span class="token punctuation">:</span> <span class="token string">"./logs"</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="center">tag</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">name</td>
+<td align="left">호출할 때 사용할 수 있는 property 의 이름입니다.</td>
+</tr>
+<tr>
+<td align="center">value</td>
+<td align="left">해당 property 를 호출했을 경우 실제 값입니다.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="layout-pattern" style="position:relative;"><a href="#layout-pattern" aria-label="layout pattern permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Layout Pattern</h3>
+<p>로그에 표시될 정보와 순서를 정의할 수 있습니다. 각 태그에 대한 설명은 다음과 같습니다.</p>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml">    "%highlight<span class="token punctuation">{</span><span class="token punctuation">[</span>%<span class="token punctuation">-</span>5level<span class="token punctuation">]</span><span class="token punctuation">}</span> %d<span class="token punctuation">{</span>yyyy<span class="token punctuation">-</span>MM<span class="token punctuation">-</span>dd HH<span class="token punctuation">:</span>mm<span class="token punctuation">:</span>ss.SSS<span class="token punctuation">}</span> <span class="token punctuation">[</span>%t<span class="token punctuation">]</span><span class="token punctuation">[</span>%F<span class="token punctuation">]</span> %c<span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">}</span> <span class="token punctuation">-</span> %msg%n"</code></pre></div>
+<table>
+<thead>
+<tr>
+<th align="center">Format</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">%c, %logger</td>
+<td align="left">해당 로그를 쓰는 로거의 이름</td>
+</tr>
+<tr>
+<td align="center">%C, %Class</td>
+<td align="left">해당 로그를 요청한 클래스 이름</td>
+</tr>
+<tr>
+<td align="center">%d, %date</td>
+<td align="left">해당 로그가 발생한 시간</td>
+</tr>
+<tr>
+<td align="center">%enc, %encoding</td>
+<td align="left">특정 언어에서의 출력을 위한 문자 인코딩</td>
+</tr>
+<tr>
+<td align="center">%ex, %exception, %throwable</td>
+<td align="left">예외로그, 길이 설정이 가능</td>
+</tr>
+<tr>
+<td align="center">%F, %file</td>
+<td align="left">해당 로그가 발생한 클래스 파일명</td>
+</tr>
+<tr>
+<td align="center">%l, %location</td>
+<td align="left">해당 로그가 발생한 클래스명, 메소드명</td>
+</tr>
+<tr>
+<td align="center">%L, %line</td>
+<td align="left">해당 로그가 발생한 라인 번호</td>
+</tr>
+<tr>
+<td align="center">%m, %msg, %message</td>
+<td align="left">로그문에 전달된 메세지</td>
+</tr>
+<tr>
+<td align="center">%n</td>
+<td align="left">줄바꿈</td>
+</tr>
+<tr>
+<td align="center">%p, %level</td>
+<td align="left">로그 레벨</td>
+</tr>
+<tr>
+<td align="center">%r, %relative</td>
+<td align="left">로그 처리시간</td>
+</tr>
+<tr>
+<td align="center">%t, %thread</td>
+<td align="left">해당 로그가 발생한 스레드 명</td>
+</tr>
+<tr>
+<td align="center">%style{pattern}{ANSI style}</td>
+<td align="left">ANSI 를 사용하여 특정 패턴을 스타일링</td>
+</tr>
+<tr>
+<td align="center">%highlight{pattern}{style}</td>
+<td align="left">로그 레벨명을 ANSI 색으로 하이라이트</td>
+</tr>
+</tbody>
+</table>
+<h3 id="logging-level" style="position:relative;"><a href="#logging-level" aria-label="logging level permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>logging level</h3>
+<p>지정한 로깅 레벨 이상의 로그만 출력 됩니다. <strong>INFO</strong> 로 지정할 경우 DEBUG 와 TRACE 레벨의 로그는 생략됩니다.</p>
+<ul>
+<li>FATAL</li>
+<li>ERROR</li>
+<li>WARN</li>
+<li>INFO</li>
+<li>DEBUG</li>
+<li>TRACE</li>
+</ul>
+<h3 id="appenders" style="position:relative;"><a href="#appenders" aria-label="appenders permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Appenders</h3>
+<table>
+<thead>
+<tr>
+<th align="center">name</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Console</td>
+<td align="left">콘솔창에 출력될 로그를 설정 합니다.</td>
+</tr>
+<tr>
+<td align="center">File</td>
+<td align="left">파일 형태로 저장될 로그를 설정합니다.</td>
+</tr>
+<tr>
+<td align="center">RollingFile</td>
+<td align="left">특정 트러거에 따라 파일로 백업할 로그를 설정합니다.</td>
+</tr>
+</tbody>
+</table>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml">  <span class="token key atrule">Appenders</span><span class="token punctuation">:</span>
+    <span class="token key atrule">Console</span><span class="token punctuation">:</span>
+      <span class="token key atrule">name</span><span class="token punctuation">:</span> Console_Appender
+      <span class="token key atrule">target</span><span class="token punctuation">:</span> SYSTEM_OUT
+      <span class="token key atrule">PatternLayout</span><span class="token punctuation">:</span>
+        <span class="token key atrule">charset</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>charset<span class="token punctuation">-</span>UTF<span class="token punctuation">-</span><span class="token number">8</span><span class="token punctuation">}</span>
+        <span class="token key atrule">pattern</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>pattern<span class="token punctuation">}</span>
+        <span class="token key atrule">disableAnsi</span><span class="token punctuation">:</span> <span class="token boolean important">false</span></code></pre></div>
+<ul>
+<li>name: loggers 에서 호출할 이름을 정의합니다.</li>
+<li>target: 출력 방식입니다. Console 에서 사용됩니다.</li>
+<li>PatternLayout
+<ul>
+<li>charset: 인코딩 방식입니다.</li>
+<li>pattern: 출력 레이아웃 방식입니다. 사용자 정의에 맞게 로그가 출력됩니다.</li>
+<li>disableAnsi: 색상 변경 여부를 지정합니다. <strong>true</strong> 일 경우 콘솔의 색이 변하지 않습니다.</li>
+</ul>
+</li>
+</ul>
+<p>패턴과 강조 색이 잘 반영되었다면 아래 화면과 같이 출력됩니다.
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 26.111111111111107%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAABYlAAAWJQFJUiTwAAAA7klEQVQY02WJ626CQBQGeZP2hxF0hRX2xl1AWdA0Tfv+DzMNYGyT/pjMOfMFxfCF6ybyywNdT+jKY5oZ00xPz6jK/0O6AWn71ed8QLqek2oJivaDc1ajTI9MG0RcEMuKU1K+vLD0v/fxlP8icg7CsQ81QXn9RqsLOvXodCKTI1bdUXLEZNPats3j9GPdpOhJREdy3Ih2Jbs3y+7dErjuE9U2uNaTtx5b3yi6GdeMa1sw1ZU07zjbFpEVK1FiCWNNGJunN4K0msmqGld7XDNhq5Hicn/9i5dmyhuZ60hUTRRbDrHjkGxEsSMUhr0w/AAIw6PxEnKuewAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="logger_color"
+        title="logger_color"
+        src="/static/c2259be0770f599e896921a313779fd7/37523/23-logger-color.png"
+        srcset="/static/c2259be0770f599e896921a313779fd7/e9ff0/23-logger-color.png 180w,
+/static/c2259be0770f599e896921a313779fd7/f21e7/23-logger-color.png 360w,
+/static/c2259be0770f599e896921a313779fd7/37523/23-logger-color.png 720w,
+/static/c2259be0770f599e896921a313779fd7/302a4/23-logger-color.png 1080w,
+/static/c2259be0770f599e896921a313779fd7/07a9c/23-logger-color.png 1440w,
+/static/c2259be0770f599e896921a313779fd7/05883/23-logger-color.png 2808w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml">    <span class="token key atrule">RollingFile</span><span class="token punctuation">:</span>
+      <span class="token key atrule">name</span><span class="token punctuation">:</span> RollingFile_Appender
+      <span class="token key atrule">fileName</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>log<span class="token punctuation">-</span>path<span class="token punctuation">}</span>/rollingfile.log
+      <span class="token key atrule">filePattern</span><span class="token punctuation">:</span> <span class="token string">"logs/archive/rollingfile.log.%d{yyyy-MM-dd-hh-mm}_%i.gz"</span>
+      <span class="token key atrule">PatternLayout</span><span class="token punctuation">:</span>
+        <span class="token key atrule">charset</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>charset<span class="token punctuation">-</span>UTF<span class="token punctuation">-</span><span class="token number">8</span><span class="token punctuation">}</span>
+        <span class="token key atrule">pattern</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>pattern<span class="token punctuation">}</span>
+      <span class="token key atrule">Policies</span><span class="token punctuation">:</span>
+        <span class="token key atrule">SizeBasedTriggeringPolicy</span><span class="token punctuation">:</span>
+          <span class="token key atrule">size</span><span class="token punctuation">:</span> <span class="token string">"200KB"</span>
+        <span class="token key atrule">TimeBasedTriggeringPolicy</span><span class="token punctuation">:</span>
+          <span class="token key atrule">interval</span><span class="token punctuation">:</span> <span class="token string">"1"</span>
+</code></pre></div>
+<ul>
+<li>fileName: 파일이 저장될 경로와 파일명입니다.</li>
+<li>filePattern: 트리거에 따라 백업될 파일의 경로와 이름입니다. layout pattern 을 적용하여 파일 중복을 예방합니다.</li>
+<li>Policies: RollingFile appender 에서 지정할 트리거 항목입니다.
+<ul>
+<li>OnStartupTriggeringPolicy: jvm 을 시작할 경우 트리거가 발동합니다.</li>
+<li>TimeBasedTriggeringPolicy: 특정 시간마다 트리거가 발동합니다. filePattern 에 지정한 단위로 롤링됩니다. (mm: 분 단위)
+<ul>
+<li>interval: 설정한 시간 간격마다 로그를 write 합니다. 기본값은 1입니다.</li>
+</ul>
+</li>
+<li>SizeBasedTriggeringPolicy: 파일 사이즈를 트리거로 지정합니다.
+<ul>
+<li>size: 설정한 파일의 용량을 초과할 경우 트리거가 발동합니다.</li>
+</ul>
+</li>
+<li>CronTriggeringPolicy: 크론 표현식을 기반으로 트리거가 발동합니다.</li>
+</ul>
+</li>
+</ul>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml">  <span class="token key atrule">DefaultRollOverStrategy</span><span class="token punctuation">:</span>
+    <span class="token key atrule">max</span><span class="token punctuation">:</span> <span class="token string">"30"</span>
+    <span class="token key atrule">fileIndex</span><span class="token punctuation">:</span> <span class="token string">"max"</span></code></pre></div>
+<ul>
+<li>DefaultRolloverStrategy: 날짜 패턴과 파일 패턴을 이용하여 파일을 저장합니다.
+<ul>
+<li>fileIndex: <em>max</em> 로 지정할 경우 값이 높은 index 가 최신 파일이 됩니다.(내림차순) min 으로 지정할 경우 작은 index 가 최신 파일이 되며 기존 파일들을 rename 하는 방식입니다.(오름차순)</li>
+<li>min: index count 의 최소값을 지정합니다. 기본값은 1 입니다.</li>
+<li>max: index count 의 최대값을 지정합니다. 최대값에 도달할 경우 오래된 파일을 삭제합니다. 기본값은 7 입니다.</li>
+<li>compressionLevel: 0~9까지의 정수값, 0은 압축하지않고, 1은 최고 속도, 9는 최고 압축 zip 파일만 가능합니다.</li>
+<li>tempCompressedFilePattern: 압축하는 동안의 파일 이름 패턴입니다.</li>
+</ul>
+</li>
+</ul>
+<h3 id="loggers" style="position:relative;"><a href="#loggers" aria-label="loggers permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Loggers</h3>
+<div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml">  <span class="token key atrule">Loggers</span><span class="token punctuation">:</span>
+    <span class="token key atrule">Root</span><span class="token punctuation">:</span>
+      <span class="token key atrule">level</span><span class="token punctuation">:</span> debug
+      <span class="token key atrule">AppenderRef</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">ref</span><span class="token punctuation">:</span> Console_Appender
+        <span class="token punctuation">-</span> <span class="token key atrule">ref</span><span class="token punctuation">:</span> RollingFile_Appender
+    <span class="token key atrule">Logger</span><span class="token punctuation">:</span>
+      <span class="token key atrule">name</span><span class="token punctuation">:</span> example.demospringboot
+      <span class="token key atrule">additivity</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+      <span class="token key atrule">level</span><span class="token punctuation">:</span> debug
+      <span class="token key atrule">AppenderRef</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> <span class="token key atrule">ref</span><span class="token punctuation">:</span> Console_Appender
+        <span class="token punctuation">-</span> <span class="token key atrule">ref</span><span class="token punctuation">:</span> RollingFile_Appender</code></pre></div>
+<ul>
+<li>Root: 기본 설정값을 정의합니다. logger 에 따로 지정하지 않은 경우 <strong>Root</strong> 규칙을 따릅니다. 필수로 설정해야 합니다.
+<ul>
+<li>level: 로그의 레벨을 지정합니다.</li>
+<li>AppenderRef: 해당 설정을 적용할 Appenders 를 지정합니다.</li>
+</ul>
+</li>
+<li>Logger: Root 의 설정을 따르지 않는 logger 를 지정합니다.  하나 이상 설정할 수 있습니다.
+<ul>
+<li>name: 설정한 logger name 이 호출한 logger 으로 시작한다면 정의한 level 규칙을 따릅니다.</li>
+<li>additivity: logger 중복 여부를 지정합니다. <strong>false</strong> 로 지정할 경우 중복되지 않습니다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="테스트" style="position:relative;"><a href="#%ED%85%8C%EC%8A%A4%ED%8A%B8" aria-label="테스트 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>테스트</h2>
+<hr>
+<h3 id="테스트-코드-전문" style="position:relative;"><a href="#%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%BD%94%EB%93%9C-%EC%A0%84%EB%AC%B8" aria-label="테스트 코드 전문 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>테스트 코드 전문</h3>
+<div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">org<span class="token punctuation">.</span>acj<span class="token punctuation">.</span>env</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>junit<span class="token punctuation">.</span>jupiter<span class="token punctuation">.</span>api<span class="token punctuation">.</span></span><span class="token class-name">Test</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span></span><span class="token class-name">Logger</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span></span><span class="token class-name">LoggerFactory</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Log4j2Test</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">Logger</span> logger <span class="token operator">=</span> <span class="token class-name">LoggerFactory</span><span class="token punctuation">.</span><span class="token function">getLogger</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+   <span class="token annotation punctuation">@Test</span>
+   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">log4j2LoggerTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+       <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"안녕 난 println이야"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+       logger<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"안녕 난 logger야"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div>
+<h3 id="결과" style="position:relative;"><a href="#%EA%B2%B0%EA%B3%BC" aria-label="결과 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>결과</h3>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 15.555555555555555%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAcElEQVQI15XNUQ6DIBBFUXZDUVBmBClTtKRtokn3v57XwAZMP87vvSqVA6V+kbcTnF6wVOD+ZP0DFCs4PqEo7JD9QJI3JhKYMUAPDD0s3W28pg1jooxlrVCrfHpw5gLnBc5n2Ga+d8bGS23sw4bW+gFigV9JqN4j4gAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="logger test result"
+        title="logger test result"
+        src="/static/059155748999aab22cc416131e5ca85c/37523/24-logging_test.png"
+        srcset="/static/059155748999aab22cc416131e5ca85c/e9ff0/24-logging_test.png 180w,
+/static/059155748999aab22cc416131e5ca85c/f21e7/24-logging_test.png 360w,
+/static/059155748999aab22cc416131e5ca85c/37523/24-logging_test.png 720w,
+/static/059155748999aab22cc416131e5ca85c/302a4/24-logging_test.png 1080w,
+/static/059155748999aab22cc416131e5ca85c/07a9c/24-logging_test.png 1440w,
+/static/059155748999aab22cc416131e5ca85c/ddc6c/24-logging_test.png 1534w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
+<h2 id="참고" style="position:relative;"><a href="#%EC%B0%B8%EA%B3%A0" aria-label="참고 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>참고</h2>
+<hr>
+<p><a href="https://logging.apache.org/log4j/2.x/manual/configuration.html">https://logging.apache.org/log4j/2.x/manual/configuration.html</a></p>
+<p><a href="https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.external-config.yaml">https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.external-config.yaml</a></p>
+<div class="table-of-contents">
+<ul>
+<li>
+<p><a href="#%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0">라이브러리 가져오기</a></p>
+<ul>
+<li><a href="#%EA%B8%B0%EC%A1%B4-logging-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%A0%9C%EC%99%B8%ED%95%98%EA%B8%B0">기존 logging 라이브러리 제외하기</a></li>
+<li><a href="#log4j2-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0">log4j2 라이브러리 가져오기</a></li>
+<li><a href="#yml-%EC%84%A4%EC%A0%95%EC%9D%84-%EC%9C%84%ED%95%9C-jackson-dataformat-yaml-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EA%B0%80%EC%A0%B8%EC%98%A4%EA%B8%B0">yml 설정을 위한 jackson-dataformat-yaml 라이브러리 가져오기</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#log4j2yml-%EC%83%9D%EC%84%B1-%EB%B0%8F-applicationyml-%EC%84%A4%EC%A0%95">log4j2.yml 생성 및 application.yml 설정</a></p>
+<ul>
+<li><a href="#applicationyml-%EC%84%A4%EC%A0%95">application.yml 설정</a></li>
+<li><a href="#log4j2yml-%ED%8C%8C%EC%9D%BC-%EC%83%9D%EC%84%B1">log4j2.yml 파일 생성</a></li>
+<li><a href="#log4j2yml-%EC%98%88%EC%8B%9C-%EC%84%A4%EB%AA%85%EC%9D%80-%ED%95%98%EB%8B%A8-%EC%B0%B8%EA%B3%A0">log4j2.yml 예시 (설명은 하단 참고)</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#log4j2yml-%EC%84%A4%EC%A0%95-%EA%B5%AC%EC%A1%B0">log4j2.yml 설정 구조</a></p>
+<ul>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#properties">Properties</a></li>
+<li><a href="#layout-pattern">Layout Pattern</a></li>
+<li><a href="#logging-level">logging level</a></li>
+<li><a href="#appenders">Appenders</a></li>
+<li><a href="#loggers">Loggers</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#%ED%85%8C%EC%8A%A4%ED%8A%B8">테스트</a></p>
+<ul>
+<li><a href="#%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%BD%94%EB%93%9C-%EC%A0%84%EB%AC%B8">테스트 코드 전문</a></li>
+<li><a href="#%EA%B2%B0%EA%B3%BC">결과</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#%EC%B0%B8%EA%B3%A0">참고</a></p>
+</li>
+</ul>
+</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/spring/springboot_start-3-undertow/"><div class="direction">이전 글</div><div class="title">[springboot_start] 내장 WAS를 undertow로 변경하기</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/spring/springboot_start-1-init_project/"><div class="direction">다음 글</div><div class="title">[springboot] Spring Boot project 시작하기 1/?</div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/olkkani">안찬진</a> powered by<a href="https://github.com/zoomKoding/zoomkoding-gatsby-blog"> zoomkoding-gatsby-blog</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-RV6CRYX2P2"></script><script>
+      
+      
+      if(true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){window.dataLayer && window.dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-RV6CRYX2P2', {"send_page_view":false});
+      }
+      </script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/spring/springboot_start-2-log4j2/";window.___webpackCompilationHash="3124bef712e1223c3d44";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-29b51f959b53d5ab826b.js"],"app":["/app-d97458d632fe66e95142.js"],"component---cache-caches-gatsby-plugin-offline-app-shell-js":["/component---cache-caches-gatsby-plugin-offline-app-shell-js-ffdb1e83dd2925d16ce3.js"],"component---src-pages-404-js":["/component---src-pages-404-js-77b9715ac08eddca29d6.js"],"component---src-pages-about-js":["/component---src-pages-about-js-2cc0f0fc31765508a731.js"],"component---src-pages-index-js":["/component---src-pages-index-js-c95a8c7833aee37afa1b.js"],"component---src-templates-blog-template-js":["/component---src-templates-blog-template-js-6d06b069243cfef5278e.js"],"component---src-templates-category-template-js":["/component---src-templates-category-template-js-01d6ef6b6c84b51eb367.js"]};/*]]>*/</script><script src="/polyfill-29b51f959b53d5ab826b.js" nomodule=""></script><script src="/app-d97458d632fe66e95142.js" async=""></script><script src="/framework-852e141d9c20c74cfc74.js" async=""></script><script src="/webpack-runtime-3ed4860208fcab896843.js" async=""></script></body></html>
