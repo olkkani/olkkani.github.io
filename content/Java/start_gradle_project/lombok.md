@@ -2,9 +2,9 @@
 emoji: 👻
 title: '[Java] Gradle Project lombok 설정'
 date: "2022-06-20 21:33:00"
-author: chanjin_ahn
-tags: Java, Gradle
-categories: Java Spring
+author: olkkani
+tags:
+categories: java spring
 ---
 
 ## 개요

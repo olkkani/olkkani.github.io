@@ -2,9 +2,9 @@
 emoji: 👻
 title: '[Gradle] Gradle Project 에 JUnit5 + AssertThat 설정'
 date: "2022-06-21 18:36:00"
-author: chanjin_ahn
-tags: Java
-categories: Spring Java
+author: olkkani
+tags:
+categories: spring java
 ---
 
 ## 개요

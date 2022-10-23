@@ -2,7 +2,7 @@
 emoji: 👻
 title: '[springboot_start] 내장 WAS를 undertow로 변경하기'
 date: '2022-01-09 20:42:00'
-author: chajin_ahn
+author: olkkani
 tags: 
 categories: spring
 ---

@@ -2,7 +2,7 @@
 emoji: 👻
 title: '[springboot] Spring Boot project 시작하기, log4j2 + yml'
 date: '2022-01-09 20:42:00'
-author: chanjin_ahn
+author: olkkani
 tags: 
 categories: spring
 ---

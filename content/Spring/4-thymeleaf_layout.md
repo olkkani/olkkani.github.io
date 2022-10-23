@@ -2,9 +2,9 @@
 emoji: 👻
 title: '[springboot_start] thymeleaf layout 설정(작성 중)'
 date: '2022-01-09 20:42:00'
-author: chajin_ahn
+author: olkkani
 tags: 
-categories: Spring
+categories: spring
 ---
 
 ## 개요

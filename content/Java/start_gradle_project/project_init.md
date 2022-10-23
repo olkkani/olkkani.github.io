@@ -4,7 +4,7 @@ title: '[Gradle] Gradle project 시작하기'
 date: "2022-01-28 20:42:00"
 author: chanjin_ahn
 tags: 
-categories: Java
+categories: java
 ---
 
 ## 개요

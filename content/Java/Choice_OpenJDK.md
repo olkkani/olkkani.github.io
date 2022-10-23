@@ -3,7 +3,7 @@ emoji: 👻
 title: '[java] OpenJDK 선택하기'
 date: '2022-09-20 18:00:00'
 author: olkkani
-tags: java
+tags:
 categories: java
 ---
 
