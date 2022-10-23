@@ -2,8 +2,8 @@
 emoji: 👻
 title: '[Java] 파일 구분자 File.separator 대신 Path 사용하기'
 date: '2022-01-30 20:42:00'
-author: Chanjin Ahn
-tags: 
+author: olkkani
+tags: java
 categories: java
 ---
 

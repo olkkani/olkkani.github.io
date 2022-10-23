@@ -2,9 +2,9 @@
 emoji: 👻
 title: '[Mybatis] java.lang.NumberformatException Error 해결'
 date: '2022-01-08 20:42:00'
-author: chajin_ahn
-tags: 
-categories: Spring Mybatis
+author: olkkani
+tags: java 
+categories: spring mybatis
 ---
 
 ## 개요
