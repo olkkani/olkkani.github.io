@@ -1,3 +1,3 @@
 User-agent: *
-Sitemap: https://olkkani.github.io/sitemap/sitemap-index.xml
+Sitemap: https://olkkani.github.io/sitemap-pages.xml
 Host: https://olkkani.github.io
