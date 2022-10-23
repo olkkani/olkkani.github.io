@@ -21,6 +21,7 @@ module.exports = {
       github: `https://github.com/olkkani`, // `https://github.com/zoomKoding`,
       linkedIn: ``, // `https://www.linkedin.com/in/jinhyeok-jeong-800871192`,
       email: `olkkani@gmail.com`, // `zoomkoding@gmail.com`,
+      demo: `https://olkkani.github.io/resume`,
     },
   },
 

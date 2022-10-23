@@ -40,6 +40,8 @@ module.exports = {
         env: {
           production: {
             policy: [{ userAgent: '*' }],
+            sitemap: 'https://olkkani.github.io/sitemap-pages.xml',
+            host: 'https://olkkani.github.io',
           },
           'branch-deploy': {
             policy: [{ userAgent: '*', disallow: ['/'] }],
