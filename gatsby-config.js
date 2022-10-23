@@ -43,12 +43,12 @@ module.exports = {
           },
           'branch-deploy': {
             policy: [{ userAgent: '*', disallow: ['/'] }],
-            sitemap: 'https://olkkani.github.io/sitemap.xml',
+            sitemap: 'https://olkkani.github.io/sitemap-pages.xml',
             host: 'https://olkkani.github.io',
           },
           'deploy-preview': {
             policy: [{ userAgent: '*', disallow: ['/'] }],
-            sitemap: 'https://olkkani.github.io/sitemap.xml',
+            sitemap: 'https://olkkani.github.io/sitemap-pages.xml',
             host: 'https://olkkani.github.io',
           },
         },
