@@ -4,7 +4,7 @@ title: '[Java] String 문자열 뒤집기'
 date: '2022-01-01 20:42:00'
 author: OIKK
 tags: 
-categories: Java
+categories: java
 ---
 
 문자열을 거꾸로 뒤집는 방법은 여러 가지가 있지만 **StringBuffer, reverse()** 를 사용하는게 제일 간결하지 않을까싶습니다.

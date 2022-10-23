@@ -4,7 +4,7 @@ title: '[springboot] Spring Boot project 시작하기, log4j2 + yml'
 date: '2022-01-09 20:42:00'
 author: chanjin_ahn
 tags: 
-categories: Spring
+categories: spring
 ---
 
 이번 시간에는 springboot 에서 log4j2를 설정해보겠습니다.

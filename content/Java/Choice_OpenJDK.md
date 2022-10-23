@@ -1,3 +1,4 @@
+
 ---
 emoji: 👻
 title: '[java] OpenJDK 선택하기'
