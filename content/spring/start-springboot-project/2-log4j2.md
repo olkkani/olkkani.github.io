@@ -3,7 +3,7 @@ emoji: 👻
 title: '[springboot] Spring Boot project 시작하기, log4j2 + yml'
 date: '2022-01-09 20:42:00'
 author: olkkani
-tags: 
+tags:
 categories: spring
 ---
 
@@ -26,7 +26,7 @@ categories: spring
 
 ```
 
-![기존 logging 라이브러리 제거](21-exclude_starter_logging.png)
+![기존 logging 라이브러리 제거](images/2-01-exclude_starter_logging.png)
 
 ### log4j2 라이브러리 가져오기
 
@@ -35,7 +35,7 @@ categories: spring
 `spring-boot-starter-log4j2` 를 통해 가져오지 않는 이유는 maven repository 사이트의 표기와 달리 2.17.0 버전을 가져오기 때문입니다.
 
 ```gradle
-    dependencies { 
+    dependencies {
         implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.17.2'
         implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.17.2'
         implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.17.2'
@@ -50,7 +50,7 @@ log4j2 설정을 .xml 로 관리해왔지만 이번 프로젝트는 .yml 로 관
     implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: '2.13.1'
 ```
 
-![build.gradle](22-implementation_log4j2.png)
+![build.gradle](images/2-02-implementation_log4j2.png)
 
 ## log4j2.yml 생성 및 application.yml 설정
 
@@ -217,7 +217,7 @@ Configutation:
   - disableAnsi: 색상 변경 여부를 지정합니다. __true__ 일 경우 콘솔의 색이 변하지 않습니다.
 
 패턴과 강조 색이 잘 반영되었다면 아래 화면과 같이 출력됩니다.
-![logger_color](23-logger-color.png)
+![logger_color](images/2-03-logger-color.png)
 
 ```yaml
     RollingFile:
@@ -310,7 +310,7 @@ public class Log4j2Test {
 
 ### 결과
 
-![logger test result](24-logging_test.png)
+![logger test result](images/2-04-logging_test.png)
 
 ## 참고
 

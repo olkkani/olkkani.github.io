@@ -48,7 +48,7 @@ Dependencies는 우측 __Add Dependencies__ 버튼을 클릭하여 추가할 수
   - Stpring Web
   - Spring Boot DevTools
 
-![Dependencies 설정 화면](./11-start-initializr.png)
+![Dependencies 설정 화면](images/1-01-start-initializr.png)
 
 1. 프로젝트 생성
 
@@ -64,13 +64,13 @@ Dependencies는 우측 __Add Dependencies__ 버튼을 클릭하여 추가할 수
 
 intellij를 처음 실행하거나 다른 workspace에서 가져오고 싶다면 아래 화면에서 새로운 workspace를 선택합니다.
 
-![open_workspace](./12-open_workspace.png)
+![open_workspace](images/1-02-open_workspace.png)
 
 __open__ 을 눌러 workspace로 지정할 폴더를 선택합니다.
 
 다운로드 받은 프로젝트로 지정해도 되지만 workspace는 실제 소스가 저장되는 공간이 아니며 여러 module을 관리하는 공간이기 때문에 새롭게 폴더를 생성하고 선택하는 것을 추천드립니다.
 
-![workspace](./13-workspace.png)
+![workspace](images/1-03-workspace.png)
 
 ### 2. Module Imoort
 
@@ -82,18 +82,18 @@ module을 등록하기에 앞서 SDK와 language level을 설정해야합니다.
 SDK는 자동으로 불러오지만 불러오지 않는다면 직접 경로를 지정하여 가져올 수 있습니다.
 language level은 선택한 sdk와 동일하게 맞춰주시면 됩니다.
 
-![preperence](./14-preperence.png)
+![preperence](images/1-04-preference.png)
 
 ### modules 등록
 
 workspace를 새로 만들어서 가져왔다면 workspace와 동일한 임시 module이 생성되어 있습니다.
 해당 모듈을 선택 후 __-__ 를 눌러 제거합니다. 제거한 뒤에는 + 버튼을 눌러 gradle project를 가져옵니다.
 
-![modules_import](./15-module.png)
+![modules_import](images/1-05-module.png)
 
 +버튼을 누르면 모듈의 폴더를 가져올 수 있습니다. 폴더를 선택한 뒤 Gradle을 선택하여 __Finish__ 버튼을 누릅니다.
 
-![module_import](./16-import_module.png)
+![module_import](images/1-06-import_module.png)
 
 module을 정상적으로 가져왔는지 확인 합니다. 만약 보이지 않는다면 __OK__ 버튼을 누른 후 다시 해당 화면으로 이동합니다.
 
@@ -112,7 +112,7 @@ test와 test resource는 test에 필요한 폴더입니다. 각각 source와 res
 
 모든 것이 끝났다면 __OK__ 버튼을 눌러 창을 닫고 구조를 확인합니다.
 
-![project_stucture](./17-structure.jpeg)
+![project_stucture](images/1-07-structure.jpeg)
 
 ## 작동 테스트
 
@@ -176,7 +176,7 @@ public class MainController {
 
 모든 준비가 끝났다면 DemoSpringbootApplication.java를 실행 후 [localhost:8080/main](localhost:8080/main)에 접속합니다.
 
-![start_project](./18-runapplication.png)
+![start_project](images/1-08-runapplication.png)
 
 HTML파일을 그대로 실행한다면 __Hello, 홍김돌__ 이라고 나오겠지만 서버로 실행했을 경우 Controller에서 기본 값으로 Wolrd를 주었기 때문에 다음과 같이 출력됩니다.
 

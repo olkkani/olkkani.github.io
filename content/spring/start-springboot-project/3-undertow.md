@@ -3,7 +3,7 @@ emoji: 👻
 title: '[springboot_start] 내장 WAS를 undertow로 변경하기'
 date: '2022-01-09 20:42:00'
 author: olkkani
-tags: 
+tags:
 categories: spring
 ---
 
@@ -74,11 +74,11 @@ undertow 라이브러리와 autobulid 를 위한 devtools 를 추가합니다.
 
 ### 기존 Tomcat 환경
 
-![tomcat](31-tomcat.png)
+![tomcat](images/3-01-tomcat.png)
 
 ### undertow 환경
 
-![undertow](32-undertow.png)
+![undertow](images/3-02-undertow.png)
 
 ```toc
 ```
