@@ -167,7 +167,7 @@ layout 을 적용하기 위해서는 다음과 같은 요소가 필요합니다.
 ### thymeleaf layout 적용 확인
 
 샘플 페이지 생성까지 끝마쳤다면 localhost:8080/main 으로 접속하여 결과를 확인합니다.
-![result](./4-thymeleaf_layout_result.png)
+![result](images/4-01-thymeleaf_layout_result.png)
 
 ## 참고
 
