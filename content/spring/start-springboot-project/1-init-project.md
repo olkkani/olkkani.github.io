@@ -155,7 +155,7 @@ public class MainController {
 ### HTML 파일 생성
 
 1. 아래 경로에 해당 파일을 생성합니다.
-    - src/main/resource/templates/test/Main.html
+    - src/main/resource/templates/main.html
 
 2. 아래 코드를 삽입합니다.
 
