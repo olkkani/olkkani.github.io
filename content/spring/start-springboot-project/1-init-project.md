@@ -179,6 +179,9 @@ public class MainController {
 ![start_project](images/1-08-runapplication.png)
 
 HTML파일을 그대로 실행한다면 __Hello, 홍김돌__ 이라고 나오겠지만 서버로 실행했을 경우 Controller에서 기본 값으로 Wolrd를 주었기 때문에 다음과 같이 출력됩니다.
+예제에서는 파라미터를 출력하도록 설정했으므로 파라미터를 함께 보낸다면 아래와 같이 출력되므로 참고하시길 바랍니다.
+![name_paramter_gonggongdol](images/1-09-name_paramter_gonggongdol.png)
+
 
 이상으로 간단하게 springboot project를 실행해보았습니다. 이 후에는 본인의 상황에 맞는 라이브러리를 가져와 구현하면 됩니다.
 
