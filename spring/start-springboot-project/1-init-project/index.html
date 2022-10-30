@@ -392,7 +392,7 @@ language level은 선택한 sdk와 동일하게 맞춰주시면 됩니다.</p>
 <li>
 <p>아래 경로에 해당 파일을 생성합니다.</p>
 <ul>
-<li>src/main/resource/templates/test/Main.html</li>
+<li>src/main/resource/templates/main.html</li>
 </ul>
 </li>
 <li>
@@ -436,7 +436,32 @@ language level은 선택한 sdk와 동일하게 맞춰주시면 됩니다.</p>
         decoding="async"
       />
     </span></p>
-<p>HTML파일을 그대로 실행한다면 <strong>Hello, 홍김돌</strong> 이라고 나오겠지만 서버로 실행했을 경우 Controller에서 기본 값으로 Wolrd를 주었기 때문에 다음과 같이 출력됩니다.</p>
+<p>HTML파일을 그대로 실행한다면 <strong>Hello, 홍김돌</strong> 이라고 나오겠지만 서버로 실행했을 경우 Controller에서 기본 값으로 Wolrd를 주었기 때문에 다음과 같이 출력됩니다.
+예제에서는 파라미터를 출력하도록 설정했으므로 파라미터를 함께 보낸다면 아래와 같이 출력되므로 참고하시길 바랍니다.
+<span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 720px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 48.888888888888886%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAnklEQVQoz+2OzQqDMBCE80RSaW3U+h8l4ME39yz4BO7GJxDMlKQVetdjFz6GGZZhhFIKXddBqRbRM0bTtMiyAjJOvX9EEknyQhCEuIV3SJl6raoaWmv0fY9hGFCXBYo8h5jnGeM4YpomrOsKYwyYGUQOAjF7vyz08d+c2fjfA3YZEYS1Ftu2wekVJ37Nvu+n8QsP3J1dKq4q+hdeV/gGjxrpM4BmIIwAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="name_paramter_gonggongdol"
+        title="name_paramter_gonggongdol"
+        src="/static/4ec45297a7522b82abe0b3daace23ea1/37523/1-09-name_paramter_gonggongdol.png"
+        srcset="/static/4ec45297a7522b82abe0b3daace23ea1/e9ff0/1-09-name_paramter_gonggongdol.png 180w,
+/static/4ec45297a7522b82abe0b3daace23ea1/f21e7/1-09-name_paramter_gonggongdol.png 360w,
+/static/4ec45297a7522b82abe0b3daace23ea1/37523/1-09-name_paramter_gonggongdol.png 720w,
+/static/4ec45297a7522b82abe0b3daace23ea1/302a4/1-09-name_paramter_gonggongdol.png 1080w,
+/static/4ec45297a7522b82abe0b3daace23ea1/07a9c/1-09-name_paramter_gonggongdol.png 1440w"
+        sizes="(max-width: 720px) 100vw, 720px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+        decoding="async"
+      />
+    </span></p>
 <p>이상으로 간단하게 springboot project를 실행해보았습니다. 이 후에는 본인의 상황에 맞는 라이브러리를 가져와 구현하면 됩니다.</p>
 <div class="table-of-contents">
 <ul>
@@ -467,7 +492,7 @@ language level은 선택한 sdk와 동일하게 맞춰주시면 됩니다.</p>
 </ul>
 </li>
 </ul>
-</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/spring/start-springboot-project/3-undertow/"><div class="direction">이전 글</div><div class="title">[springboot_start] 내장 WAS를 undertow로 변경하기</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/spring/start-springboot-project/2-log4j2/"><div class="direction">다음 글</div><div class="title">[springboot] Spring Boot project 시작하기, log4j2 + yml</div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/olkkani">안찬진</a> powered by<a href="https://github.com/zoomKoding/zoomkoding-gatsby-blog"> zoomkoding-gatsby-blog</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-RV6CRYX2P2"></script><script>
+</div></div></div><div class="post-navigator"><div class="post-navigator-card-wrapper"><a class="post-card prev" href="/spring/start-springboot-project/4-thymeleaf-layout/"><div class="direction">이전 글</div><div class="title">[springboot_start] thymeleaf layout 설정(작성 중)</div></a></div><div class="post-navigator-card-wrapper"><a class="post-card next" href="/spring/start-springboot-project/2-log4j2/"><div class="direction">다음 글</div><div class="title">[springboot] Spring Boot project 시작하기, log4j2 + yml</div></a></div></div><div class="utterances"></div></main><footer class="page-footer-wrapper"><p class="page-footer">© <!-- -->2022<!-- --> <a href="https://github.com/olkkani">안찬진</a> powered by<a href="https://github.com/zoomKoding/zoomkoding-gatsby-blog"> zoomkoding-gatsby-blog</a></p></footer><div class="dark-mode-button-wrapper"><button class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium dark-mode-button css-1yxmbwk" tabindex="0" type="button"><svg class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge dark-mode-icon css-6flbmm" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="DarkModeIcon"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"></path></svg></button></div></div></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-RV6CRYX2P2"></script><script>
       
       
       if(true) {
