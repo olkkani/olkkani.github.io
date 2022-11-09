@@ -54,7 +54,7 @@ Gradle 프로젝트를 생성하기 전에 해당 프로젝트를 시작할 폴�
 gradle init
 ```
 
-![stat_gradle_new_project](images/project-init-1.png)
+![stat gradle new project](images/project-init-1.png)
 
 생성하고자 하는 프로젝트의 타입을 선택합니다. 저는 이번에 2, "application"을 선택하여 진행하겠습니다.
 

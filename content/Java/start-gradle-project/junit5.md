@@ -89,7 +89,7 @@ assertThat() 을 사용하기 위해서는 매번 타이핑하여 Static Import 
 
  IntelliJ 를 사용하시는 많은 분들은 `assertThat()` 까지 입력한 후 **Show Context Action** (Mac: ⌥⏎ Windows: alt+enter) 로 static import 하여 사용합니다.
 
-![not found static import method](JUnit5-assertThat_not_found_static_import.png)
+![not found static import method](images/JUnit5-assertThat_not_found_static_import.png)
 다만 저는 static import method 라는 선택지가 나오지 않아서 난처했습니다. 인터넷에 검색했을 땐 모두 해당 방법이 나오므로 시도해본 뒤 저랑 같은 상황이면 빠르게 다음 방법으로 넘어가도록 합니다.
 
 ### (2/3) Intellij 에서 Static Import 하는 공식 가이드 방법
@@ -143,7 +143,7 @@ public class JUnit5Test {
 }
 ```
 
-![JUnit5 Test](JUnit5-test.png)
+![JUnit5 Test](images/JUnit5-test.png)
 
 실행시 위와 같다면 정상입니다. 이번 포스팅은 여기까지입니다. 부족한 점이 많으니 틀린 부분이 있다면 지적 부탁드립니다. 감사합니다.
 

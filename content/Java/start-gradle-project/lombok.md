@@ -46,7 +46,7 @@ Dependences 에 의존성과 annotation 설정을 해야하는 일반 gradle 환
 
 먼저 `Setting > Plugins` 를 차례로 클릭한 뒤 상단의 `Installed` 탭을 클릭합니다. 그 후 검색창에 **Lombok** 이 깔려있는지, 체크박스가 체크되어있는지 확인하면 됩니다.
 
-![lombok plugin download](lombok-download_plugin.png)
+![lombok plugin download](images/lombok-download_plugin.png)
 
 ### IntelliJ 설정 중 Annotaion Processing 을 활성화
 
@@ -54,7 +54,7 @@ Dependences 에 의존성과 annotation 설정을 해야하는 일반 gradle 환
 
 먼저 `Setting > Build, Execution, Deployment > Compiler > Annotation Processors` 를 차례로 클릭한 뒤 `Enable annotation processing` 이 체크 되어있는지 확인하면 됩니다.
 
-![annotation processing enable](lombok-enable_annotation_processing.png)
+![annotation processing enable](images/lombok-enable_annotation_processing.png)
 
 ## 적용 테스트
 
@@ -75,7 +75,7 @@ public class LombokAnnotationTest {
 }
 ```
 
-![test result](lombok-result.png)
+![test result](images/lombok-result.png)
 
 이상으로 Gradle Project 에 Lombok 을 간단히 적용하는 방법에 대해서 알아보았습니다. 감사합니다.
 
