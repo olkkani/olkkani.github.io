@@ -84,8 +84,8 @@ spring:
 
 ## 참고 및 출처
 ---
-(Undertow-docs)[https://undertow.io/undertow-docs/undertow-docs-2.1.0/index.html]
+[Undertow-docs](https://undertow.io/undertow-docs/undertow-docs-2.1.0/index.html)
 
-(spring-boot-performacne-benchmarks)[https://dev.to/azure/spring-boot-performance-benchmarks-with-tomcat-undertow-and-webflux-4d8k]
+[spring-boot-performacne-benchmarks](https://dev.to/azure/spring-boot-performance-benchmarks-with-tomcat-undertow-and-webflux-4d8k)
 ```toc
 ```
