@@ -9,7 +9,7 @@ module.exports = {
       repo: 'olkkani/olkkani.github.io', // `zoomkoding/zoomkoding-gatsby-blog`,
     },
   },
-  ga: 'G-RV6CRYX2P2', // Google Analytics Tracking ID
+  ga: 'G-N7TX0VEB6G', // Google Analytics Tracking ID
   author: {
     name: `안찬진`,
     bio: {
