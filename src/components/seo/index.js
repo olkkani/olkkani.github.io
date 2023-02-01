@@ -29,7 +29,7 @@ function Seo({ description, title }) {
       meta={[
         {
           name: 'google-site-verification',
-          content: 'tXOop5qSb4lXwVezPNWWIYzVZZ1KdJSJa8f2Y0p9etk',
+          content: 'UOFfNlg6zTqklCzHI2LUBPGGKNeiZDfOWrvpIgN8HE0',
         },
         {
           property: `og:title`,
