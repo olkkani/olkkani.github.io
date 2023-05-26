@@ -4,7 +4,7 @@ title: 'Kotlin StringBoot 에서 QueryDSL 설정하기'
 date: '2023-05-24 20:44:00'
 author: olkkani
 tags:
-categories: spring kotlin
+categories: spring
 ---
 
 Kotlin SpringBoot 환경에서 QueryDSL 을 설정고자 했으나 제대로 성공한 케이스가 없어 진땀 뺀 기억이 있습니다. 해당 포스트에서는 제가 적용 한 kotlin spring boot 에서 QueryDSL 을 공유하고자 하며 이미 Spring Data JPA 환경이 구축된 상태를 전제로 합니다.
@@ -19,13 +19,14 @@ Kotlin SpringBoot 환경에서 QueryDSL 을 설정고자 했으나 제대로 성
 | Java | jdk17 (temurin) |
 | Spring | 2.7.5 |
 | Gradle | 7.6.1 |
-정확한 이유는 파악 중이지만 kotlin plugin 버전을 높일 경우 제대로 적용되지 않는 문제가 있습니다. 1.6.10 에서는 문제 없이 동작하는 것을 확인했으므로 본인 환경에 따라 적용하면 될 것 같습니다.
+
+정확한 이유는 파악 중 이지만 kotlin plugin 버전을 높일 경우 제대로 적용되지 않는 문제가 있습니다. 1.6.10 에서는 문제 없이 동작하는 것을 확인했으므로 본인 환경에 따라 적용하면 될 것 같습니다.
 
 ## 환경 설정
 ---
 ### build.gradle.kts 설정 추가
 해당 파일의 전문은 하단에 있습니다.
-```
+```gradle
 dependencies{
 	implementation("com.querydsl:querydsl-jpa:5.0.0")
 	implementation("com.querydsl:querydsl-apt:5.0.0")   
@@ -50,7 +51,7 @@ idea {
 }
 ```
 ### QuerdslConfiguration
-```
+```kotlin
 package io.olkkani.study.config.jpa 
 
 import com.querydsl.jpa.impl.JPAQueryFactory 
@@ -81,7 +82,7 @@ import 에러가 발생한다면 EntityManager 와 PersistenceContext 를 제대
 
 ### QuizRepositorySupport
 환경설정이 모두 완료한 후 qquiz 를 생성했다면 다음 예제와 같이 사용할 수 있습니다.
-```
+```kotlin
 package io.olkkani.study.domain
 
 import com.querydsl.core.types.dsl.NumberExpression
@@ -110,7 +111,7 @@ class QuizRepositorySupport(
 ## 참고 및 출처
 ---
 ### Build.Gradle.kts 전문
-``` 
+```gradle
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
   
@@ -325,4 +326,5 @@ generatedSourceDirs.add(kaptMain)
 
 }
 ```
+### QClass 경로 설정 참고
 [https://pasudo123.tistory.com/472](https://pasudo123.tistory.com/472)
