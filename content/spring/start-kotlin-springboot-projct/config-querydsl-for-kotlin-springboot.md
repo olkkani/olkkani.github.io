@@ -28,13 +28,13 @@ Kotlin SpringBoot 환경에서 QueryDSL 을 설정고자 했으나 제대로 성
 해당 파일의 전문은 하단에 있습니다.
 ```gradle
 dependencies{
-	implementation("com.querydsl:querydsl-jpa:5.0.0")
-	implementation("com.querydsl:querydsl-apt:5.0.0")   
-	implementation("javax.persistence:javax.persistence-api:2.2") 
+	// QueryDSL  
+	implementation("com.querydsl:querydsl-jpa:5.0.0")  
+	implementation("com.querydsl:querydsl-apt:5.0.0")  
+	implementation("jakarta.annotation:jakarta.annotation-api:2.1.1")  
+	annotationProcessor("jakarta.persistence:jakarta.persistence-api:3.1.0")  
+	annotationProcessor(group = "com.querydsl", name = "querydsl-apt", classifier = "jpa")  
 	kapt("com.querydsl:querydsl-apt:5.0.0:jpa")
-	annotationProcessor("jakarta.persistence:jakarta.persistence-api:3.1.0") 
-	annotationProcessor("jakarta.persistence:jakarta.annotation-api:3.1.0") 
-	annotationProcessor(group = "com.querydsl", name = "querydsl-apt", classifier = "jpa")
 	
 }
 
@@ -75,11 +75,9 @@ import 에러가 발생한다면 EntityManager 와 PersistenceContext 를 제대
 환경 설정을 모두 마무리 했다면 QClass 를 생성합니다.
 다음과 같이 좌측 탭에서 'bootJar' 을 더블클릭하여 qclass 를 생성합니다.
 ![create_qclass](images/01-01-create_qclass.png)
-
 성공한 경우 다음과 같은 경로에 qclass 가 새롭게 생성됩니다.
 ![created_qclass](images/01-02-created_qclass.png)
-
-
+```
 ### QuizRepositorySupport
 환경설정이 모두 완료한 후 qquiz 를 생성했다면 다음 예제와 같이 사용할 수 있습니다.
 ```kotlin
@@ -212,27 +210,13 @@ implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
   
 
-// annotationProcessor("com.querydsl:querydsl-apt:${dependencyManagement.importedProperties['querydsl.version']}:jpa")
-
-// annotationProcessor("com.querydsl:querydsl-apt:5.0.0:jpa")
-
-implementation("com.querydsl:querydsl-jpa:5.0.0")
-
-implementation("com.querydsl:querydsl-apt:5.0.0")
-
-implementation("javax.persistence:javax.persistence-api:2.2")
-
-  
-
-kapt("com.querydsl:querydsl-apt:5.0.0:jpa")
-
-  
-
-annotationProcessor("jakarta.persistence:jakarta.persistence-api:3.1.0")
-
-annotationProcessor("jakarta.persistence:jakarta.annotation-api:3.1.0")
-
-annotationProcessor(group = "com.querydsl", name = "querydsl-apt", classifier = "jpa")
+	// QueryDSL  
+	implementation("com.querydsl:querydsl-jpa:5.0.0")  
+	implementation("com.querydsl:querydsl-apt:5.0.0")  
+	implementation("jakarta.annotation:jakarta.annotation-api:2.1.1")  
+	annotationProcessor("jakarta.persistence:jakarta.persistence-api:3.1.0")  
+	annotationProcessor(group = "com.querydsl", name = "querydsl-apt", classifier = "jpa")  
+	kapt("com.querydsl:querydsl-apt:5.0.0:jpa")
 
   
 
