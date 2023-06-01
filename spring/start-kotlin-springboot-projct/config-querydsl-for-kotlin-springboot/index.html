@@ -87,13 +87,13 @@
 <h3 id="buildgradlekts-설정-추가" style="position:relative;"><a href="#buildgradlekts-%EC%84%A4%EC%A0%95-%EC%B6%94%EA%B0%80" aria-label="buildgradlekts 설정 추가 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>build.gradle.kts 설정 추가</h3>
 <p>해당 파일의 전문은 하단에 있습니다.</p>
 <div class="gatsby-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml">dependencies<span class="token punctuation">{</span>
-	implementation("com.querydsl<span class="token punctuation">:</span>querydsl<span class="token punctuation">-</span>jpa<span class="token punctuation">:</span>5.0.0")
-	implementation("com.querydsl<span class="token punctuation">:</span>querydsl<span class="token punctuation">-</span>apt<span class="token punctuation">:</span>5.0.0")   
-	implementation("javax.persistence<span class="token punctuation">:</span>javax.persistence<span class="token punctuation">-</span>api<span class="token punctuation">:</span>2.2") 
+	// QueryDSL  
+	implementation("com.querydsl<span class="token punctuation">:</span>querydsl<span class="token punctuation">-</span>jpa<span class="token punctuation">:</span>5.0.0")  
+	implementation("com.querydsl<span class="token punctuation">:</span>querydsl<span class="token punctuation">-</span>apt<span class="token punctuation">:</span>5.0.0")  
+	implementation("jakarta.annotation<span class="token punctuation">:</span>jakarta.annotation<span class="token punctuation">-</span>api<span class="token punctuation">:</span>2.1.1")  
+	annotationProcessor("jakarta.persistence<span class="token punctuation">:</span>jakarta.persistence<span class="token punctuation">-</span>api<span class="token punctuation">:</span>3.1.0")  
+	annotationProcessor(group = "com.querydsl"<span class="token punctuation">,</span> name = "querydsl<span class="token punctuation">-</span>apt"<span class="token punctuation">,</span> classifier = "jpa")  
 	kapt("com.querydsl<span class="token punctuation">:</span>querydsl<span class="token punctuation">-</span>apt<span class="token punctuation">:</span>5.0.0<span class="token punctuation">:</span>jpa")
-	annotationProcessor("jakarta.persistence<span class="token punctuation">:</span>jakarta.persistence<span class="token punctuation">-</span>api<span class="token punctuation">:</span>3.1.0") 
-	annotationProcessor("jakarta.persistence<span class="token punctuation">:</span>jakarta.annotation<span class="token punctuation">-</span>api<span class="token punctuation">:</span>3.1.0") 
-	annotationProcessor(group = "com.querydsl"<span class="token punctuation">,</span> name = "querydsl<span class="token punctuation">-</span>apt"<span class="token punctuation">,</span> classifier = "jpa")
 	
 <span class="token punctuation">}</span>
 
@@ -151,8 +151,8 @@ idea <span class="token punctuation">{</span>
         loading="lazy"
         decoding="async"
       />
-    </span></p>
-<p>성공한 경우 다음과 같은 경로에 qclass 가 새롭게 생성됩니다.
+    </span>
+성공한 경우 다음과 같은 경로에 qclass 가 새롭게 생성됩니다.
 <span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 666px; "
@@ -175,28 +175,29 @@ idea <span class="token punctuation">{</span>
         decoding="async"
       />
     </span></p>
-<h3 id="quizrepositorysupport" style="position:relative;"><a href="#quizrepositorysupport" aria-label="quizrepositorysupport permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>QuizRepositorySupport</h3>
-<p>환경설정이 모두 완료한 후 qquiz 를 생성했다면 다음 예제와 같이 사용할 수 있습니다.</p>
-<div class="gatsby-highlight" data-language="kotlin"><pre class="language-kotlin"><code class="language-kotlin"><span class="token keyword">package</span> io<span class="token punctuation">.</span>olkkani<span class="token punctuation">.</span>study<span class="token punctuation">.</span>domain
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">### QuizRepositorySupport
+환경설정이 모두 완료한 후 qquiz 를 생성했다면 다음 예제와 같이 사용할 수 있습니다.
+```kotlin
+package io.olkkani.study.domain
 
-<span class="token keyword">import</span> com<span class="token punctuation">.</span>querydsl<span class="token punctuation">.</span>core<span class="token punctuation">.</span>types<span class="token punctuation">.</span>dsl<span class="token punctuation">.</span>NumberExpression
-<span class="token keyword">import</span> com<span class="token punctuation">.</span>querydsl<span class="token punctuation">.</span>jpa<span class="token punctuation">.</span>impl<span class="token punctuation">.</span>JPAQueryFactory
-<span class="token keyword">import</span> io<span class="token punctuation">.</span>olkkani<span class="token punctuation">.</span>study<span class="token punctuation">.</span>domain<span class="token punctuation">.</span>QQuiz<span class="token punctuation">.</span>quiz
-<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>data<span class="token punctuation">.</span>jpa<span class="token punctuation">.</span>repository<span class="token punctuation">.</span>support<span class="token punctuation">.</span>QuerydslRepositorySupport
-<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype<span class="token punctuation">.</span>Repository
+import com.querydsl.core.types.dsl.NumberExpression
+import com.querydsl.jpa.impl.JPAQueryFactory
+import io.olkkani.study.domain.QQuiz.quiz
+import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport
+import org.springframework.stereotype.Repository
 
-<span class="token annotation builtin">@Repository</span>
-<span class="token keyword">class</span> <span class="token function">QuizRepositorySupport</span><span class="token punctuation">(</span>
-    <span class="token keyword">private</span> <span class="token keyword">val</span> queryFactory<span class="token operator">:</span> JPAQueryFactory
-<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">QuerydslRepositorySupport</span><span class="token punctuation">(</span>
-    Quiz<span class="token operator">::</span><span class="token keyword">class</span><span class="token punctuation">.</span>java
-<span class="token punctuation">)</span><span class="token punctuation">{</span>
+@Repository
+class QuizRepositorySupport(
+    private val queryFactory: JPAQueryFactory
+) : QuerydslRepositorySupport(
+    Quiz::class.java
+){
 
-    <span class="token keyword">fun</span> <span class="token function">getRandomQuiz</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> List<span class="token operator">&lt;</span>Quiz<span class="token operator">></span><span class="token operator">?</span> <span class="token operator">=</span>
-        queryFactory<span class="token punctuation">.</span><span class="token function">selectFrom</span><span class="token punctuation">(</span>quiz<span class="token punctuation">)</span>
-            <span class="token punctuation">.</span><span class="token function">orderBy</span><span class="token punctuation">(</span>NumberExpression<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">asc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token punctuation">.</span><span class="token function">limit</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span></code></pre></div>
+    fun getRandomQuiz(): List&lt;Quiz>? =
+        queryFactory.selectFrom(quiz)
+            .orderBy(NumberExpression.random().asc())
+            .limit(10).fetch()
+}</code></pre></div>
 <h2 id="마무리-지으며" style="position:relative;"><a href="#%EB%A7%88%EB%AC%B4%EB%A6%AC-%EC%A7%80%EC%9C%BC%EB%A9%B0" aria-label="마무리 지으며 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>마무리 지으며</h2>
 <hr>
 <p>이상으로 Kotlin Spring Boot 환경에서 QueryDSL 을 설정하는 방법을 마치겠습니다. 아직 모르는 부분도 많고 파악 중인 부분도 많아서 부족하지만 처음 설정하시는 분들에게 참고가되었으면 하는 바람에 포스팅합니다.</p>
@@ -303,27 +304,13 @@ implementation("org.springframework.boot<span class="token punctuation">:</span>
 
   
 
-// annotationProcessor("com.querydsl<span class="token punctuation">:</span>querydsl<span class="token punctuation">-</span>apt<span class="token punctuation">:</span>$<span class="token punctuation">{</span>dependencyManagement.importedProperties<span class="token punctuation">[</span><span class="token string">'querydsl.version'</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">:</span>jpa")
-
-// annotationProcessor("com.querydsl<span class="token punctuation">:</span>querydsl<span class="token punctuation">-</span>apt<span class="token punctuation">:</span>5.0.0<span class="token punctuation">:</span>jpa")
-
-implementation("com.querydsl<span class="token punctuation">:</span>querydsl<span class="token punctuation">-</span>jpa<span class="token punctuation">:</span>5.0.0")
-
-implementation("com.querydsl<span class="token punctuation">:</span>querydsl<span class="token punctuation">-</span>apt<span class="token punctuation">:</span>5.0.0")
-
-implementation("javax.persistence<span class="token punctuation">:</span>javax.persistence<span class="token punctuation">-</span>api<span class="token punctuation">:</span>2.2")
-
-  
-
-kapt("com.querydsl<span class="token punctuation">:</span>querydsl<span class="token punctuation">-</span>apt<span class="token punctuation">:</span>5.0.0<span class="token punctuation">:</span>jpa")
-
-  
-
-annotationProcessor("jakarta.persistence<span class="token punctuation">:</span>jakarta.persistence<span class="token punctuation">-</span>api<span class="token punctuation">:</span>3.1.0")
-
-annotationProcessor("jakarta.persistence<span class="token punctuation">:</span>jakarta.annotation<span class="token punctuation">-</span>api<span class="token punctuation">:</span>3.1.0")
-
-annotationProcessor(group = "com.querydsl"<span class="token punctuation">,</span> name = "querydsl<span class="token punctuation">-</span>apt"<span class="token punctuation">,</span> classifier = "jpa")
+	// QueryDSL  
+	implementation("com.querydsl<span class="token punctuation">:</span>querydsl<span class="token punctuation">-</span>jpa<span class="token punctuation">:</span>5.0.0")  
+	implementation("com.querydsl<span class="token punctuation">:</span>querydsl<span class="token punctuation">-</span>apt<span class="token punctuation">:</span>5.0.0")  
+	implementation("jakarta.annotation<span class="token punctuation">:</span>jakarta.annotation<span class="token punctuation">-</span>api<span class="token punctuation">:</span>2.1.1")  
+	annotationProcessor("jakarta.persistence<span class="token punctuation">:</span>jakarta.persistence<span class="token punctuation">-</span>api<span class="token punctuation">:</span>3.1.0")  
+	annotationProcessor(group = "com.querydsl"<span class="token punctuation">,</span> name = "querydsl<span class="token punctuation">-</span>apt"<span class="token punctuation">,</span> classifier = "jpa")  
+	kapt("com.querydsl<span class="token punctuation">:</span>querydsl<span class="token punctuation">-</span>apt<span class="token punctuation">:</span>5.0.0<span class="token punctuation">:</span>jpa")
 
   
 
