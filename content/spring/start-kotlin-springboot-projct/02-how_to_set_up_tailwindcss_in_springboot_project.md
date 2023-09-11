@@ -8,12 +8,18 @@ categories: spring
 ---
 
 
-## 들어가기에 앞서
+## 들어가면서
 ---
 ### npm 초보에게는 너무 어려워
-tutorial 은 저같은 바보도 쉽게 따라하고 이해할 수 있게 작성되는 문서로 알고 있는데, Tailwindcss 공식 문서와 검색 자료들은 frontend 와 npm 이 아직 서투른 제가 bootstrap 에서 벗어나 tailwindcss 로 이동하기에는 자료도 적고 자세하지 않아서 이해하기 어려웠습니다. 대부분의 문서에서는 기본적인 지식을 전제로 글이 작성되었고, 이해 못하는 제가 미워졌습니다...
-![웃다_정색하는_노홍철](../../../assets/images/laugh_and_be_serious.gif)*핫한 CSS framwork 라며....*
-그래서 많이 삽질했고 드디어 성공했는데, 혹시 다른 사람들에게 도움이 될까 싶어 글로 정리해봅니다. 해당 글에서는 NPM 이 무엇인지, TailwindCSS 가 무엇인지에 대해서는 설명하지 않겠습니다.
+Tailwindcss 공식 문서와 검색 자료들은 npm 이 아직 서투른 제가 bootstrap 에서 벗어나 tailwindcss 로 이동하기에는 자료도 적고 자세하지 않아서 이해하기 어려웠습니다. 대부분의 문서에서는 기본적인 지식을 전제로 글이 작성되었고, 반갑게 찾아본 자료들을 보며 표정이 굳어졌습니다...
+![웃다_정색하는_노홍철](../../../assets/images/laugh_and_be_serious.gif)
+그래서 많이 삽질했고 드디어 성공했는데, 혹시 다른 사람들에게 도움이 될까 싶어 간단히 글로 정리해봅니다. 해당 글에서는 npm 이 무엇인지, TailwindCSS 가 무엇인지에 대해서는 설명하지 않겠습니다.
+### 목차
+이번 글은 Springboot project 에서 tailwindcss 를 적용하는 내용을 담고 있습니다. 순서는 다음과 같습니다.
+1. Springboot project 에 NPM 설정
+2. Kotlin Gradle 에서 설정
+3. tailwindcss 추가 및 설정
+npm 과 TailwindCSS 가 무엇인지에 대해서는 설명하지 않는 점 참고 바랍니다.
 ### 구현 환경
 | 종류  | 버전                    |
 |:---:|-----------------------|
@@ -71,7 +77,7 @@ tasks.bootJar{
     dependsOn(copyTask)  
 }
 ```
-## SpringBoot Project 에 TailwindCSS 설정하기
+## TailwindCSS 추가 및 설정
 ---
 ### TawilwindCSS install
 ```
@@ -119,7 +125,7 @@ Content 는 적용하고자 하는 html, js 파일의 위치를 포함해야합�
 ## 번외
 ---
 ### intellij 환경에서 style.tailwind.css 에 뜨는 경고 문구 해결하기
-![error_tag-Term_expected]()
+![error_tag-Term_expected](images/02-02-error_tag-term_expected.png)
 build 로 생성된 style.tailwind.css 에 마치 오류가 있는 것 처럼 빨간 줄이 뜨고, 문제가 발생한 곳으로 이동하면 다음과 같은 에러 문구를 확인할 수 있습니다. 검색해본 결과 다음과 같은 방법으로 해결 할 수 있습니다.
 - 추가된 이슈목록과 제시된 해결 방법
 	1. 경고 문구 무시 하기
@@ -129,4 +135,4 @@ build 로 생성된 style.tailwind.css 에 마치 오류가 있는 것 처럼 �
 ---
 ### 참 다사다난 했던 적용기
 지금 보면 너무나도 쉬운 설정이지만 잘 모르는 상황에서는 뭐가 문제인지 몰라 한참 헤맸던 적용기입니다.
-저 같은 초보자를 위한 Tutorial 이 있었으면 더 쉬웠겠지만 뭔가 단편적인 설명들만 있었을 뿐 spring 환경에서 A to Z 로 알려주는 사이트는 거의 없었던 것 같아서 참 아쉽습니다. 부족하지만 혹시 저 같은 사람들이 이 글을 보고 도움이 되었으면 하는 바람입니다.
+저 같은 초보자를 위한 How to guide 가 있었으면 더 쉬웠겠지만 뭔가 단편적인 설명들만 있었을 뿐 spring 환경에서 A to Z 로 알려주는 자료는 거의 없었던 것 같아서 참 아쉽습니다. 부족하지만 혹시 저 같은 사람들이 이 글을 보고 도움이 되었으면 하는 바람입니다.
