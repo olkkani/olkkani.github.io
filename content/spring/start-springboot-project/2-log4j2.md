@@ -6,16 +6,21 @@ author: olkkani
 tags:
 categories: spring
 ---
-
-이번 시간에는 springboot 에서 log4j2를 설정해보겠습니다.
-
-## 라이브러리 가져오기
+이번 포스팅에서는 Spring Boot Project 에 log4j2 를 설정해보겠습니다. 프로젝트를 생성하는 방법은 이전 포스트를 참고해주시길 바랍니다.
+### 구현 환경
+| 종류  | 버전                    |
+|:---:|-----------------------|
+| OS  | M1 Mac(Monterey 12.4) |
+| IDE | Intellij(2022.1.2)    |
+| Java | jdk17 (temurin) |
+| Spring | 2.7.5 |
+| Gradle | 7.6.1 |
 
 ---
+## 라이브러리 가져오기
+### (선택)기존 logging 라이브러리 제외하기
 
-### 기존 logging 라이브러리 제외하기
-
-스프링에서 제공하는 기본 라이브러리는 사용하지 않을 예정이므로 제외시킵니다.
+log4j2 라이브러리를 가져오기 전, 스프링에서 제공하는 기본 라이브러리는 사용하지 않을 예정이므로 제외합니다. 선택 사항이지만 사용하지 않은 라이브러리를 굳이 남겨둘 이유는 없으니 제외시키는걸 추천드립니다.
 
 ```gradle
     configurations {
@@ -29,10 +34,9 @@ categories: spring
 ![기존 logging 라이브러리 제거](images/2-01-exclude_starter_logging.png)
 
 ### log4j2 라이브러리 가져오기
-
 다음으로는 log4j2와 slf4j를 위한 라이브러리를 가져오겠습니다. slf4j는 slf4j-impl에 포함되어있으므로 따로 가져오진 않겠습니다. 버전은 작성일 기준 2.17.1 이상을 가져오시길 바랍니다. log4j 취약점 논란이 있었기 때문에 maven repository에서 가져오실 땐 꼭 취약점이 발견되지 않은 버전을 가져오시길 바랍니다.
 
-`spring-boot-starter-log4j2` 를 통해 가져오지 않는 이유는 maven repository 사이트의 표기와 달리 2.17.0 버전을 가져오기 때문입니다.
+`spring-boot-starter-log4j2` 를 통해 가져오지 않는 이유는 maven repository 사이트의 표기와 달리 2.17.0 버전을 가져오기 때문입니다. 취약점 문제가 없다면 `spring-boot-starter-logj4j2` 로 가져오는게 깔끔하니 추천드립니다.
 
 ```gradle
     dependencies {
@@ -43,8 +47,7 @@ categories: spring
 ```
 
 ### yml 설정을 위한 jackson-dataformat-yaml 라이브러리 가져오기
-
-log4j2 설정을 .xml 로 관리해왔지만 이번 프로젝트는 .yml 로 관리해보도록 하겠습니다. .yml 으로 log4j2 설정을 관리하기 위해선 관련 라이브러리를 가져올 필요가 있습니다. 아래 라이브러리를 __dependencies__ 에 포함하도록 합니다.
+log4j2 설정은 일반적으로 .xml 로 관리해왔지만 이번 프로젝트는 .yml 로 관리해보도록 하겠습니다. .yml 으로 log4j2 설정을 관리하기 위해선 관련 라이브러리를 가져올 필요가 있습니다. 아래 라이브러리를 __dependencies__ 에 포함하도록 합니다.
 
 ```gradle
     implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: '2.13.1'
@@ -52,27 +55,20 @@ log4j2 설정을 .xml 로 관리해왔지만 이번 프로젝트는 .yml 로 관
 
 ![build.gradle](images/2-02-implementation_log4j2.png)
 
-## log4j2.yml 생성 및 application.yml 설정
+필요한 라이브러리를 전부 가져왔다면 이제 프로젝트 환경에 맞춰서 설정하는 일만 남았습니다.
 
 ---
-
+## log4j2.yml 생성 및 application.yml 설정
 ### application.yml 설정
-
 log4j2 파일을 생성하기 전에 application.yml 에 생성할 파일의 경로를 정의합니다. 파일을 생성한 후에 정의해도 상관없습니다.
-
 ```yml
   logging:
     config: classpath:log4j2.yml
 ```
-
 ### log4j2.yml 파일 생성
-
 log4j2.yml 파일을 생성합니다. 위치는 __src/main/resources/log4j2.yml__ 입니다.
-
 ### log4j2.yml 예시 (설명은 하단 참고)
-
 생성한 파일에 예시 내용을 붙여넣습니다. 그대로 사용해도 상관없지만 본인의 상황에 맞게 커스텀하시길 바랍니다.
-
 ```yml
 Configutation:
   name: Default
@@ -125,12 +121,9 @@ Configutation:
         - ref: RollingFile_Appender
 ```
 
-## log4j2.yml 설정 구조
-
 ---
-
+## (참고) log4j2.yml 설정 구조
 ### Configuration
-
 로그를 설정하기 위한 최상위 태그입니다. 하위에는 다음과 같은 태그를 삽입할 수 있습니다.
 
 |     항목     | 설명                                                                              |
@@ -138,9 +131,7 @@ Configutation:
 | Properties | 해당 파일에서 사용할 수 있는 공통 변수를 정의합니다. name, log layout pattern 등을 정의하는 것이 추후 관리에 편합니다. |
 | Appenders  | 로그의 패턴과 저장 패턴 등을 설정할 수 있습니다.                                                    |
 |  Loggers   | 출력하는 로그 범위를 지정할 수 있습니다. 설정에 따라 로그를 노출시키거나 생략할 수 있습니다.                           |
-
 ### Properties
-
 ```yaml
   Properties:
   Property:
@@ -152,9 +143,7 @@ Configutation:
 |:-----:|:---------------------------------|
 | name  | 호출할 때 사용할 수 있는 property 의 이름입니다. |
 | value | 해당 property 를 호출했을 경우 실제 값입니다.   |
-
 ### Layout Pattern
-
 로그에 표시될 정보와 순서를 정의할 수 있습니다. 각 태그에 대한 설명은 다음과 같습니다.
 
 ```yaml
@@ -283,12 +272,10 @@ Configutation:
   - name: 설정한 logger name 이 호출한 logger 으로 시작한다면 정의한 level 규칙을 따릅니다.
   - additivity: logger 중복 여부를 지정합니다. __false__ 로 지정할 경우 중복되지 않습니다.
 
-## 테스트
-
 ---
-
+## 테스트
+프로젝트에 log4j2 가 제대로 적용됐는지 간단하게 확인해보겠습니다. 실행 가능한 코드와 결과는 아래와 같습니다.
 ### 테스트 코드 전문
-
 ```java
 package org.acj.env;
 
@@ -307,15 +294,12 @@ public class Log4j2Test {
    }
 }
 ```
-
+pacakage 는 실제 파일 경로로 설정하시면 됍니다.
 ### 결과
-
 ![logger test result](images/2-04-logging_test.png)
 
-## 참고
-
 ---
-
+## 참고
 [https://logging.apache.org/log4j/2.x/manual/configuration.html](https://logging.apache.org/log4j/2.x/manual/configuration.html)
 
 [https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.external-config.yaml](https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.external-config.yaml)
